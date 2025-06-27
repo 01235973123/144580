@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<install version="1.0" type="eshopplugin" group="shipping">
+	<name>eshop_ups</name>
+	<title>UPS</title>
+	<author>Giang Dinh Truong</author>
+	<creationDate>May 2013</creationDate>
+	<copyright>Copyright 2013 Ossolution Team</copyright>
+	<license>http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU/GPL version 2</license>
+	<authorEmail>contact@joomdonation.com</authorEmail>
+	<authorUrl>www.joomdonation.com</authorUrl>
+	<version>4.0.2</version>
+	<description>This is UPS Shipping method for Eshop</description>
+	<config>
+		<fields name="params" addfieldpath="/administrator/components/com_eshop/elements/">
+			<fieldset name="basic">
+				<field name="package_fee" type="text" label="Package fee" description="This is fee for package" size="5" default="0"></field>
+				<field name="min_total" type="text" label="Min Total" description="If the total amount reach Min Total, then the UPS Shipping will be disable and the Free Shipping will be available. Leave 0 if you do not want to use it." size="5" default="0"></field>
+				<field name="min_quantity" type="text" label="Min Quantity" description="If the quantity amount reach Min Quantity, then the UPS Shipping will be disable and the Free Shipping will be available. Leave 0 if you do not want to use it." size="5" default="0"></field>
+				<field name="min_weight" type="text" label="Min Weight" description="If the total weight reach Min Weight then the UPS Shipping will be disable and the Free Shipping will be available. Leave 0 if you do not want to use it." size="5" default="0"></field>
+				<field name="ups_key" type="text" label="* Access Key" description="Enter the XML rates access key assigned to you by UPS." size="20"></field>
+				<field name="ups_username" type="text" label="* Username" description="Enter your UPS Services account username." size="20"></field>
+				<field name="ups_password" type="password" label="* Password" description="Enter your UPS Services account password." size="20"></field>
+				<field name="ups_pickup" default="01" type="list" label="Pickup Method" description="How do you give packages to UPS (only used when origin is US)?">
+					<option value="01">Daily Pickup</option>
+					<option value="03">Customer Counter</option>
+					<option value="06">One Time Pickup</option>
+					<option value="07">On Call Air Pickup</option>
+					<option value="19">Letter Center</option>
+					<option value="20">Air Service Center</option>
+					<option value="11">Suggested Retail Rates (UPS Store)</option>
+				</field>
+				<field name="ups_packaging" default="02" type="list" label="Packaging Type" description="What kind of packaging do you use?">
+					<option value="02">Package</option>
+					<option value="01">UPS Letter</option>
+					<option value="03">UPS Tube</option>
+					<option value="04">UPS Pak</option>
+					<option value="21">UPS Express Box</option>
+					<option value="24">UPS 25kg box</option>
+					<option value="25">UPS 10kg box</option>
+				</field>
+				<field name="ups_classification" default="01" type="list" label="Customer Classification Code" description="01 - If you are billing to a UPS account and have a daily UPS pickup, 03 - If you do not have a UPS account or you are billing to a UPS account but do not have a daily pickup, 04 - If you are shipping from a retail outlet (only used when origin is US)">
+					<option value="01">01</option>
+					<option value="03">03</option>
+					<option value="04">04</option>
+				</field>
+				<field name="ups_origin" default="US" type="list" label="Shipping Origin Code" description="What origin point should be used (this setting affects only what UPS product names are shown to the user)">
+					<option value="US">US Origin</option>
+					<option value="CA">Canada Origin</option>
+					<option value="EU">European Union Origin</option>
+					<option value="PR">Puerto Rico Origin</option>
+					<option value="MX">Mexico Origin</option>
+					<option value="other">All Other Origins</option>
+				</field>
+				<field name="ups_city" type="text" label="* Origin City" description="Enter the name of the origin city" size="20"></field>
+				<field name="ups_state" type="text" label="* Origin State/Province" description="Enter the two-letter code for your origin state/province" size="10"></field>
+				<field name="ups_country" type="text" label="* Origin Country" description="Enter the two-letter code for your origin country" size="10"></field>
+				<field name="ups_postcode" type="text" label="Origin Zip/Postal Code" description="Enter your origin zip/postalcode" size="20"></field>
+				<field name="ups_test" default="0" type="list" label="Test Mode" description="Use this shipping method in Test (YES) or Production mode (NO)?">
+					<option value="1">Yes</option>
+					<option value="0">No</option>
+				</field>
+				<field name="ups_quote_type" default="residential" type="list" label="Quote Type" description="Quote for Residential or Commercial Delivery">
+					<option value="residential">Residential</option>
+					<option value="commercial">Commercial</option>
+				</field>
+				<field name="ups_us" type="Checkboxes" label="US Origin Services" description="Select the UPS US Origin services to be offered.">
+					<option value="01">UPS Next Day Air</option>
+					<option value="02">UPS Second Day Air</option>
+					<option value="03">UPS Ground</option>
+					<option value="07">UPS Worldwide Express</option>
+					<option value="08">UPS Worldwide Expedited</option>
+					<option value="11">UPS Standard</option>
+					<option value="12">UPS Three-Day Select</option>
+					<option value="13">UPS Next Day Air Saver</option>
+					<option value="14">UPS Next Day Air Early A.M.</option>
+					<option value="54">UPS Worldwide Express Plus</option>
+					<option value="59">UPS Second Day Air A.M.</option>
+					<option value="65">UPS Saver</option>
+				</field>
+				<field name="ups_ca" type="Checkboxes" label="Canada Origin Services" description="Select the UPS Canada Origin services to be offered.">
+					<option value="01">UPS Express</option>
+					<option value="02">UPS Expedited</option>
+					<option value="07">UPS Worldwide Express</option>
+					<option value="08">UPS Worldwide Expedited</option>
+					<option value="11">UPS Standard</option>
+					<option value="12">UPS Three-Day Select</option>
+					<option value="13">UPS Saver</option>
+					<option value="14">UPS Express Early A.M.</option>
+					<option value="54">UPS Worldwide Express Plus</option>
+					<option value="65">UPS Saver</option>
+				</field>
+				<field name="ups_eu" type="Checkboxes" label="European Union Origin Services" description="Select the UPS European Union Origin services to be offered.">
+					<option value="07">UPS Express</option>
+					<option value="08">UPS Expedited</option>
+					<option value="11">UPS Standard</option>
+					<option value="54">UPS Worldwide Express Plus</option>
+					<option value="65">UPS Saver</option>
+					<option value="82">UPS Today Standard</option>
+					<option value="83">UPS Today Dedicated Courier</option>
+					<option value="84">UPS Today Intercity</option>
+					<option value="85">UPS Today Express</option>
+					<option value="86">UPS Today Express Saver</option>
+				</field>
+				<field name="ups_pr" type="Checkboxes" label="Puerto Rico Origin Services" description="Select the UPS Puerto Rico Origin services to be offered.">
+					<option value="01">UPS Next Day Air</option>
+					<option value="02">UPS Second Day Air</option>
+					<option value="03">UPS Ground</option>
+					<option value="07">UPS Worldwide Express</option>
+					<option value="08">UPS Worldwide Expedited</option>
+					<option value="14">UPS Next Day Air Early A.M.</option>
+					<option value="54">UPS Worldwide Express Plus</option>
+					<option value="65">UPS Saver</option>
+				</field>
+				<field name="ups_mx" type="Checkboxes" label="Mexico Origin Services" description="Select the UPS Mexico Origin services to be offered.">
+					<option value="07">UPS Worldwide Express</option>
+					<option value="08">UPS Worldwide Expedited</option>
+					<option value="54">UPS Worldwide Express Plus</option>
+					<option value="65">UPS Saver</option>
+				</field>
+				<field name="ups_other" type="Checkboxes" label="All Other Origins Services" description="Select the UPS All Other Origins services to be offered.">
+					<option value="07">UPS Express</option>
+					<option value="08">UPS Expedited</option>
+					<option value="11">UPS Standard</option>
+					<option value="54">UPS Worldwide Express Plus</option>
+					<option value="">UPS Saver</option>
+				</field>
+				<field name="ups_insurance" default="0" type="list" label="Enable Insurance" description="Enables insurance with product total as the value">
+					<option value="1">Yes</option>
+					<option value="0">No</option>
+				</field>
+				<field name="ups_display_weight" default="0" type="list" label="Display Delivery Weight" description="Do you want to display the shipping weight? (e.g. Delivery Weight : 2.7674 Kg's)">
+					<option value="1">Yes</option>
+					<option value="0">No</option>
+				</field>
+				<field name="ups_weight_id" type="eshopweight" label="Weight"></field>
+				<field name="ups_length_id" type="eshoplength" label="Length"></field>
+				<field name="ups_length" type="text" label="* Length" description="" size="10"></field>
+				<field name="ups_width" type="text" label="* Width" description="" size="10"></field>
+				<field name="ups_height" type="text" label="* Height" description="" size="10"></field>
+				<field name="show_shipping_cost_with_tax" type="list" label="Show Shipping Cost With Tax" description="If Yes, once you choose a Tax Class below, it will display shipping cost include tax." default="1">
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </field>
+				<field name="payment_methods" type="eshoppayments" label="Payment Methods" description="Choose corresponding available payment methods when UPS Shipping method is chosen. Select all or Un-select all to choose all payment methods."></field>
+				<field name="customer_groups" type="eshopcustomergroups" label="Customer Groups" description="Choose the customer groups to apply UPS shipping."></field>
+				<field name="disabled_products" type="eshopproducts" label="Disabled Products" description="Choose disabled products here. If the cart includes at least a disabled product, then the UPS Shipping will be not available."></field>
+				<field name="ups_taxclass_id" type="eshoptaxclass" label="Tax Class"></field>
+				<field name="ups_geozone_id" type="eshopgeozone" label="Geo Zone"></field>
+			</fieldset>
+		</fields>
+	</config>
+	<files>
+		<filename>eshop_ups.php</filename>
+	</files>
+	<installsql />
+	<installfile />
+</install>

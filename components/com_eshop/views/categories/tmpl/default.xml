@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="COM_ESHOP_CATEGORIES_VIEW_DEFAULT_TITLE">
+		<message><![CDATA[COM_ESHOP_CATEGORIES_VIEW_DEFAULT_DESC]]></message>
+	</layout>
+	<state>
+		<name>COM_ESHOP_CATEGORIES_VIEW_DEFAULT_TITLE</name>
+		<description>COM_ESHOP_CATEGORIES_VIEW_DEFAULT_DESC</description>
+		<fields name="params">
+			<fieldset name="basic" addfieldpath="/administrator/components/com_eshop/elements">
+				<field name="category_ids" type="eshopcategories" size="5" default="0" label="COM_ESHOP_SELECT_CATEGORIES" description="COM_ESHOP_SELECT_CATEGORIES_DESC" />
+			</fieldset>
+		</fields>	
+	</state>
+</metadata>

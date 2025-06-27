@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.9.0" type="plugin" group="osmembership" method="upgrade">
+    <name>Membership Pro - Subscription Control</name>
+    <author>Tuan Pham Ngoc</author>
+    <authorEmail>tuanpn@joomdonation.com</authorEmail>
+    <authorUrl>https://joomdonation.com</authorUrl>
+    <copyright>Copyright (C) 2012 - 2025 Ossolution Team</copyright>
+    <license>GNU General Public License version 3, or later</license>
+    <creationDate>Nov 2012</creationDate>
+    <version>4.2.2</version>
+    <description>This plugin allows expiring subscription from certain plans when subscription for current plan active and subscribe for certain plans when subscription for current plan expired
+    </description>
+    <files>
+        <filename plugin="subscriptioncontrol">subscriptioncontrol.php</filename>
+        <folder>tmpl</folder>
+    </files>
+	<languages folder="language">
+		<language tag="en-GB">en-GB/en-GB.plg_osmembership_subscriptioncontrol.ini</language>
+	</languages>
+    <config>
+        <fields name="params">
+            <fieldset name="basic">
+                <field
+                        name="show_on_frontend"
+                        type="radio"
+                        label="Show On Frontend"
+                        description="If set to Yes, this plugin will be available on frontend add/edit plan form"
+                        class="btn-group btn-group-yesno"
+                        default="0"
+                >
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+            </fieldset>
+        </fields>
+    </config>
+</extension>

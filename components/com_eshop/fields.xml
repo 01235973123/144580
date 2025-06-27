@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<fields name="params">
+		<fieldset name="basic">
+			<field name="field_upc" type="text" label="Custom Field 1 (UPC)" size="50" description="Universal Product Code"></field>
+			<field name="field_ean" type="text" label="Custom Field 2 (EAN)" size="50" description="European Article Number"></field>
+			<field name="field_ispn" type="text" label="Custom Field 3 (ISPN)" size="50" description="International Standard Book Number"></field>
+			<field name="field_mpn" type="text" label="Custom Field 4 (MPN)" size="50" description="Manufacturer Part Number"></field>
+			<field name="field_location" type="text" label="Custom Field 5 (Location)" size="50" description="Location of Product"></field>
+          <field name="field_location" type="textarea" label="Custom Field 5 (Location)" size="50" description="Location of Product"></field>
+		</fieldset>
+	</fields>
+</config>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="component" version="6.0" method="upgrade">
+	<name>JDonation</name>
+	<author>Dang Thuc Dam</author>
+	<creationDate>19-01-2009</creationDate>
+	<copyright>Copyright 2009 - 2025 Ossolution Team</copyright>
+	<license>http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU/GPL version 2</license>
+	<authorEmail>services@joomdonation.com</authorEmail>
+	<authorUrl>www.joomdonation.com</authorUrl>
+	<version>6.0</version>
+	<scriptfile>install.jdonation.php</scriptfile>
+	<install>
+		<sql>
+			<file driver="mysql" charset="utf8">sql/install.jdonation.sql</file>
+		</sql>
+	</install>
+	<uninstall>
+		<sql>
+			<file driver="mysql" charset="utf8">sql/uninstall.jdonation.sql</file>
+		</sql>
+	</uninstall>
+	<media destination="com_jdonation" folder="site/media">
+		<filename>index.html</filename>
+		<filename>invoice_logo.png</filename>
+		<folder>receipts</folder>
+		<folder>assets</folder>
+		<folder>files</folder>
+		<folder>flags</folder>
+	</media>
+	<languages>
+		<language tag="en-GB">site/languages/en-GB.com_jdonation.ini</language>
+	</languages>
+	<files folder="site">
+		<filename>index.html</filename>
+		<filename>jdonation.php</filename>
+		<filename>router.php</filename>
+		<folder>controller</folder>
+		<folder>helper</folder>
+		<folder>model</folder>
+		<folder>payments</folder>
+		<folder>tcpdf</folder>
+		<folder>view</folder>
+		<folder>views</folder>
+	</files>
+	<administration>
+		<menu>Joom Donation</menu>
+		<submenu>
+			<menu link="option=com_jdonation&amp;view=dashboard">JD_DASHBOARD</menu>
+			<menu link="option=com_jdonation&amp;view=configuration">JD_CONFIGURATION</menu>
+			<menu link="option=com_jdonation&amp;view=campaigns">JD_CAMPAIGNS</menu>
+			<menu link="option=com_jdonation&amp;view=fields">JD_CUSTOM_FIELDS</menu>
+			<menu link="option=com_jdonation&amp;view=donors">JD_DONORS</menu>
+			<menu link="option=com_jdonation&amp;view=plugins">JD_PAYMENT_PLUGINS</menu>
+			<menu link="option=com_jdonation&amp;view=language">JD_TRANSLATION</menu>
+			<menu link="option=com_jdonation&amp;task=donor.export">JD_EXPORT_DONORS</menu>
+			<menu link="option=com_jdonation&amp;view=import">JD_IMPORT_DONORS</menu>
+		</submenu>
+		<files folder="admin">
+			<filename>index.html</filename>
+			<filename>access.xml</filename>
+			<filename>config.xml</filename>
+			<filename>jdonation.php</filename>
+			<filename>config.php</filename>
+			<filename>loader.php</filename>
+			<folder>assets</folder>
+			<folder>controller</folder>
+			<folder>elements</folder>
+			<folder>libraries</folder>
+			<folder>model</folder>
+			<folder>sql</folder>
+			<folder>view</folder>
+			<folder>table</folder>
+			<folder>forms</folder>
+		</files>
+		<languages folder="admin">
+			<language tag="en-GB">languages/en-GB/en-GB.com_jdonation.sys.ini</language>
+			<language tag="en-GB">languages/en-GB/en-GB.com_jdonation.ini</language>
+		</languages>
+	</administration>
+</extension>

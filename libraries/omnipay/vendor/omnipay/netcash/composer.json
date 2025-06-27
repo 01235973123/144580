@@ -1,0 +1,31 @@
+{
+    "name": "armyan/omnipay-netcash",
+    "type": "library",
+    "description": "NetCash driver for the Omnipay Laravel Payment processing library",
+    "keywords": [
+        "gateway",
+        "merchant",
+        "omnipay",
+        "pay",
+        "payment",
+        "netcash",
+        "purchase"
+    ],
+    "homepage": "https://github.com/armyan/omnipay-netcash",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Arman Karapetyan",
+            "email": "arm.karapetyan@outlook.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Omnipay\\NetCash\\": "src/"
+        }
+    },
+    "require": {
+        "omnipay/common": "^3",
+        "guzzlehttp/guzzle": "^6.3"
+    }
+}

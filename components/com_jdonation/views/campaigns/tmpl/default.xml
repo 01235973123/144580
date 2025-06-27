@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="Campaigns List">
+		<message>
+			Displays a list of Campaigns in the system
+		</message>
+	</layout>
+	<state>
+		<name>Campaings List</name>
+		<description>Displays a list of Campaigns in the system</description>				
+	</state>
+    <fields name="params">
+        <fieldset name="basic">
+            <field name="campaign_ids" type="text" size="3" default="" label="Campaign IDs" description="Enter IDs of campaigns which you want to display (comma separated), for example 1,3. Leave it empty and all published campaigns will be displayed"></field>
+			<field name="exclude_campaign_ids" type="text" size="3" default="" label="Exclude Campaign IDs" description="Enter IDs of campaigns which you do not want to display (comma separated), for example 1,3. Leave it empty and all published campaigns will not be displayed"></field>
+			<field name="owner_ids" type="text" size="3" default="" label="Owners IDs" description="Enter IDs of Joomla User which you want to display their campaigns (comma separated), for example 1,3. Leave it empty and all published campaigns will be displayed"></field>
+			<field name="campaignlayout" class="btn-group" type="radio" size="3" default="default" label="Campaigns Layout" description="Please select layout of campaigns at frontend">
+				<option value="default">Default Layout</option>
+				<option value="grid">Grid layout</option>
+			</field>
+			<field name="ncolumns" type="radio" size="3" class="btn-group" default="2" label="Number columns" description="Please select number columns in grid view layout. This parameter will only apply for Grid layout">
+				<option value="2">2 Columns</option>
+				<option value="3">3 Columns</option>
+			</field>
+			<field name="show_category_description" type="radio" default="1" class="btn-group" label="Show campaign description" description="In case you select campaign, do you want to show its description">
+				<option value="1">Yes</option>
+				<option value="0">No</option>
+			</field>
+        </fieldset>
+    </fields>
+	<fields name="request">
+		<fieldset name="request" addfieldpath="/administrator/components/com_jdonation/elements">
+			<field name="category_id" type="jdcategory" size="3" default="0" label="Category" description="Choose the category which you want to list its campaigns" />
+		</fieldset>
+	</fields>
+</metadata>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.0" type="plugin" group="installer" method="upgrade">
+    <name>Installer - EShop</name>
+    <author>Giang Dinh Truong</author>
+    <authorEmail>giangdt@joomdonation.com</authorEmail>
+    <authorUrl>http://www.joomdonation.com</authorUrl>
+    <copyright>Copyright (C) 2010 - 2016 Ossolution Team</copyright>
+    <license>GNU General Public License version 3, or later</license>
+    <creationDate>August 2016</creationDate>
+    <version>4.0.2</version>
+    <description>Allows the installation of EShop updates. This plugin MUST be installed for the EShop updates to be installed under your Joomla site. Otherwise you will see the updates but you will not be able to install them.</description>
+    <files>
+        <filename plugin="eshop">eshop.php</filename>        
+    </files>    
+</extension>

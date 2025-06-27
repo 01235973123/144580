@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.9.0" type="plugin" group="system" method="upgrade">
+    <name>System - Membership Pro Articles Restriction</name>
+    <author>Tuan Pham Ngoc</author>
+    <authorEmail>tuanpn@joomdonation.com</authorEmail>
+    <authorUrl>https://joomdonation.com</authorUrl>
+    <copyright>Copyright (C) 2012 - 2025 Ossolution Team</copyright>
+    <license>GNU General Public License version 3, or later</license>
+    <creationDate>Nov 2012</creationDate>
+    <version>4.2.2</version>
+    <description>This plugin check to see whether users can access to an article. Only publish it if you use Membership
+        Pro Articles Restriction Settings plugin to restrict access for subscribers
+    </description>
+    <files>
+        <filename plugin="osmembershiparticles">osmembershiparticles.php</filename>
+        <folder>form</folder>
+        <folder>tmpl</folder>
+    </files>
+	<languages folder="language">
+		<language tag="en-GB">en-GB/en-GB.plg_system_osmembershiparticles.ini</language>		
+	</languages>
+    <config>
+        <fields name="params">
+            <fieldset name="basic">
+                <field name="redirect_url" label="Redirect URL" type="text" size="70" default=""
+                       description="URL of the page users will be redirected to when they are not allowed to access to the articles. You should put the url of the subscription plans page on your site into this param"/>
+                <field name="protection_method" type="radio" label="Protection Method" default="0"
+                       description="Select the method you want to use to protect the article">
+                    <option value="0">Prevent Access to Article Detail Page</option>
+                    <option value="1">Hide fulltext from none subscribers</option>
+                </field>
+                <field name="display_articles_in_profile" type="radio" class="btn-group"
+                       label="Display Articles in Profile" default="0"
+                       description="If set to Yes, the list of articles which subscriber can access to will be displayed in his profile">
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </field>
+                <field name="allow_search_engine" type="radio" label="Allow Search Engine" default="0"
+                       description="Select to Yes to allow search engine bots to see and index the protected content">
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </field>
+                <field name="release_article_older_than_x_days" type="text" size="60" default="0"
+                       label="Release Articles Older Than X Days"
+                       description="If enter a number here, articles older than this entered number days will be free to access to everyone"/>
+                <field name="setup_method" type="list" label="Setup Method" default="1"
+                       description="Select the method you want to use to setup restriction">
+                    <option value="0">Default</option>
+                    <option value="1">Advanced</option>
+                </field>
+                <field
+                        name="show_on_frontend"
+                        type="radio"
+                        label="Show On Frontend"
+                        description="If set to Yes, this plugin will be available on frontend add/edit plan form"
+                        class="btn-group btn-group-yesno"
+                        default="0"
+                >
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+            </fieldset>
+        </fields>
+    </config>
+</extension>

@@ -1,0 +1,617 @@
+
+:root,[data-bs-theme=light]{color-scheme:light;--mx-color:#F2F2F9;--mx-color1:#fff; --mx-color-border:#d7dae6;--mx-tab-bgr:#f8f9fd;--mx-tab1-bgr:#f2f4f9;--mx-tab2-bgr:#e0e3ee;--mx-txt-color:#222;}
+[data-bs-theme=dark]{color-scheme:dark;--mx-color:#0a0e13;--mx-color1:#000; --mx-color-border:#fff3;--mx-tab-bgr:#0a0e13;--mx-tab1-bgr:#1c2633;--mx-tab2-bgr:#0f151d;--mx-txt-color:#f1f1f1;}
+
+label[id^="jform_params_separator_"] {
+  display: none;
+}
+.subform-repeatable-wrapper .row {
+ --gutter-x: 0px !important
+}
+.spacer {
+  background: var(--mx-tab2-bgr);
+  color: #555;
+  margin: 10px 0 0;
+  padding: 7px 10px;
+	float: left;
+	width: 100%;
+  border: 1px solid var(--mx-color-border);
+  position: relative
+}
+.spacer::before {
+content: "";
+height: 1px;
+background: var(--mx-color-border);
+position: absolute;
+-webkit-transform: translateX(100%);
+-ms-transform: translateX(100%);
+transform: translateX(100%);
+right: 0;
+width: 100%;
+top: 50%;
+}
+
+/* General styling */
+
+.pane-sliders ul.adminformlist li label {
+  background: none;
+	border: none;
+	text-align: left;
+	padding: 0 5px 0 0;
+	margin: 5px 0;
+	color: inherit;
+	font-size: 1.091em;
+	font-weight: normal;
+}
+
+#jform_params_k2_items-lbl {
+  font-size: 90%;
+	color: #555;
+}
+
+fieldset input, fieldset textarea, fieldset select, fieldset button {
+  padding: 0;
+	margin: 5px 5px 5px 0 !important;
+}
+#status {
+  display: none;
+}
+#status {
+  display: none;
+}
+/* Alert Boxes */
+.alert {
+  margin-bottom: 0px;
+  max-width: 550px;
+  background-image: -moz-linear-gradient(bottom, rgba(0, 0, 0, 0.07) 0%, rgba(0, 0, 0, 0.03) 100%);
+  background-image: -ms-linear-gradient(bottom, rgba(0, 0, 0, 0.07) 0%, rgba(0, 0, 0, 0.03) 100%);
+  background-image: -o-linear-gradient(bottom, rgba(0, 0, 0, 0.07) 0%, rgba(0, 0, 0, 0.03) 100%);
+  background-image: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.07) 0%, rgba(0, 0, 0, 0.03) 100%);
+  background-image: linear-gradient(bottom, rgba(0, 0, 0, 0.07) 0%, rgba(0, 0, 0, 0.03) 100%);
+}
+.alert-blue label {
+  font-size: 14px;
+}
+.alert-blue {
+  color: #fff;
+  font-size: 14px;
+  clear: both;
+  line-height: 18px;
+  background-color: #c00;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  padding: 10px 15px;
+  text-shadow: 1px 1px #066da1;
+  display: block;
+  position: relative;
+  width: 100%;
+}
+.alert-grey {
+  color: #555555;
+  font-size: 12px;
+  clear: both;
+  line-height: 18px;
+  background-color: #fefefe;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  border: 1px solid #d6d6d6;
+  margin: 0px;
+  padding: 5px 10px 2px;
+  text-shadow: 1px 1px #fff;
+  display: block;
+  position: relative;
+  min-width: 200px;
+}
+.alert-warning {
+  color: #555;
+  font-size: 14px;
+  clear: both;
+  line-height: 18px;
+  background: url("../images/admin/notice.png") no-repeat scroll 5px center #eeeeee;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  border: 1px solid #d6d6d6;
+  padding: 12px 15px 12px 50px;
+  text-shadow: 1px 1px #fff;
+  display: block;
+  position: relative;
+  max-width: 510px;
+}
+/* Color Picker */
+.moor-box,
+.moor-overlayBox,
+.moor-slider,
+.moor-chooseColor {
+  border: 1px solid #DDDDDD;
+}
+/* Template Info */
+.templateinfo img {
+  float: left;
+  padding: 0 20px;
+}
+.templateinfo p {
+  padding: 0 20px;
+  max-width: 600px;
+  text-align: left;
+  font-weight: normal;
+}
+.templateinfo h4 {
+  padding: 10px 20px;
+  font-weight: normal;
+  letter-spacing: 1.5px;
+  font-size: 22px;
+  color: #888888;
+  text-transform: uppercase;
+  background: #eeeeee;
+  border: 1px solid #dddddd;
+  border-radius: 5px;
+}
+.form-horizontal .control-label {
+  min-width: 180px;
+}
+.form-horizontal .control-label label {
+  margin-right: 10px;
+}
+/* Joomla 3.2 */
+.row-fluid .span6 {
+  margin-left: 0;
+  width: 100%;
+}
+#myTabTabs.nav.nav-tabs {
+  background-color: #FFFFFF;
+  box-shadow: 0 2px 2px 0 rgba(255, 255, 255, 0.5) inset;
+  border-radius: 8px 8px 0 0;
+  border: 1px solid #DDDDDD;
+  border-top-color: #E4E4E4;
+  padding: 8px;
+  margin-bottom: 0;
+}
+joomla-tab>div[role=tablist]>button[role=tab][aria-selected=true],#myTabTabs.nav.nav-tabs > li > a, joomla-tab>div[role=tablist] button[role=tab], joomla-tab > div[role="tablist"] button[role="tab"]:focus, joomla-tab > div[role="tablist"] button[role="tab"]:hover, joomla-tab > div[role="tablist"] button[role="tab"][aria-expanded="true"] {
+margin-left: 2px;
+border: none;
+overflow: visible;
+font: inherit;
+    font-weight: inherit;
+    font-size: inherit;
+    line-height: inherit;
+color: inherit;
+text-transform: none;
+-webkit-appearance: none;
+border-radius: 0;
+display: inline-block;
+box-sizing: border-box;
+padding: 0 25px;
+vertical-align: middle;
+font-size: 14px;
+line-height: 42px;
+text-align: center;
+text-decoration: none;
+transition: .1s ease-in-out;
+    transition-property: all;
+transition-property: color,background-color,background-position,border-color,box-shadow;
+font-weight: 400;
+border-radius: 500px;
+background-origin: border-box; 
+background-color: var(--mx-tab1-bgr);
+border: 1px solid var(--mx-color-border);
+background-image: linear-gradient(180deg,var(--mx-tab1-bgr),var(--mx-tab2-bgr));
+}
+joomla-tab>div[role=tablist]>button[role=tab]:first-of-type,
+joomla-tab>div[role=tablist]>button[role=tab][aria-expanded=true]:first-of-type {
+border-radius: 500px;
+}
+joomla-tab>div[role=tablist] button[role=tab]:focus:after,
+joomla-tab>div[role=tablist] button[role=tab]:hover:after,
+joomla-tab>div[role=tablist] button[role=tab][aria-expanded=true]:after {
+ background-color: transparent !important;
+}
+#myTabTabs.nav.nav-tabs > li a:hover {
+  background-color: #fff;
+}
+joomla-tab>div[role=tablist]>button[role=tab][aria-selected=true],#myTabTabs.nav.nav-tabs > li.active a,
+#myTabTabs.nav.nav-tabs > li a:focus, 
+joomla-tab>div[role=tablist] button[role=tab][aria-expanded=true],
+joomla-tab>div[role=tablist] button[role=tab]:focus,
+joomla-tab>div[role=tablist] button[role=tab]:hover,
+joomla-tab>div[role=tablist] button[role=tab][aria-expanded=true]{
+background-color: #333;
+color: #fff;
+background-image: linear-gradient(320deg,#ec215d,#222);
+}
+#myTabTabs.nav-tabs > .active > a,
+#myTabTabs .nav-tabs > .active > a:hover,
+#myTabTabs .nav-tabs > .active > a:focus,
+#myTabTabs .nav-tabs > li > a:hover {
+  background: #ffffff;
+  color: #3aa6d5;
+  outline: none;
+  -moz-box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.18), 1px 1px 1px rgba(255, 255, 255, 0.5);
+  -webkit-box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.18), 1px 1px 1px rgba(255, 255, 255, 0.5);
+  box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.18), 1px 1px 1px rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(0, 0, 0, 0.14);
+  /* stroke */
+}
+.tab-content, joomla-tab > joomla-tab-element {
+  background: none repeat scroll 0 0 var(--mx-color);
+  border-left: 1px solid var(--mx-color-border);
+  border-right: 1px solid var(--mx-color-border);
+  border-bottom: 1px solid var(--mx-color-border);
+  padding: 20px;
+  border-radius: 0px 0px 8px 8px;
+}
+#system-message-container {
+  margin-bottom: 10px;
+}
+/* Opacity Slider */
+.opacityvalue {
+  background-color: #EEEEEE;
+  border: 1px solid #CCCCCC;
+  border-radius: 3px;
+  display: inline-block;
+  font-size: 13px;
+  font-weight: normal;
+  height: 18px;
+  line-height: 18px;
+  min-width: 16px;
+  padding: 1px 5px;
+  text-align: center;
+  text-shadow: 0 1px 0 #FFFFFF;
+}
+input[type="range"] {
+  margin: 0 5px;
+  padding: 0;
+  width: 150px;
+}
+#jform_params_social_custom_modal .btn-success,
+#jform_params_social_custom_modal .btn-danger {
+  background-image: -moz-linear-gradient(bottom, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0) 100%);
+  background-image: -ms-linear-gradient(bottom, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0) 100%);
+  background-image: -o-linear-gradient(bottom, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0) 100%);
+  background-image: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0) 100%);
+  background-image: linear-gradient(bottom, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0) 100%);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2) inset, 0 1px 2px rgba(0, 0, 0, 0.05);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  border-width: 0px;
+  padding: 7px 14px 4px;
+}
+#jform_params_social_custom_modal .btn-success:hover,
+#jform_params_social_custom_modal .btn-danger:hover {
+  background-position: 0 0;
+}
+#jform_params_social_custom_modal .btn-success {
+  background-color: #51A351;
+}
+#jform_params_social_custom_modal .btn-success:hover {
+  background-color: #408140;
+}
+#jform_params_social_custom_modal .btn-danger {
+  background-color: #BD362F;
+}
+#jform_params_social_custom_modal .btn-danger:hover {
+  background-color: #942a25;
+}
+#installer-install .moduleinfo {
+  padding: 20px;
+}
+/* Subforms */
+.subform-repeatable {
+  padding-right: 0;
+  border-top: 1px solid #eaeaea;
+}
+.subform-repeatable > .btn-toolbar {
+  display: none;
+}
+.subform-repeatable .subform-repeatable-group {
+  position: relative;
+  max-width: 900px;
+  padding: 0;
+  padding-top: 47px;
+  background-color: var(--mx-color1);
+  margin: 10px;
+  border: 1px solid var(--mx-color-border);
+}
+.subform-repeatable .subform-repeatable-group > .btn-toolbar {
+  position: absolute;
+  right: 10px;
+  top: 0px;
+  margin-top: 6px !important;
+}
+.subform-repeatable .subform-repeatable-group .control-group {
+  margin-bottom: 10px;
+}
+.subform-repeatable .btn-success,
+.subform-repeatable .btn-danger,
+.subform-repeatable .btn-primary {
+  position: static !important;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 13px;
+  line-height: 18px !important;
+  margin: 0 0 0 -1px !important;
+  padding: 4px 12px !important;
+  border-width: 1px !important;
+}
+.subform-repeatable .btn-success {
+    color: #333 !important;
+}
+
+.subform-repeatable .btn-success {
+  border-radius: 3px 0 0 3px !important;
+}
+.subform-repeatable .btn-danger {
+  border-radius: 0 !important;
+}
+.subform-repeatable .btn-primary {
+  border-radius: 0 3px 3px 0 !important;
+}
+.subform-repeatable fieldset {
+  background-color: var(--mx-tab-bgr);
+  padding: 10px 20px 10px;
+}
+.subform-repeatable .btn-group {
+  border: 0;
+  background-color: transparent;
+}
+.subform-repeatable .slideshow-subform .control-group {
+  margin-bottom: 6px;
+  margin-top: 5px;
+  display: inline-block;
+}
+.subform-repeatable .slideshow-subform .control-label {
+  display: none !important;
+}
+.subform-repeatable .slideshow-subform .controls {
+  margin-left: 0px !important;
+  padding-bottom: 0 !important;
+}
+.form-horizontal .control-label {
+  padding-right: 0 !important;
+}
+.moduleoverrides-subform input ~ .control-group {
+  display: inline-block;
+  text-align: left;
+  vertical-align: top;
+  margin-top: 0 !important;
+  margin-bottom: 5px !important;
+}
+.moduleoverrides-subform input ~ .control-group .control-label {
+  display: none;
+}
+.moduleoverrides-subform input ~ .control-group .controls {
+  margin-left: 0;
+  margin-right: 10px;
+}
+.moduleoverrides-subform input ~ .control-group .input-prepend.input-append input {
+  max-width: 30px;
+}
+.moduleoverrides-subform input + .control-group {
+  display: inline-block;
+}
+.moduleoverrides-subform input + .control-group .control-label {
+  display: block;
+}
+input[value="margin"] + .control-group {
+  display: block;
+  height: 0;
+  width: 100%;
+}
+input[value="margin"] + .control-group .control-label {
+  display: none;
+}
+input[value="margin"] + .control-group + .control-group .control-label {
+  display: inline-block;
+}
+.subform-repeatable .btn-success::before {
+    content: "Add ";
+}
+
+.subform-repeatable .btn-danger::before {
+    content: "Delete ";
+}
+.subform-repeatable .btn-primary::before {
+    content: "Move It ";
+    color: var(--mx-txt-color) !important;
+}
+#attrib-H3MODULEWIDTHS hr {
+  margin: 0 0 -10px;
+}
+div.subform-repeatable-group>.btn-toolbar .btn.group-move {
+ top:auto !important;
+ right:auto !important;
+ transform:none !important;
+}
+div.subform-repeatable-group>.btn-toolbar .btn.group-move-up {
+ top:-5px !important;
+ right:120% !important;
+ transform:none !important
+}
+div.subform-repeatable-group>.btn-toolbar .btn.group-move-down {
+ top:-5px !important;
+ right:100% !important;
+ transform:none !important
+}
+.subform-repeatable-group > .btn-toolbar .btn {
+margin-left: 5px !important;
+border: none;
+overflow: visible;
+display: inline-block;
+box-sizing: border-box;
+padding: 6px 15px !important;
+vertical-align: middle;
+font-size: 13px;
+text-align: center;
+font-weight: 400;
+border-radius: 500px !important;
+background-origin: border-box;
+color: var(--mx-txt-color) !important;
+background-color: var(--mx-tab1-bgr);
+border: 1px solid var(--mx-color-border);
+background-image: linear-gradient(180deg,var(--mx-tab1-bgr),var(--mx-tab2-bgr));
+}
+div.subform-repeatable-group > .btn-toolbar .btn.group-move span {
+  padding: 4px;
+}
+.icon-white {
+  color: var(--mx-txt-color) !important;
+}
+input[disabled],
+select[disabled],
+textarea[disabled],
+input[readonly],
+select[readonly],
+textarea[readonly] {
+	cursor: not-allowed;
+	background-color: #fff !important;
+}
+joomla-tab > div[role="tablist"] {
+  padding: 5px 0px;
+}
+/* Subform Lightbox Fix */
+#sbox-overlay {
+  position: fixed !important;
+}
+
+.footer_review .stars {
+	color: #fcac0a;
+	letter-spacing: 0px;
+}
+.footer_review span.icon-star{
+	margin-right: 1px;
+}
+.form-horizontal .control-label {
+  padding-right: 0 !important;
+}
+.moduleoverrides-subform input ~ .control-group {
+  display: inline-block;
+  text-align: left;
+  vertical-align: top;
+  margin-top: 0 !important;
+  margin-bottom: 5px !important;
+}
+.moduleoverrides-subform input ~ .control-group .control-label {
+  display: none;
+}
+.moduleoverrides-subform input ~ .control-group .controls {
+  margin-left: 0;
+  margin-right: 10px;
+}
+.moduleoverrides-subform input ~ .control-group .input-prepend.input-append input {
+  max-width: 30px;
+}
+.moduleoverrides-subform input + .control-group {
+  display: inline-block;
+}
+.moduleoverrides-subform input + .control-group .control-label {
+  display: block;
+}
+input[value="margin"] + .control-group {
+  display: block;
+  height: 0;
+  width: 100%;
+}
+input[value="margin"] + .control-group .control-label {
+  display: none;
+}
+input[value="margin"] + .control-group + .control-group .control-label {
+  display: inline-block;
+}
+#attrib-H3MODULEWIDTHS hr {
+  margin: 0 0 -10px;
+}
+/* Subform Lightbox Fix */
+#sbox-overlay {
+  position: fixed !important;
+}
+
+#jpelement_list_items_added{
+	margin-left: 0;
+}
+#jpelement_list_items_added li{
+	list-style: none;
+	margin: 2px 0;
+}
+#jpelement_list_items_added li span.icon-cancel{
+	cursor: pointer;
+}
+.btn-group.styles {
+ display:inline-block !important;
+ position:relative;
+ vertical-align:middle;
+ padding: 0px !important;
+}
+.radio .selector-image {
+	overflow:hidden;
+	-webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+	-webkit-transition: all .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out;
+    -o-transition: all .3s ease-in-out;
+	transition: all .3s ease-in-out;
+}
+.btn-check:checked+.btn .selector-image,
+.btn.active .selector-image,
+.btn.show .radio .selector-image,
+.btn:first-child:active .selector-image,
+:not(.btn-check)+.btn:active .selector-image {
+	-webkit-filter: grayscale(0%);
+    filter: grayscale(0%);
+	box-shadow:inset 0 -1px 0 #ccc, inset 0 -10px 20px rgba(255,255,255,0.1);
+	overflow:hidden;
+}
+.btn-group.styles .btn-check:checked+.btn,
+.btn-group.styles .btn.active,
+.btn-group.styles .btn.show,
+.btn-group.styles .btn:first-child:active,
+.btn-group.styles :not(.btn-check)+.btn:active {
+	background: var(--mx-tab1-bgr);
+	color:var(--mx-txt-color);
+    position: relative;
+    -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -o-transition: all .3s ease;
+	transition: all .3s ease;
+    border: 1px solid rgba(241,72,51,0.8);
+	border-radius:4px;
+    box-shadow:0 0 0 2px rgba(241,72,51,0.6), 0 3px 8px rgba(56,56,56,0.2);
+}
+.btn-group.styles .btn {
+	color:var(--mx-txt-color);
+	margin: 5px;
+	background:var(--mx-color1);
+	border: 1px solid var(--mx-color-border);
+	border-radius:4px;
+	border-radius:3px 3px 0 0;
+	-webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -o-transition: all .3s ease;
+	transition: all .3s ease;
+}
+.btn-group.styles .h4,.btn-group.styles h4 {
+ margin: 7px 0;
+ font-weight:400
+}
+#jformparamspath {
+ background-color: var(--mx-tab2-bgr);
+ border:var(--border-width) solid var(--template-bg-dark-20);
+ border-radius:var(--border-radius);
+ color:var(--mx-txt-color);
+ display:block;
+ font-size:1rem;
+ font-weight:400;
+ line-height:1.5;
+ padding:.5rem 3rem .5rem 1rem;
+ -webkit-transition:border-color .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
+ transition:border-color .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
+ transition:border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+ transition:border-color .15s ease-in-out,box-shadow .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
+}
+.btn-group.styles.btn-group {
+	white-space: inherit;
+}
+joomla-tab>div[role=tablist]>button[role=tab]:first-of-type,
+joomla-tab>div[role=tablist]>button[role=tab][aria-selected=true]:first-of-type {
+ border-radius: 500px !important;
+}

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="5.9.1" method="upgrade" client="site">
+	<name>JD Search</name>
+	<author>Ossolution Team</author>
+	<creationDate>April 2019</creationDate>
+	<copyright>Ossolution Team</copyright>
+	<license>Commercial</license>
+	<authorEmail>contact@joomservices.com</authorEmail>
+	<authorUrl>www.joomdonation.com</authorUrl>
+	<version>5.9.1</version>
+	<description>This module allows users to search for Joom Donation campaigns</description>
+	<files>
+		<filename module="mod_jdsearch">mod_jdsearch.php</filename>
+		<filename module="mod_jdsearch">index.html</filename>
+		<filename module="mod_jdsearch">tmpl/default.php</filename>
+	</files>
+	<config>
+		<fields name="params">
+			<fieldset name="basic">
+				<field name="moduleclass_sfx" class="input-medium" type="text" label="Module Class Suffix" description="Please enter Module Class Suffix"></field>
+				<field name="item_id" class="input-mini" type="text" label="Item ID" description="Menu ItemID" default=""></field>
+				<field name="input_style" type="list" default="input-medium" label="Input stylesheet" description="Please select input style in Search form">
+					<option value="input-mini">Mini size</option>
+					<option value="input-small">Small size</option>
+					<option value="input-medium">Medium size</option>
+					<option value="input-large">Large size</option>
+				</field>
+			</fieldset>
+		</fields>		
+	</config>	
+</extension>

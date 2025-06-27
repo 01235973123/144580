@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="2.5.0" type="plugin" group="eshop" method="upgrade">
+    <name>EShop - AcyMailing 6 plugin</name>
+    <author>Giang Dinh Truong</author>
+    <creationDate>May 2019</creationDate>
+    <copyright>Ossolution Team</copyright>
+    <license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+    <authorEmail>contact@joomdonation.com</authorEmail>
+    <authorUrl>www.joomdonation.com</authorUrl>
+    <version>4.0.2</version>
+    <description>This plugin is used to add shoppers to AcyMailing 6 when they checkout products.</description>
+    <files>
+        <filename plugin="acym">acym.php</filename>
+        <folder>tmpl</folder>
+    </files>
+    <languages>
+        <language tag="en-GB">language/en-GB.plg_eshop_acym.ini</language>
+    </languages>
+</extension>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form>
+	<fieldset name="image_modal" class="image-subform">
+		<field name="get_publish" type="radio" default="1" label="Publish" description="Publish or unpublish the item" class="btn-group">
+		<option value="0">Unpublish</option>
+		<option value="1">Publish</option>
+		</field>
+
+		<field name="img" type="media" default="" label="Image"  description="Browse for image" size="30" />
+		<field name="name" type="text" size="60" default="" label="Name" description="Name" />
+		<field name="title" type="text" default="" label="Main Title" description="Main Title" />
+		<field name="info" type="editor" default="" rows="6" label="Testimonial" description="Testimonial text" filter="safehtml" />
+		<field name="rmore" type="text" default="" label="Read more link" description="Read more link" />
+		<field name="rmoretxt" type="text" default="" label="Read more text" description="Read more text" />
+		<field name="get_target" type="list" default="_self" label="Open link in new widow" description="Open your image link to a new browser widow" >
+			<option value="_self">JNO</option>
+			<option value="_blank">JYES</option>
+		</field>	
+		<field name="stars" type="list" default="star4" label="Rating stars (Pro)" description="Rating stars" >
+			<option value="star1">1 star</option>
+			<option value="star15">1,5 star</option>
+			<option value="star2">2 stars</option>
+			<option value="star25">2,5 stars</option>
+			<option value="star3">3 stars</option>
+			<option value="star35">3,5 stars</option>
+			<option value="star4">4 stars</option>
+			<option value="star45">4,5 stars</option>
+			<option value="star5">5 stars</option>
+		</field>
+	</fieldset>
+</form>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form addfieldpath="/administrator/components/com_sppagebuilder/models/fields">
+    <field
+            name="schedule_sp_page_builder_pages"
+            type="subform"
+            label="Schedule SPPageBuilder Pages"
+            description="Schedule SPPageBuilder Pages"
+            layout="joomla.form.field.subform.repeatable-table"
+            icon="list"
+            multiple="true"
+    >
+        <form hidden="true" name="list_schedule_SPPageBuilder" repeat="true">
+            <field
+                    name="id"
+                    type="hidden"
+                    value="0"
+            />
+            <field
+                    name="page_id"
+                    type="Modal_Page"
+                    label="Pages"
+                    size="10"
+            />
+            <field
+                    name="number_days"
+                    type="text"
+                    label="Number Days"
+                    size="10"
+            />
+        </form>
+    </field>
+</form>

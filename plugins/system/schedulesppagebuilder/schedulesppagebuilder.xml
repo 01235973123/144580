@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.9.0" type="plugin" group="system" method="upgrade">
+    <name>System - Membership Schedule SPPageBuilder</name>
+    <author>Tuan Pham Ngoc</author>
+    <authorEmail>tuanpn@joomdonation.com</authorEmail>
+    <authorUrl>https://joomdonation.com</authorUrl>
+    <copyright>Copyright (C) 2012 - 2025 Ossolution Team</copyright>
+    <license>GNU General Public License version 3, or later</license>
+    <creationDate>July 2016</creationDate>
+    <version>4.2.2</version>
+    <files>
+        <filename plugin="schedulesppagebuilder">schedulesppagebuilder.php</filename>
+        <folder>form</folder>
+    </files>
+	<languages folder="language">
+		<language tag="en-GB">en-GB/en-GB.plg_system_schedulesppagebuilder.ini</language>		
+	</languages>
+    <config>
+        <fields name="params">
+            <fieldset name="basic">
+                <field name="number_new_pages_each_time" type="text" size="60" default="5"
+                       label="Number New Pages Each Time" description="Number new pages you can setup each time"/>
+                <field name="release_pages_older_than_x_days" type="text" size="60" default="0"
+                       label="Release Pages Older Than X Days"
+                       description="If enter a number here, pages older than this entered number days will be free to access to everyone"/>
+                <field name="open_pages" type="radio" class="btn-group" label="Open The Page" default="0">
+                    <option value="0">On new Window</option>
+                    <option value="1">On same Window</option>
+                </field>
+                <field
+                        name="show_on_frontend"
+                        type="radio"
+                        label="Show On Frontend"
+                        description="If set to Yes, this plugin will be available on frontend add/edit plan form"
+                        class="btn-group btn-group-yesno"
+                        default="0"
+                >
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+            </fieldset>
+        </fields>
+    </config>
+</extension>

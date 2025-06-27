@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <field
+            name="early_renewal_discounts"
+            type="subform"
+            label="OSM_EARLY_RENEWAL_DISCOUNTS"
+            description="OSM_EARLY_RENEWAL_DISCOUNTS"
+            layout="joomla.form.field.subform.repeatable-table"
+            icon="list"
+            multiple="true"
+    >
+        <form hidden="true" name="list_early_renewal_discounts" repeat="true">
+            <field
+                    name="id"
+                    type="hidden"
+                    value="0"
+            />
+            <field
+                    name="number_days"
+                    type="text"
+                    label="OSM_DAYS_LEFT"
+            />
+            <field name="discount_amount"
+                   type="text"
+                   label="OSM_DISCOUNT"
+                   class="input-small"
+            />
+            <field
+                    name="discount_type"
+                    type="list"
+                    label="OSM_DISCOUNT_TYPE"
+                    class="input-medium">
+                <option value="0">%</option>
+                <option value="1">$</option>
+            </field>
+        </form>
+    </field>
+</form>

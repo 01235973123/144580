@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="COM_OSMEMBERSHIP_VIEW_USER_FILES_DEFAULT_TITLE">
+		<message>
+			<![CDATA[COM_OSMEMBERSHIP_VIEW_USER_FILES_DEFAULT_DESCRIPTION]]>
+		</message>
+	</layout>
+	<fields name="params">
+		<fieldset name="basic">
+			<field
+					name="sort_direction"
+					type="list"
+					label="Short Files Direction"
+					description="Choose to sort files base on filename in ASC or DESC order"
+					class="btn-group btn-group-yesno"
+					default="0"
+			>
+				<option value="0">ASC</option>
+				<option value="1">DESC</option>
+			</field>
+			<field type="editor" buttons="yes" name="intro_text" filter="raw" label="Intro Text" description="If you enter some text here, it will be displayed at the top of page." />
+		</fieldset>
+	</fields>
+</metadata>

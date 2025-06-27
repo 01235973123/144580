@@ -1,0 +1,12 @@
+@media (prefers-color-scheme: light) {
+    .view-field.layout-default #content, .view-fields.task-add #content,
+    .view-plugin.layout-default #content,
+    .view-category.layout-default #content, .view-categories.task-add #content,
+    .view-coupon.layout-default #content, .view-coupons.task-add #content,
+    .view-subscription.layout-default #content, .view-subscriptions.task-add #content,
+    .view-tax.layout-default #content, .view-taxes.task-add #content,
+    .view-discount.layout-default #content, .view-discounts.task-add #content,
+    .js-stools-container-filters-visible {
+        background-color: white;
+    }
+}

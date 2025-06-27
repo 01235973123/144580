@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+ <extension type="package" version="1.6" method="upgrade">
+	 <name>EDocman Package</name>
+	  <packagename>edocman</packagename>
+	  <creationDate>September 2012</creationDate>
+	  <author>Tuan Pham Ngoc</author>
+	  <authorEmail>contact@joomdonation.com</authorEmail>
+	  <authorUrl>http://www.joomdonation.com</authorUrl>
+	  <copyright>Copyright (C) 2012 - 2015 Ossolution Team</copyright>
+	  <license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	  <version>1.6.7</version>
+	  <description>EDocman package</description>
+	 <files folder="packages">
+	   <file type="component" id="edocman" >com_edocman.zip</file>
+	   <file type="module" id="edocman" client="site">mod_edocman_categories.zip</file>
+	   <file type="module" id="edocman" client="site">mod_edocman_documents.zip</file>
+	   <file type="module" id="edocman" client="site">mod_edocman_search.zip</file>   
+	   <file type="plugin" id="edocman" group="search">plug_search_edocman.zip</file>   
+	   <file type="plugin" id="edocman" group="finder">plug_finder_edocman.zip</file>   
+	   <file type="plugin" id="edocman" group="content">plug_content_edocmancategory.zip</file>   
+	   <file type="plugin" id="edocman" group="editors-xtd">plug_editors_xtd_edocman.zip</file>   
+	   <file type="plugin" id="edocman" group="edocman">plug_edocman_notification.zip</file>
+	 </files>
+ </extension>

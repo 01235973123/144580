@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="2.5" client="site" method="upgrade">
+	<name>Eshop Search</name>
+	<creationDate>May 2013</creationDate>
+	<author>Giang Dinh Truong</author>
+	<authorEmail>contact@joomdonation.com</authorEmail>
+	<authorUrl>http://www.joomdonation.com</authorUrl>
+	<copyright>Copyright (C) 2012 Ossolution Team</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<version>4.0.2</version>
+	<description>This module searches products for Eshop</description>
+	<files>
+		<filename module="mod_eshop_search">mod_eshop_search.php</filename>
+		<folder>tmpl</folder>
+		<folder>admin</folder>
+		<folder>assets</folder>
+		<filename>helper.php</filename>
+		<filename>index.html</filename>
+		<filename>mod_eshop_search.xml</filename>
+	</files>
+	<languages>
+		<language tag="en-GB">language/en-GB.mod_eshop_search.ini</language>
+	</languages>
+	<config>
+		<fields name="params">
+			<fieldset name="basic" addfieldpath="/administrator/components/com_eshop/elements">
+				<field type="asset" path="modules/mod_eshop_search/admin/" />
+				<field name="moduleclass_sfx" type="text" label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL" description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC" />
+				<field
+					name="layout"
+					type="modulelayout"
+					label="JFIELD_ALT_LAYOUT_LABEL"
+					class="form-select"
+					description="JFIELD_ALT_MODULE_LAYOUT_DESC" />
+				<field name="category_ids" type="eshopcategories" default="" label="ESHOP_CATEGORIES" description="ESHOP_CATEGORIES_HELP" />
+				<field name="width_result" type="text" default="270" label="ESHOP_WIDTH_RESULT" description="ESHOP_WIDTH_RESULT_HELP" />
+				<field name="image_width" type="text" default="50" label="ESHOP_IMAGE_WIDTH" description="ESHOP_IMAGE_WIDTH_HELP" />
+				<field name="image_height" type="text" default="50" label="ESHOP_IMAGE_HEIGHT" description="ESHOP_IMAGE_HEIGHT_HELP" />
+				<field name="description_max_chars" type="text" default="50" label="ESHOP_SEARCH_DESCRIPTION_MAX_CHARS" description="ESHOP_SEARCH_DESCRIPTION_MAX_CHARS_HELP" />
+			</fieldset>
+		</fields>
+	</config>
+</extension>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="5.10.2" type="plugin" group="jdonation" method="upgrade">
+	<name>Jdonation - ACYM newsletter Plugin</name>
+	<author>Dang Thuc Dam</author>
+	<creationDate>May 2019</creationDate>
+	<copyright>Ossolution Team</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<authorEmail>contact@joomservices.org</authorEmail>
+	<authorUrl>www.joomservices.org</authorUrl>
+	<version>5.10.2</version>
+	<description>This plugin is user to subscriber donors to Acym newsletter. This plugin need Acym extension to be installed.</description>
+	<files>
+		<filename plugin="acym">acym.php</filename>
+	</files>
+	<params>
+		<param name="list_ids" type="text" size="50" default="" label="List Ids" description="Enter IDs of ACYM lists which you want donors to subscribe to automatically (comma seperated). Leave it blank to subscribe donors to all the current available lists"></param>
+	</params>
+	<config>
+		<fields name="params">
+			<fieldset name="basic">
+				<field name="list_ids" type="text" size="50" default="" label="List Ids" description="Enter IDs of ACYM lists which you want donors to subscribe to automatically (comma seperated). Leave it blank to subscribe donors to all the current available lists"></field>
+			</fieldset>
+		</fields>		
+	</config>
+</extension>

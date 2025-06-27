@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form>
+	<fields name="params">
+		<fieldset name="task_params">
+			<field
+					name="number_days"
+					type="number"
+					label="Number Days"
+					description="If users use offline payment for their subscriptions and does not send payment to you after this number of days, the system will send reminder to ask them to make payment"
+					default="7"
+					required="true"
+					min="3"
+					step="1"
+					validate="number"
+					filter="int"
+			/>
+			<field
+					name="number_subscribers"
+					type="number"
+					label="Number Subscribers"
+					description="Number of subscriptions the system will send offline payment reminder emails each time"
+					default="15"
+					required="true"
+					min="5"
+					step="1"
+					validate="number"
+					filter="int"
+			/>
+			<field
+					name="bcc_emails"
+					type="text"
+					label="BCC Emails"
+					description="If you want to receive copy of offline payment reminder emails, enter the emails you want here, comma separated"
+					default=""
+			/>
+		</fieldset>
+	</fields>
+</form>

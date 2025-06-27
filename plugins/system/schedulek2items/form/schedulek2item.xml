@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form addfieldpath="/administrator/components/com_k2/elements">
+    <field
+            name="schedulek2item"
+            type="subform"
+            label="Schedule K2 Items"
+            description="Schedule K2 Items"
+            layout="joomla.form.field.subform.repeatable-table"
+            icon="list"
+            multiple="true"
+    >
+        <form hidden="true" name="list_schedule_k2_item" repeat="true">
+            <field
+                    name="id"
+                    type="hidden"
+                    value="0"
+            />
+            <field
+                    name="item_id"
+                    type="k2modalselector"
+                    label="K2 Item"
+                    scope="item"
+                    size="10"
+            />
+            <field
+                    name="number_days"
+                    type="text"
+                    label="Number Days"
+                    size="10"
+            />
+        </form>
+    </field>
+</form>

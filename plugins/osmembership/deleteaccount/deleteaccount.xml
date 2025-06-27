@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.9.0" type="plugin" group="osmembership" method="upgrade">
+    <name>Membership Pro - Delete User Account</name>
+    <author>Tuan Pham Ngoc</author>
+    <authorEmail>tuanpn@joomdonation.com</authorEmail>
+    <authorUrl>https://joomdonation.com</authorUrl>
+    <copyright>Copyright (C) 2012 - 2025 Ossolution Team</copyright>
+    <license>GNU General Public License version 3, or later</license>
+    <creationDate>Nov 2012</creationDate>
+    <version>4.2.2</version>
+    <description>This plugin is used to delete user account of a user when his last subscription record is deleted</description>
+    <files>
+        <filename plugin="deleteaccount">deleteaccount.php</filename>
+    </files>
+    <config>
+        <fields name="params">
+            <fieldset name="basic">
+                <field
+                        name="exclude_user_groups"
+                        type="usergrouplist"
+                        layout="joomla.form.field.list-fancy-select"
+                        default="3,4,5,6,7,8"
+                        label="Exclude User Groups"
+                        multiple="true"
+                        description="Users from the selected user groups here won't be deleted even if all of his subscription records are deleted"
+                />
+            </fieldset>
+        </fields>
+    </config>
+</extension>

@@ -1,0 +1,215 @@
+
+.nopadding{
+	margin:0px !important;
+}
+
+td.mod_jdonation_amount input[type="radio"]{
+	margin:0px !important;
+}
+
+td.mod_jdonation_amount_header{
+	text-transform:uppercase;
+}
+
+td.mod_jdonation_amount{
+	text-align:center !important;
+}
+
+.displayinline
+{
+	display:inline !important;
+}
+
+td.mod_jdonation_amount .mod_jd_switch_amounts {
+  margin-bottom: 15px;
+  overflow: hidden;
+  display:inline;
+}
+
+td.mod_jdonation_amount .mod_jd_switch_amounts input[type="radio"] {
+  position: absolute !important;
+  clip: rect(0, 0, 0, 0);
+  height: 1px;
+  width: 1px;
+  border: 0;
+  overflow: hidden;
+}
+
+td.mod_jdonation_amount .mod_jd_switch_amounts label {
+  background-color: #efefef;
+  color: rgba(0, 0, 0, 0.6);
+  line-height: 1;
+  text-align: center;
+  padding: 8px 16px;
+  margin-right: 0px;
+  border: 1px solid #d6d5d8;
+  box-shadow: 0;
+  transition: all 0.1s ease-in-out;
+  font-size:16px;
+  font-weight:bold;
+  margin-right:10px;
+  float:left;
+}
+
+td.mod_jdonation_amount .mod_jd_switch_amounts  label:hover {
+  cursor: pointer;
+}
+
+td.mod_jdonation_amount .mod_jd_switch_amounts  input:checked + label {
+  box-shadow: none;
+}
+
+td.mod_jdonation_amount .mod_jd_switch_amounts  label {
+  border-radius: 4px;
+}
+
+.donation-module-general-div
+{
+	width:100%;
+}
+
+.give-totals-shortcode-wrap, .donation-module-general-div .give-total-wrap, .donation-module-general-div .give-payment-wrap, .donation-module-general-div .give-donate-button-wrap
+{
+	margin: 0 0 30px;
+}
+
+.campaign_title
+{
+	margin: 0 0 15px;
+	font-weight:bold;
+}
+
+.give-payment-wrap, .give-donate-button-wrap
+{
+	text-align:center;
+}
+
+.give-payment-wrap select
+{ 
+	width:100%;
+}
+
+.donation-module-general-div .give-total-wrap .give-donation-amount
+{
+	display:flex;
+	align-items: stretch;
+	height: 50px;
+}
+
+.give-total-wrap .give-currency-symbol {
+	font-size: 24px;
+    font-weight: 700;
+    color: #ffffff;
+    border-radius: 0.25rem 0 0 0.25rem;
+    padding: 0 12px;
+    display: flex;
+    align-items: center;
+    height: 100%;
+	justify-content: center;
+	line-height: 1; 
+}
+
+.give-total-wrap .give-currency-symbol,
+.give-text-input.give-amount-top {
+    height: 100%;
+}
+
+.give-total-wrap .give-text-input
+{
+	border-radius: 0 0.25rem 0.25rem 0;
+}
+
+#rd_amount
+{
+	
+}
+
+#give-donation-level-button-wrap {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+  grid-gap: 15px;
+  margin-bottom: 30px;
+  clear: both;
+  list-style: none;
+  margin: 0 0 15px;
+  margin-bottom: 15px;
+  padding: 0;
+}
+
+#give-donation-level-button-wrap > li {
+  float: left;
+  list-style-image: none;
+  list-style-type: none;
+  margin: 0 5px 5px 0;
+}
+
+#give-donation-level-button-wrap .give-btn {
+  font-weight: 700;
+  color: #4b3381;
+  background: #FFFFFF;
+  border-color: #FFFFFF;
+}
+
+#give-donation-level-button-wrap .give-btn {
+  display: inline-block;
+  width: 100%;
+  font-weight: 600;
+  line-height: 24px;
+  text-transform: inherit;
+  color: #333333;
+  background: #ffffff;
+  margin: 0;
+  padding: 16px 12px;
+  outline: none;
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+    border-top-color: rgba(0, 0, 0, 0.1);
+    border-right-color: rgba(0, 0, 0, 0.1);
+    border-bottom-color: rgba(0, 0, 0, 0.1);
+    border-left-color: rgba(0, 0, 0, 0.1);
+  border-radius: 2px;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+#give-donation-level-button-wrap .give-btn:hover {
+  background-color: #e9f3f9;
+}
+
+.give-goal-progress {
+  display: flex;
+  flex-direction: column-reverse;
+  font-weight: 400;
+  line-height: 1.25;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.give-goal-progress .raised {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  margin-bottom: 0;
+}
+
+.give-goal-progress .raised .raised-income {
+  display: flex;
+  flex-direction: column-reverse;
+  text-align: left;
+}
+
+.give-goal-progress .raised .raised-goal {
+  display: flex;
+  flex-direction: column-reverse;
+  text-align: right;
+}
+
+.give-goal-progress .raised .raised-goal .goal-text, .give-goal-progress .raised .raised-income .income
+{
+	font-weight:bold;
+}
+
+.elementor-give-totals
+{
+	padding:10px;
+}

@@ -1,0 +1,94 @@
+.chosen-container-single .chosen-single
+{
+	height:35px;
+	font-size:15px;
+	padding:4px 0 0 8px;
+}
+
+.chosen-container-single .chosen-single div b {
+    background: url("../../../../../media/vendor/chosen/css/chosen-sprite.png") no-repeat 0px 7px;
+}
+
+.input-mini {
+  width: 60px;
+}
+.input-small {
+  width: 90px;
+}
+.input-medium {
+  width: 150px;
+}
+.input-large {
+  width: 210px;
+}
+
+#currency_code
+{
+	display:inline;
+}
+
+.field-calendar, .campaign_owner .input-group, .donor_user .input-group
+{
+	width:220px;
+}
+
+.nav-tabs > li {
+  margin-bottom: 1px !important;
+}
+
+table.adminform td label
+{
+	margin-left:70px;
+}
+
+#jd-dropdown-menu a, .badge
+{
+	
+}
+
+a[target="_blank"]::before
+{
+	content:none;
+}
+
+#statistics_pane .accordion-button
+{
+	padding:10px 15px;
+}
+
+#filter-bar
+{
+	padding:10px;
+}
+
+.ilarge 
+{
+	width:280px !important;
+}
+
+.imedium
+{
+	width:200px !important;
+}
+
+.ishort
+{
+	width:150px !important;
+}
+
+.imini
+{
+	width:100px !important;
+}
+.field_explanation
+{
+	font-size:12px;
+}
+
+@media (prefers-color-scheme: dark) 
+{
+	.cpanel div.icon a, #cpanel div.icon a
+	{
+		background: none !important;
+	}
+}

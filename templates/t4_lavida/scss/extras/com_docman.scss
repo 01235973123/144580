@@ -1,0 +1,281 @@
+// DOCMAN COMPONENT
+// --------------
+.k-ui-namespace {
+
+  // Icon type class
+  span[class*="k-icon-"]::before {
+    font-size: 18px;
+  }
+
+  .k-icon-document-document::before {
+    color: #4275f4;
+  }
+
+  .k-icon-document-pdf::before {
+    color: #fc6a6b;
+  }
+
+  .k-icon-document-image::before {
+    color: #2CC990;
+  }
+
+  .k-icon-document-video::before {
+    color: #FF7416;
+  }
+
+  .k-icon-document-archive::before {
+    color: #42729B;
+  }
+
+  .docman_download {
+    background: var(--t4-gray-100);
+    border: 1px dashed var(--t4-gray-300);
+    border-radius: 0.375rem;
+    padding: 1.5rem;
+
+    &.docman_download--left {
+      margin: 0 1.5rem 1.5rem 0;
+    }
+
+    &.docman_download--right {
+      margin: 0 0 1.5rem 1.5rem;
+
+      @media (max-width: 576px) {
+        display: flex;
+        justify-content: center;
+        max-width: 100%;
+        margin-left: 0;
+        gap: 1rem;
+        width: 100%;
+      }
+    }
+
+    a.btn {
+      @media (max-width: 576px) {
+        align-items: center;
+        display: flex;
+        gap: 0.5rem;
+        width: auto;
+      }
+    }
+  }
+
+  // Toolbar
+  .k-toolbar {
+    border-radius: var(--t4-border-radius);
+    border: 0;
+  }
+
+  .docman_category {
+    background-color: #fff7ed;
+    border-radius: 6px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+
+    h3.koowa_header {
+      display: flex;
+      align-items: center;
+
+      .koowa_header__item {
+        display: flex;
+        align-items: center;
+
+        .k-icon--size-medium {
+          font-size: 1.125rem;
+        }
+      }
+    }
+
+    .docman_description {
+      padding-bottom: 0;
+    }
+  }
+
+  h1.koowa_header {
+    font-size: 1.75rem;
+
+    a {
+      color: var(--body-text-color);
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+
+      &:hover,
+      &:focus,
+      &:active {
+        color: var(--body-link-hover-color);
+      }
+    }
+
+    span[class*="k-icon-"] {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  .koowa_header__item {
+    .label {
+      font-size: 0.875rem;
+      font-weight: 400;
+      padding: .25rem .375rem;
+    }
+  }
+
+  // Docman list layout
+  .docman_list_layout,
+  .docman_document_layout {
+    .koowa_header {
+      margin-bottom: 0.75rem;
+
+      a {
+        color: var(--body-text-color);
+
+        &:hover,
+        &:focus,
+        &:active {
+          color: var(--body-link-hover-color);
+        }
+      }
+
+      .whitespace_preserver {
+        display: flex;
+        flex-flow: row wrap;
+        align-items: center;
+        gap: 1rem;
+      }
+    }
+
+    .docman_description {
+      .docman_thumbnail {
+        margin: 0.375rem 1.5rem 1.5rem 0;
+
+        @media (max-width: 576px) {
+          margin-left: 0;
+          margin-right: 0;
+          max-width: 100%;
+          min-width: 100%;
+          width: 100%;
+        }
+
+        img {
+          border-radius: 0.375rem;
+        }
+      }
+    }
+
+    .docman_download {}
+  }
+
+
+  // Docman table layout
+  .docman_table_layout {
+    .table {
+      td {
+        padding: .5rem 1rem;
+
+        &.k-table-data--toggle {
+          padding-left: 0;
+          padding-right: 0;
+        }
+
+        &.koowa_table__dates {
+          font-size: 0.875rem;
+        }
+      }
+    }
+  }
+}
+
+
+// DOCMAN MODULES
+// --------------
+.k-ui-namespace .mod_docman {
+
+  // Documents
+  &.mod_docman--documents {
+    ul {
+      margin: 0;
+      padding: 0;
+
+      li {
+        margin: 0;
+
+        &+li {
+          border-top: 1px solid var(--t4-border-color);
+          margin-top: .5rem;
+          padding-top: .5rem;
+        }
+
+        .koowa_header {
+          display: flex;
+          align-items: flex-start;
+          margin: 0;
+          padding: 0;
+          gap: .75rem;
+
+          &::before,
+          &::after {
+            display: none;
+          }
+
+          .label {
+            font-size: 11px;
+            font-weight: 400;
+          }
+        }
+
+        .module_document__info {
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+          gap: .5rem;
+
+          .module_document__category,
+          .module_document__date,
+          .module_document__size,
+          .module_document__downloads {
+            font-size: 0.75rem;
+            opacity: .8;
+            width: auto;
+
+            .koowa_wrapped_content {
+              width: auto;
+            }
+          }
+        }
+
+        .koowa_header__item--image_container {
+          padding: 0;
+          min-width: auto;
+          width: auto;
+        }
+
+        a {
+          color: var(--body-text-color);
+
+          &:hover,
+          &:focus,
+          &:active {
+            color: var(--body-link-hover-color);
+          }
+        }
+      }
+    }
+  }
+
+  // Categories
+  &.mod_docman--categories {
+    ul {
+      margin: 0;
+      padding: 0;
+
+      li {
+        a {
+          --body-link-color: var(--body-text-color);
+        }
+
+        .k-icon-document-folder {}
+      }
+    }
+  }
+}

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+    <layout title="COM_OSMEMBERSHIP_VIEW_SUBSCRIBERS_EXPORT_TITLE">
+        <message>
+            <![CDATA[COM_OSMEMBERSHIP_VIEW_SUBSCRIBERS_EXPORT_DESCRIPTION]]>
+        </message>
+    </layout>
+    <stale>
+        <fields name="request">
+            <fieldset name="request">
+                <field
+                        name="task"
+                        type="hidden"
+                        default="subscriber.export"
+                />
+            </fieldset>
+        </fields>
+        <fields name="params">
+            <fieldset name="basic" addfieldpath="/administrator/components/com_osmembership/model/fields">
+                <field name="plan_ids" type="osmplan" multiple="true" label="Plans" description="Select plans which you want to manage subscriptions. If no plans are selected, subscriptions from all plans will be displayed" />
+                <field name="exclude_plan_ids" type="osmplan" multiple="true" label="Exclude Plans" description="Select plans which you want to exclude subscriptions from" />
+            </fieldset>
+        </fields>
+    </stale>
+</metadata>

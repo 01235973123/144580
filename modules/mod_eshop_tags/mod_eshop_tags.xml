@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="2.5" client="site" method="upgrade">
+	<name>EShop Tags</name>
+	<creationDate>June 2015</creationDate>
+	<author>Giang Dinh Truong</author>
+	<authorEmail>contact@joomdonation.com</authorEmail>
+	<authorUrl>http://www.joomdonation.com</authorUrl>
+	<copyright>Copyright (C) 2012 Ossolution Team</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<version>4.0.2</version>
+	<description>This module is used to display tags for Eshop</description>
+	<files>
+		<filename module="mod_eshop_tags">mod_eshop_tags.php</filename>
+		<filename module="mod_eshop_tags">helper.php</filename>
+		<filename module="mod_eshop_tags">index.html</filename>		
+		<filename module="mod_eshop_tags">tmpl/default.php</filename>
+		<filename module="mod_eshop_tags">tmpl/index.html</filename>
+		<filename module="mod_eshop_tags">media/index.html</filename>
+		<filename module="mod_eshop_tags">media/style.css</filename>
+	</files>	
+	<config>
+		<fields name="params">
+			<fieldset name="basic">
+				<field name="moduleclass_sfx" type="text" default="" label="Module Class Suffix" description="A suffix to be applied to the css class of the module (table.moduletable), this allows individual module styling" />
+				<field name="max_font_size" class="text_area" type="text" size="5" default="180" label="Max font size" description="This is the biggest font size for tags." />
+				<field name="min_font_size" class="text_area" type="text" size="5" default="80 " label="Min font Size" description="This is the smallest font size for tags" />
+			</fieldset>
+		</fields>		
+	</config>
+</extension>

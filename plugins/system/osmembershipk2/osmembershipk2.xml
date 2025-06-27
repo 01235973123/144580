@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.9.0" type="plugin" group="system" method="upgrade">
+    <name>System - Membership Pro K2 items Restriction</name>
+    <author>Tuan Pham Ngoc</author>
+    <authorEmail>tuanpn@joomdonation.com</authorEmail>
+    <authorUrl>https://joomdonation.com</authorUrl>
+    <copyright>Copyright (C) 2012 - 2025 Ossolution Team</copyright>
+    <license>GNU General Public License version 3, or later</license>
+    <creationDate>Nov 2012</creationDate>
+    <version>4.2.2</version>
+    <description>This plugin check to see whether users can access to a k2 item. Only publish it if you use Membership
+        Pro K2 Restriction Settings plugin to restrict access for subscribers
+    </description>
+    <files>
+        <filename plugin="osmembershipk2">osmembershipk2.php</filename>
+        <folder>tmpl</folder>
+    </files>
+	<languages folder="language">
+		<language tag="en-GB">en-GB/en-GB.plg_system_osmembershipk2.ini</language>		
+	</languages>
+    <config>
+        <fields name="params">
+            <fieldset name="basic">
+                <field name="redirect_url" label="Redirect URL" type="text" size="70" default=""
+                       description="URL of the page users will be redirected to when they are not allowed to access to the k2 item. You should put the url of the subscription plans page on your site into this param"/>
+                <field name="protection_method" type="radio" label="Protection Method" default="0"
+                       description="Select the method you want to use to protect the article">
+                    <option value="0">Prevent Access to Item K2 Detail Page</option>
+                    <option value="1">Hide fulltext from none subscribers</option>
+                </field>
+                <field name="display_k2_items_in_profile" type="radio" label="Display K2 Items In Profile" default="0"
+                       description="If set to Yes, the list of k2 items which subscriber can access to will be displayed in his profile">
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </field>
+                <field name="allow_search_engine" type="radio" label="Allow Search Engine" default="0"
+                       description="Select to Yes to allow search engine bots to see and index the protected content">
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </field>
+                <field name="make_new_item_free_for_x_days" type="text" size="60" default="0"
+                       label="Make New Items Free For X Days"
+                       description="If enter a number here, K2 items will be free for everyone for the first X days from the time it's published"/>
+                <field name="release_item_older_than_x_days" type="text" size="60" default="0"
+                       label="Release K2 Items Older Than X Days"
+                       description="If enter a number here, K2 items older than this entered number days will be free to access to everyone"/>
+                <field name="display_empty_categories" type="radio" label="Display Empty Categories" default="0"
+                       description="Set this to Yes if you want to display categories without any items added to it yet.">
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </field>
+                <field name="restrict_children_categories" type="radio" label="Restrict Children Categories" default="0"
+                       description="Set this to Yes if you restrict access to a category, it's children categories will be restricted, too">
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </field>
+                <field name="setup_method" type="list" label="Setup Method" default="0"
+                       description="Select the method you want to use to setup restriction">
+                    <option value="0">Default</option>
+                    <option value="1">Simple</option>
+                </field>
+                <field
+                        name="show_on_frontend"
+                        type="radio"
+                        label="Show On Frontend"
+                        description="If set to Yes, this plugin will be available on frontend add/edit plan form"
+                        class="btn-group btn-group-yesno"
+                        default="0"
+                >
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+            </fieldset>
+        </fields>
+    </config>
+</extension>

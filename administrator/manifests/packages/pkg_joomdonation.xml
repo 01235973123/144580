@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<extension type="package" version="6.0" method="upgrade">
+	<name>Joom Donation Package</name>
+	<packagename>joomdonation</packagename>
+	<author>Tuan Pham Ngoc</author>
+	<creationDate>19-01-2009</creationDate>
+	<copyright>Copyright 2009 - 2025 Ossolution Team</copyright>
+	<license>http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU/GPL version 2</license>
+	<authorEmail>tuanpn@joomdonation.com</authorEmail>
+	<authorUrl>www.joomdonation.com</authorUrl>
+	<version>6.0</version>
+	<scriptfile>script.php</scriptfile>
+	<files folder="packages">
+		<file type="component" id="joomdonation">com_jdonation.zip</file>
+		<file type="module" id="joomdonation" client="site">mod_jd_campaigns.zip</file>
+		<file type="module" id="joomdonation" client="site">mod_jd_form.zip</file>
+		<file type="module" id="joomdonation" client="site">mod_jd_donors.zip</file>
+		<file type="module" id="joomdonation" client="site">mod_jd_thermometer.zip</file>
+		<file type="module" id="joomdonation" client="site">mod_jdonation.zip</file>
+		<file type="module" id="joomdonation" client="site">mod_jdsearch.zip</file>
+		<file type="plugin" id="joomdonation" group="system">plg_system_jdonation.zip</file>
+		<file type="plugin" id="joomdonation" group="installer">plg_installer_jdonation.zip</file>
+		<file type="plugin" id="joomdonation" group="content">plug_content_jdform.zip</file>
+		<file type="plugin" id="joomdonation" group="jdonation">plg_acym_jdonation.zip</file>
+		<file type="plugin" id="joomdonation" group="jdonation">plg_mailchimp_jdonation.zip</file>
+		<file type="plugin" id="joomdonation" group="finder">plg_finder_jdonation.zip</file>
+		<file type="library" id="joomdonation">lib_omnipay.tar.gz</file>
+	</files>
+	<updateservers>	
+		<server type="extension" priority="1" name="Joom Donation Extension">https://updates.joomdonation.com/jdonation.xml</server>
+	</updateservers>
+</extension>

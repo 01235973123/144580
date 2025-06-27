@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form>
+    <fields name="params">
+        <fieldset name="task_params" addfieldpath="/administrator/components/com_eventbooking/fields">
+            <field name="number_days_to_send_reminders" label="Number Days To Send Reminder" type="number" default="7" description="Number of days (after registration/before event date) registrants will receive offline payment reminder" />
+            <field name="number_days_to_cancel" label="Number Days To Cancel Registration" type="number" default="0" description="Number of days (after registration/before event date) registration will be cancelled if payment is not received" />
+            <field name="number_registrants" label="Number Registrants" type="text" default="15" description="Number of registrants which we will process each time the task is executed" />
+            <field name="event_ids" type="ebevent" multiple="true" label="Events" description="If you want the process is handled for certain events only, select the events you want in this parameter. Otherwise, this plugin will process all events"/>
+            <field
+                    name="base_on"
+                    type="list"
+                    label="Send Reminder and Cancel Registration Base On"
+                    default="0"
+            >
+                <option value="0">Registration Date</option>
+                <option value="1">Event Date</option>
+            </field>
+        </fieldset>
+    </fields>
+</form>

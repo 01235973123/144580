@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fieldset addfieldpath="/administrator/components/com_osmembership/model/fields" name="plan_ids" label="OSM_MEMBERSHIP_RESTRICTION">
+        <field name="plan_ids" type="osmplan" label="OSM_PLANS" multiple="true" />
+    </fieldset>
+</form>
+

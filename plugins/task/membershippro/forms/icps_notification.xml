@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form>
+    <fields name="params">
+        <fieldset name="task_params">
+            <field
+                    name="notification_emails"
+                    type="text"
+                    label="Notification Emails"
+                    description="Enter emails you want to receive notification, comma separated. For example email1@domain.com,email2@domain.com. If you leave it empty, the notification emails in Configuration will be used"/>
+            <field
+                    name="subject"
+                    type="text"
+                    label="Subject"
+                    description="Subject Of The Email"/>
+            <field
+                    name="message"
+                    label="Message"
+                    type="editor"
+                    buttons="yes"
+                    description="Body Of The Email. You can use [IDS] and [LINKS] tag to show IDs of the subscription records and links to these subscription records"
+                    filter="raw"/>
+        </fieldset>
+    </fields>
+</form>

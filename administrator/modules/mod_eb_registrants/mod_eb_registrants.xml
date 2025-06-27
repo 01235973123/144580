@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" client="administrator" method="upgrade" version="3.9.0" position="cpanel">
+<name>Events Booking - Latest Registrants</name>
+<author>Tuan Pham Ngoc</author>
+<creationDate>February 19 2019</creationDate>
+<copyright>Copyright 2010 - 2025 Ossolution Team</copyright>
+<authorEmail>tuanpn@joomdonation.com</authorEmail>
+<authorUrl>https://joomdonation.com</authorUrl>
+<version>5.0.7</version>
+<description>Display Latest Registrants from Events Booking.</description>
+<files>
+    <filename module="mod_eb_registrants">mod_eb_registrants.php</filename>
+    <folder>tmpl</folder>
+</files>
+<config>
+    <fields name="params">
+        <fieldset name="basic">
+            <field
+                    name="show_last_name"
+                    type="radio"
+                    label="Show Last Name"
+                    layout="joomla.form.field.radio.switcher"
+                    default="1"
+                    filter="integer"
+            >
+                <option value="0">JNO</option>
+                <option value="1">JYES</option>
+            </field>
+            <field
+                    name="show_event_title"
+                    type="radio"
+                    label="Show Event Title"
+                    layout="joomla.form.field.radio.switcher"
+                    default="1"
+                    filter="integer"
+            >
+                <option value="0">JNO</option>
+                <option value="1">JYES</option>
+            </field>
+            <field
+                    name="show_event_date"
+                    type="radio"
+                    label="Show Event Date"
+                    layout="joomla.form.field.radio.switcher"
+                    default="1"
+                    filter="integer"
+            >
+                <option value="0">JNO</option>
+                <option value="1">JYES</option>
+            </field>
+            <field
+                    name="show_email"
+                    type="radio"
+                    label="Show Email"
+                    layout="joomla.form.field.radio.switcher"
+                    default="1"
+                    filter="integer"
+            >
+                <option value="0">JNO</option>
+                <option value="1">JYES</option>
+            </field>
+            <field
+                    name="show_number_registrants"
+                    type="radio"
+                    label="Show Number Registrants"
+                    layout="joomla.form.field.radio.switcher"
+                    default="1"
+                    filter="integer"
+            >
+                <option value="0">JNO</option>
+                <option value="1">JYES</option>
+            </field>
+            <field
+                    name="show_registration_date"
+                    type="radio"
+                    label="Show Registration Date"
+                    layout="joomla.form.field.radio.switcher"
+                    default="1"
+                    filter="integer"
+            >
+                <option value="0">JNO</option>
+                <option value="1">JYES</option>
+            </field>
+            <field
+                    name="count"
+                    type="number"
+                    label="Number Registrants"
+                    description="Number Registrants which will be displayed in the module"
+                    default="5"
+                    filter="integer"
+            />
+        </fieldset>
+    </fields>
+</config>
+</extension>

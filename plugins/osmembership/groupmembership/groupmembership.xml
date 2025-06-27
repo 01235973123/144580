@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.9.0" type="plugin" group="osmembership" method="upgrade">
+    <name>Membership Pro - Group Membership Plugin</name>
+    <author>Tuan Pham Ngoc</author>
+    <authorEmail>tuanpn@joomdonation.com</authorEmail>
+    <authorUrl>https://joomdonation.com</authorUrl>
+    <copyright>Copyright (C) 2012 - 2025 Ossolution Team</copyright>
+    <license>GNU General Public License version 3, or later</license>
+    <creationDate>Nov 2012</creationDate>
+    <version>4.2.2</version>
+    <description>This plugin is used to handle group membership feature in Membership Pro</description>
+    <files>
+        <filename plugin="groupmembership">groupmembership.php</filename>
+        <folder>tmpl</folder>
+    </files>
+    <config>
+        <fields name="params">
+            <fieldset name="basic">
+                <field name="exclude_group_ids"
+                       type="Usergrouplist"
+                       multiple="true"
+                       default="7,8"
+                       layout="joomla.form.field.list-fancy-select"
+                       label="Exclude User Groups"
+                       description="By default, group members will have same Joomla user groups with group admin. If you want group members to be excluded from certain user groups, select these user groups here"/>
+
+                <field
+                        name="show_group_members_on_profile"
+                        type="radio"
+                        label="Show Group Members On Profile Page"
+                        description="Set to Yes if you want to show group members on user profile page of group admin"
+                        class="btn-group btn-group-yesno"
+                        default="0"
+                >
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+            </fieldset>
+        </fields>
+    </config>
+</extension>

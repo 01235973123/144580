@@ -1,0 +1,75 @@
+#eshop-quote .eshop-quote-items a {
+	text-decoration: none;
+}
+#eshop-quote .eshop-quote-items a span {
+	background: url("../images/arrow-down.png") no-repeat scroll 100% 50%;
+	padding-right: 15px;
+}
+.eshop-quote-content{
+	background: #fff;
+	clear: both;
+	min-height: 150px;
+	min-width: 250px;
+	max-width: 350px;
+	padding: 8px;
+	position: absolute;
+	top: 125%;
+	border: 1px #ddd solid;
+	color: #333;
+}
+.eshop-quote-items a:hover{
+	cursor: pointer;
+}
+.eshop-quote-items{
+	z-index: 1;
+}
+.eshop-quote-items h4 {
+	color: #333333;
+	font-size: 15px;
+	font-weight: bold;
+	margin-bottom: 3px;
+	margin-top: 0;
+}
+#eshop-quote{
+	position: relative;
+	right: 0;
+	top: 0;
+	z-index: 9999;
+}
+.eshop-mini-quote-info td {
+	border-bottom: 1px solid #EEEEEE;
+	color: #000000;
+	padding: 10px 5px;
+	vertical-align: top;
+}
+.eshop-mini-quote-info .eshop-image {
+	text-align: left;
+}
+.eshop-mini-quote-info .eshop-name {
+	text-align: left;
+}
+.eshop-mini-quote-info .eshop-quantity {
+	text-align: right;
+}
+.eshop-mini-quote-info .eshop-image img {
+	border: 1px solid #EEEEEE;
+	text-align: left;
+}
+.eshop-mini-quote-info .eshop-remove {
+	text-align: right;
+}
+.eshop-mini-quote-info .eshop-total {
+	text-align: right;
+}
+.mini-quote-total {
+	border-bottom: 1px solid #EEEEEE;
+	padding: 10px 5px;
+	text-align: right;
+}
+.eshop-right {
+	text-align: right;
+}
+.checkout {
+	clear: both;
+    text-align: right;
+}

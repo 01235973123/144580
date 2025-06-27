@@ -1,0 +1,1941 @@
+<?php
+/**
+ * @version        5.4.13
+ * @package        Joomla
+ * @subpackage     Joom Donation
+ * @author         Tuan Pham Ngoc
+ * @copyright      Copyright (C) 2009 - 2025 Ossolution Team
+ * @license        GNU/GPL, see LICENSE.php
+ */
+// Check to ensure this file is included in Joomla!
+defined('_JEXEC') or die;
+ 
+use Joomla\CMS\Uri\Uri;
+use Joomla\CMS\Plugin\PluginHelper;
+use Joomla\CMS\Component\ComponentHelper;
+use Joomla\CMS\Language\Associations;
+use Joomla\String\StringHelper;
+use Joomla\CMS\Factory;
+use Joomla\CMS\Language\Multilanguage;
+use Joomla\CMS\Language\Text;
+use Joomla\CMS\Router\Route;
+use Joomla\CMS\HTML\HTMLHelper;
+use Joomla\Component\Content\Site\Helper\RouteHelper;
+
+$db = Factory::getContainer()->get('db');
+HtmlHelper::_('behavior.core');
+$option = Factory::getApplication()->input->getString('option', '');
+if($option == "com_jdonation")
+{
+	$url = Route::_('index.php?option=com_jdonation&Itemid='.$this->Itemid);
+}
+else
+{
+	$url = Uri::root()."index.php?option=com_jdonation&Itemid=".$this->Itemid;
+}
+if (($this->config->accept_term ==1 && $this->config->article_id > 0) || ($this->config->show_privacy && $this->config->privacy_policy_article_id > 0))
+{
+	DonationHelperJquery::colorbox('jd-modal');
+}
+DonationHelperJquery::validateForm();
+//Validation rule fo custom amount
+$amountValidationRules = '';
+$minDonationAmount = (int) $this->minDonationAmount;
+$maxDonationAmount = (int) $this->maxDonationAmount;
+if($minDonationAmount == 0)
+{
+	$minDonationAmount = $this->config->minimum_donation_amount;
+}
+if($maxDonationAmount == 0)
+{
+	$maxDonationAmount = $this->config->maximum_donation_amount;
+}
+if ($minDonationAmount)
+{
+	$amountValidationRules .= ",min[$minDonationAmount]";
+}
+if ($maxDonationAmount)
+{
+	$amountValidationRules .= ",max[$maxDonationAmount]";
+}
+$selectedState = '';
+$bootstrapHelper 	= $this->bootstrapHelper;
+$rowFluidClass   	= $bootstrapHelper->getClassMapping('row-fluid');
+$span12Class		= $bootstrapHelper->getClassMapping('span12');
+$span3Class		    = $bootstrapHelper->getClassMapping('span3');
+$span6Class		    = $bootstrapHelper->getClassMapping('span6');
+$controlGroupClass 	= $bootstrapHelper->getClassMapping('control-group');
+$inputPrependClass 	= $bootstrapHelper->getClassMapping('input-group');
+$addOnClass        	= $bootstrapHelper->getClassMapping('add-on');
+$controlLabelClass 	= $bootstrapHelper->getClassMapping('control-label');
+$controlsClass     	= $bootstrapHelper->getClassMapping('controls');
+$btnClass          	= $bootstrapHelper->getClassMapping('btn');
+$inputSmallClass	= $bootstrapHelper->getClassMapping('input-small');
+$inputLargeClass	= $bootstrapHelper->getClassMapping('input-large');
+$stripePaymentMethod = null;
+$hasSquareCard      = false;
+if($this->campaignId > 0 && $this->campaign->currency_symbol != "")
+{
+	$this->config->currency_symbol = $this->campaign->currency_symbol;
+}
+$color				= "";
+if($this->config->color != '')
+{
+	$color			= $this->config->color;
+	if(substr($color, 0, 1) == "#")
+	{
+		$color		= substr($color, 1);
+	}
+}
+$color = "#".$color;
+?>
+<style>
+#donation-form .donation-default-switch-amounts input:checked + label
+{
+	background-color: #3399ff !important;
+	color:#FFF !important;
+}
+#donation-form .switch-payment-gateway input:checked + label 
+{
+	border:1px solid #3399ff !important;
+}
+#donation-form .switch-payment-fee input:checked + label 
+{
+	background-color: #3399ff !important;
+}
+.donated-amount
+{
+	border:1px solid #3399ff !important;
+}
+.donated-amount-label
+{
+	background-color: #3399ff !important;
+}
+</style>
+
+<script type="text/javascript">
+	<?php echo $this->recurringString ;?>
+	var siteUrl	= "<?php echo DonationHelper::getSiteUrl(); ?>";
+	var root_path	= "<?php echo DonationHelper::getSiteUrl(); ?>";
+	var amounts_format = '<?php echo $this->config->amounts_format; ?>';
+	var recurring_require = <?php echo $this->recurring_require; ?>;
+</script>
+<script type="text/javascript" src="<?php echo DonationHelper::getSiteUrl().'media/com_jdonation/assets/js/jdonation.js'?>"></script>
+<script type='text/javascript' src="<?php echo DonationHelper::getSiteUrl().'media/com_jdonation/assets/js/imask/imask.min.js';?>"></script>
+<div id="errors"></div>
+<?php
+$extralayoutCss     = ((int)$this->config->layout_type == 1 ? "dark_layout" : "");
+?>
+<div id="donation-form" class="<?php echo $rowFluidClass;?> jd-container default-donation-layout <?php echo $extralayoutCss; ?>">
+    <div class="<?php echo $span12Class?>">
+        <?php
+        if($this->campaign->id > 0 && $this->campaign->showCampaignInformation)
+        {
+            echo $this->loadTemplate('campaign');
+        }
+
+        $allow_donation = true;
+        $msg = "";
+        if($this->campaign->id > 0)
+        {
+            $total_donated = DonationHelper::getTotalDonatedAmount($this->campaign->id);
+            $total_donors  = DonationHelper::getTotalDonor($this->campaign->id);
+            if (!$this->config->endable_donation_with_expired_campaigns && (($this->campaign->end_date != "" && $this->campaign->end_date != "0000-00-00 00:00:00") && (strtotime($this->campaign->end_date) < time())))
+            {
+                //already expired
+                $allow_donation = false;
+                $msg = Text::_('JD_EXPIRED_CAMPAIGN');
+            }
+            if($this->campaign->goal > 0 && $total_donated > $this->campaign->goal && ! $this->config->endable_donation_with_goal_achieved_campaigns && $allow_donation)
+            {
+                $allow_donation = false;
+                $msg = Text::_('JD_GOAL_ACHIEVED');
+            }
+            if((int)$this->campaign->limit_donors > 0 && $total_donors > (int)$this->campaign->limit_donors && $allow_donation)
+            {
+                $allow_donation = false;
+                $msg = Text::_('JD_NUMBER_DONORS_ACHIEVED');
+            }
+        }
+
+        if($allow_donation)
+        {
+            if($this->campaign->id > 0 && $this->config->show_campaign == 1) 
+			{
+				?>
+				<div class="<?php echo $rowFluidClass?>">
+			<?php
+			}
+			else
+			{
+				if($this->contentPlugin == 0)
+				{
+					$h = "1";
+				}
+				else
+				{
+					$h = "3";
+				}
+			?>
+			<?php
+			}
+            ?>
+			<div class="<?php echo $span12Class;?>" id="donation_form">
+            <?php
+            //show campaign
+            if($this->campaign->id > 0){
+                $campaign_link = Uri::getInstance()->toString(array('scheme', 'user', 'pass', 'host')).Route::_(DonationHelperRoute::getDonationFormRoute($this->campaign->id,Factory::getApplication()->input->getInt('Itemid',0)));
+                ?>
+                <div class="<?php echo $rowFluidClass;?>">
+                    <div class="<?php echo $span12Class;?>">
+                        <?php
+                        $config = Factory::getApplication()->getConfig();
+                        if(JVERSION>=3.0)
+                            $site_name=$config->get( 'sitename' );
+                        else
+                            $site_name=$config->getvalue( 'config.sitename' );
+
+                        require_once(JPATH_SITE . "/components/com_jdonation/helper/integrations.php");
+
+                        $doc = Factory::getApplication()->getDocument();
+						if ($this->option == "com_jdonation")
+						{
+							$doc->addCustomTag( '<meta property="og:title" content="'.$this->campaign->title.'" />' );
+							if($this->campaign->campaign_photo != "")
+							{
+								if(file_exists(JPATH_ROOT.'/images/jdonation/'.$this->campaign->campaign_photo))
+								{
+									$doc->addCustomTag( '<meta property="og:image" content="'.Uri::root().'images/jdonation/'.$this->campaign->campaign_photo.'" />' );
+								}
+								elseif(file_exists(JPATH_ROOT.'/'.$this->campaign->campaign_photo))
+								{
+									$doc->addCustomTag( '<meta property="og:image" content="'.Uri::root().$this->campaign->campaign_photo.'" />' );
+								}
+							}
+							if($this->campaign->short_description != "")
+							{
+								$short_desc = strip_tags($this->campaign->short_description);
+								$short_desc = str_replace("\n","",$short_desc);
+								$short_desc = str_replace("\r","",$short_desc);
+								$short_desc = str_replace("\"","",$short_desc);
+								$short_desc = str_replace("'","",$short_desc);
+								if(strlen($short_desc) > 155)
+								{
+									$short_desc = substr($short_desc,0,155)."..";
+								}
+								$doc->addCustomTag( '<meta property="og:description" content="'.$short_desc.'" />' );
+							}
+							$doc->addCustomTag( '<meta property="og:url" content="'.$campaign_link.'" />' );
+							$doc->addCustomTag( '<meta property="og:site_name" content="'.$site_name.'" />' );
+							$doc->addCustomTag( '<meta property="og:type" content="article" />' );
+						}
+                        if($this->config->social_sharing == 1 && $this->config->show_campaign == 0)
+                        {
+                            ?>
+                            <script type="text/javascript" src="<?php echo DonationHelper::getSiteUrl().'media/com_jdonation/assets/js/fblike.js'?>"></script>
+                            <?php
+                            if($this->config->social_sharing_type == 0 && $this->config->show_campaign == 0)
+                            {
+                                $add_this_share='
+                                <!-- AddThis Button BEGIN -->
+                                <div class="addthis_toolbox addthis_default_style">
+                                <a class="addthis_button_facebook_like" fb:like:layout="button_count" class="addthis_button" addthis:url="'.$campaign_link.'"></a>
+                                <a class="addthis_button_tweet" class="addthis_button" addthis:url="'.$campaign_link.'"></a>
+                                <a class="addthis_button_pinterest_pinit" class="addthis_button" addthis:url="'.$campaign_link.'"></a>
+                                <a class="addthis_counter addthis_pill_style" class="addthis_button" addthis:url="'.$campaign_link.'"></a>
+                                </div>
+                                <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid='.$this->config->addthis_publisher.'"></script>
+                                <!-- AddThis Button END -->' ;
+                                $add_this_js='https://s7.addthis.com/js/300/addthis_widget.js';
+                                $JdonationIntegrationsHelper=new JdontionIntegrationsHelper();
+                                $JdonationIntegrationsHelper->loadScriptOnce($add_this_js);
+                                //output all social sharing buttons
+                                echo' <div id="rr" style="">
+                                    <div class="social_share_container">
+                                    <div class="social_share_container_inner">'.
+                                        $add_this_share.
+                                    '</div>
+                                </div>
+                                </div>
+                                ';
+                            }
+                            else
+                            {
+                                echo '<div class="jd_horizontal_social_buttons">';
+                                    echo '<div class="jd_float_left">
+                                            <div class="fb-like" data-href="'.$campaign_link.'" data-send="true" data-layout="button_count" data-width="450" data-show-faces="true">
+                                            </div>
+                                        </div>';
+                                    echo '
+            
+                                    <div class="jd_float_left">
+                                            &nbsp; <div class="g-plus" data-action="share" data-annotation="bubble" data-href="'.$campaign_link.'">
+                                                </div>
+                                    </div>';
+                                echo '<div class="jd_float_left">
+                                        &nbsp; <a href="https://twitter.com/share" class="twitter-share-button"  data-url="'.$campaign_link.'" data-counturl="'.$campaign_link.'">Tweet</a>
+                                    </div>';
+                                echo '</div>
+                                    <div class="clearfix"></div>';
+                            }
+                        }
+                        ?>
+                    </div>
+                </div>
+                <?php
+            }
+            if (!$this->userId && ($this->config->registration_integration == 1 || $this->config->registration_integration == 2) && $this->config->show_login_box)
+            {
+                $actionUrl = Route::_('index.php?option=com_users&task=user.login');
+                $validateLoginForm = 1;
+                ?>
+                <div class="registration_form jd_width_100_percentage">
+                    <form method="post" action="<?php echo $actionUrl ; ?>" name="jd-login-form" id="jd-login-form" autocomplete="off" class="form form-horizontal">
+                        <h4 class="jd-heading"><?php echo Text::_('JD_EXISTING_USER_LOGIN'); ?></h4>
+                        <div class="<?php echo $controlGroupClass;?>">
+                            <label class="<?php echo $controlLabelClass;?>" for="username">
+                                <?php echo  Text::_('JD_USERNAME') ?><span class="required">*</span>
+                            </label>
+                            <div class="<?php echo $controlsClass;?>">
+                                <input type="text" name="username" id="username" class="<?php echo $inputLargeClass;?> validate[required]" value=""/>
+                            </div>
+                        </div>
+                        <div class="<?php echo $controlGroupClass;?>">
+                            <label class="<?php echo $controlLabelClass;?>" for="password">
+                                <?php echo  Text::_('JD_PASSWORD') ?><span class="required">*</span>
+                            </label>
+                            <div class="<?php echo $controlsClass;?>">
+                                <input type="password" id="password" name="password" class="<?php echo $inputLargeClass;?> validate[required]" value="" />
+                            </div>
+                        </div>
+                        <div class="<?php echo $controlGroupClass;?>">
+                            <div class="<?php echo $controlsClass;?>">
+                                <input type="submit" value="<?php echo Text::_('JD_LOGIN'); ?>" class="button btn btn-primary uk-button uk-button-primary" />
+                            </div>
+                        </div>
+                        <?php
+                        if (PluginHelper::isEnabled('system', 'remember'))
+                        {
+                        ?>
+                            <input type="hidden" name="remember" value="1" />
+                        <?php
+                        }
+                        ?>
+                        <input type="hidden" name="return" value="<?php echo base64_encode(Uri::getInstance()->toString()); ?>" />
+                        <?php echo HTMLHelper::_( 'form.token' ); ?>
+                    </form>
+                </div>
+            <?php
+            }
+            else
+            {
+                $validateLoginForm = 0;
+            }
+			if (DonationHelper::isJoomla4())
+			{
+				$formClass = ' ' . $bootstrapHelper->getClassMapping('row-fluid');
+				$extraClass = 'joomla4';
+			}
+			else
+			{
+				$extraClass = 'joomla3';
+			}
+            ?>
+            <form method="post" name="os_form" id="os_form" action="<?php echo $url ; ?>" autocomplete="off" class="form form-horizontal <?php echo $formClass; ?> <?php echo $extraClass; ?>" enctype="multipart/form-data">
+                <?php
+                if (!$this->userId && ($this->config->registration_integration == 1 || $this->config->registration_integration == 2) && ($this->allowUserRegistration))
+                {
+                $params = ComponentHelper::getParams('com_users');
+                $minimumLength = $params->get('minimum_length', 4);
+                ($minimumLength) ? $minSize = "minSize[4]" : $minSize = "";
+                ?>
+                <h4 class="eb-heading"><?php echo Text::_('JD_NEW_USER_REGISTER'); ?></h4>
+                <div class="registration_form">
+                <?php
+                if (!$this->config->show_login_box)
+                {
+                ?>
+                    <h4 class="eb-heading"><?php echo Text::_('JD_ACCOUNT_INFORMATION'); ?></h4>
+                <?php
+                }
+                ?>
+                    <div class="<?php echo $controlGroupClass;?>">
+                        <label class="<?php echo $controlLabelClass;?>" for="username1">
+                            <?php echo Text::_('JD_USERNAME') ?><span class="required">*</span>
+                        </label>
+                        <div class="<?php echo $controlsClass;?>">
+                            <input type="text" name="username" id="username1" class="<?php echo $inputLargeClass;?> validate[required,ajax[ajaxUserCall]]" value="<?php echo $this->input->get('username', '', 'string'); ?>" />
+                        </div>
+                    </div>
+                    <div class="<?php echo $controlGroupClass;?>">
+                        <label class="<?php echo $controlLabelClass;?>" for="password1">
+                            <?php echo  Text::_('JD_PASSWORD') ?><span class="required">*</span>
+                        </label>
+                        <div class="<?php echo $controlsClass;?>">
+                            <input type="password" name="password1" id="password1" class="<?php echo $inputLargeClass;?> validate[required,<?php echo $minSize;?>]" value=""/>
+                        </div>
+                    </div>
+                    <div class="<?php echo $controlGroupClass;?>">
+                        <label class="<?php echo $controlLabelClass;?>" for="password2">
+                            <?php echo  Text::_('JD_RETYPE_PASSWORD') ?><span class="required">*</span>
+                        </label>
+                        <div class="<?php echo $controlsClass;?>">
+                            <input type="password" name="password2" id="password2" class="<?php echo $inputLargeClass;?> validate[required,equals[password1]]" value="" />
+                        </div>
+                    </div>
+
+                    </div>
+                	<?php
+                    if($this->config->registration_integration == 2){
+                        ?>
+                        <h3 class="eb-heading">
+                            <a href="javascript:void(0);" id="skip_registration"><?php echo Text::_("JD_SKIP_AUTHENTICATION_FORM"); ?></a>
+                        </h3>
+                        <script type="text/javascript">
+                            jQuery(document).ready(function($){
+                                $("#skip_registration").click(function(){
+                                    if($(".registration_form").css('display') != 'none'){
+                                       $("#skip_registration").text("<?php echo Text::_("JD_OPEN_AUTHENTICATION_FORM"); ?>");
+                                    }else{
+                                        $("#skip_registration").text("<?php echo Text::_("JD_SKIP_AUTHENTICATION_FORM"); ?>");
+                                    }
+                                    $(".registration_form").toggle("slow");
+                                });
+                            });
+                        </script>
+                    <?php
+                    }
+                ?>
+                <?php
+                }
+                ?>
+                <div class="form-section-title">
+                    <?php echo Text::_('JD_DONOR_INFO'); ?>
+                </div>
+                <?php
+                if ($this->config->use_campaign)
+                {
+                    if ($this->showCampaignSelection)
+                    {
+                        //Campaign has been selected from the module or from campaigns page, so just display campaign title
+                    	?>
+                        <div class="<?php echo $controlGroupClass;?>">
+                            <label class="<?php echo $controlLabelClass;?>" for="campaign_id">
+                                <?php echo Text::_('JD_CAMPAIGN');?><span class="required">*</span>
+                            </label>
+                            <div class="<?php echo $controlsClass;?>">
+                                <?php   echo $this->lists['campaign_id'] ;?>
+                            </div>
+                        </div>
+					<?php
+                    }
+                    else
+                    {
+						if(!$this->campaign->showCampaignInformation)
+						{
+						?>
+							<div class="<?php echo $controlGroupClass;?>">
+								<label class="<?php echo $controlLabelClass;?>" for="campaign_id">
+									<?php echo Text::_('JD_CAMPAIGN');?>
+								</label>
+								<div class="<?php echo $controlsClass;?> campaignTitleDiv">
+									<label class="sbjtitle"><?php echo $this->campaign->title; ?></label>
+								</div>
+							</div>
+						<?php
+						}
+                    }
+                }
+                $fields = $this->form->getFields();
+                if (isset($fields['state']))
+                {
+                    $selectedState = $fields['state']->value;
+                }
+				?>
+				<div class="default-donation-field">
+					<?php
+					$j = 0;
+					foreach ($fields as $field)
+					{
+						$j++;
+						if ($field->name =='email')
+						{
+							if ($this->userId || !$this->config->registration_integration || !$this->allowUserRegistration)
+							{
+								//We don't need to perform ajax email validate in this case, so just remove the rule
+								$cssClass = $field->getAttribute('class');
+								$cssClass = str_replace(',ajax[ajaxEmailCall]', '', $cssClass);
+								$field->setAttribute('class', $cssClass);
+							}
+						}
+						echo $field->getControlGroup(true, $bootstrapHelper, $field);
+					}
+					?>
+				</div>
+				<div class="checkbox-group">
+					<?php
+					if ($this->config->pay_payment_gateway_fee)
+					{
+					?>
+						<label><input type="checkbox" class="form-check-input" name="pay_payment_gateway_fee" id="pay_payment_gateway_fee" value="1" onClick="updateSummary();" /> <?php echo  Text::_('JD_PAY_PAYMENT_GATEWAY_FEE'); ?></label>
+					<?php
+					}
+					if ($this->config->enable_hide_donor)
+					{
+					?>
+						<label><input type="checkbox" name="hide_me" value="1" class="form-check-input" <?php if ($this->hideMe) echo ' checked="checked"' ; ?> /> <?php echo  Text::_('JD_HIDE_DONOR'); ?></label>
+					<?php
+					}
+					if ($this->config->enable_gift_aid)
+					{
+					?>
+						<label><input type="checkbox" name="gift_aid" value="1" class="form-check-input" <?php if ($this->gift_aid) echo ' checked="checked"' ; ?> /> <?php echo Text::_('JD_GIFT_AID_EXPLAIN');?></label>
+					<?php
+					}
+					?>
+				</div>
+				<?php
+                if($this->show_dedicate == 1)
+                {
+                    ?>
+                    <div class="<?php echo $rowFluidClass?>" id="dedicate_heading">
+                        <div class="<?php echo $span12Class?>">
+							<label>
+								<input type="checkbox" name="show_dedicate" id="show_dedicate" class="form-check-input" value="0" onclick="javascript:showDedicate();"/>
+								<?php echo Text::_('JD_HONOR_OF'); ?>
+							<label>
+                        </div>
+                    </div>
+                    <div class="<?php echo $rowFluidClass?> nodisplay" id="honoreediv">
+                        <div class="<?php echo $span12Class?>">
+                            <div class="<?php echo $rowFluidClass?>">
+                                <?php
+								$dedicatetype = $this->config->dedicate_type;
+								if($dedicatetype == "")
+								{
+									$dedicatetype = "1,2,3,4";
+								}
+								$dedicatetypeArr = explode(",", $dedicatetype);
+                                for($i=1;$i<=4;$i++)
+                                {
+									if(in_array($i, $dedicatetypeArr))
+									{
+										?>
+										<div class="<?php echo $span3Class?>">
+											<label>
+												<input type="radio" name="dedicate_type" value="<?php echo $i;?>" />
+												&nbsp;
+												<?php echo DonationHelper::getDedicateType($i);?>
+											</label>
+										</div>
+										<?php
+									}
+                                }
+                                ?>
+                            </div>
+                            <div class="<?php echo $rowFluidClass?>">
+                                <div class="<?php echo $span12Class?>">
+                                    <div class="<?php echo $controlGroupClass;?>">
+                                        <label class="<?php echo $controlLabelClass;?>" for="campaign_id">
+                                            <?php echo Text::_('JD_HONOREE_NAME');?>
+                                        </label>
+                                        <div class="<?php echo $controlsClass;?>">
+                                            <input type="text" class="<?php echo $inputLargeClass;?>" name="dedicate_name" value="" />
+                                        </div>
+                                    </div>
+                                    <div class="<?php echo $controlGroupClass;?>">
+                                        <label class="<?php echo $controlLabelClass;?>" for="campaign_id">
+                                            <?php echo Text::_('JD_HONOREE_EMAIL');?>
+                                        </label>
+                                        <div class="<?php echo $controlsClass;?>">
+                                            <input type="text" class="<?php echo $inputLargeClass;?>" name="dedicate_email" value="" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <?php
+                }
+                ?>
+                <div class="form-section-title" style="margin-top:16px;">
+					<?php echo Text::_('JD_DONATION_INFORMATION'); ?>
+                </div>
+                <?php
+                if ($this->config->enable_recurring)
+                {
+                    if ($this->campaignId)
+                    {
+                        if (($this->campaign->donation_type == 0 || $this->campaign->donation_type == 2)&& $this->method->getEnableRecurring())
+                        {
+                            $style = '';
+                        }
+                        else
+                        {
+                            $style = ' style="display:none;"' ;
+                        }
+						if ($this->campaign->donation_type == 0 && $this->method->getEnableRecurring())
+						{
+							$style1 = '';
+						}
+						else
+						{
+							$style1 = ' style="display:none;"' ;
+						}
+                    }
+                    else
+                    {
+                        if ($this->method->getEnableRecurring())
+                        {
+                            $style = '';
+							$style1 = '';
+                        }
+                        else
+                        {
+                            $style = ' style="display:none;"' ;
+							$style1 = ' style="display:none;"' ;
+                        }
+                    }
+                ?>
+                <div class="form-row" id="donation_type" <?php echo $style1; ?>>
+					<div class="donation-default-form-group">
+						<label class="sbjtitle" for="donation_type">
+							<?php echo Text::_('JD_DONATION_TYPE'); ?>
+						</label>
+
+						<?php
+						if($this->donationType == "" || $this->donationType == "onetime")
+						{
+							$checked1 = "checked";
+							$checked2 = "";
+						}
+						else
+						{
+							$checked1 = "";
+							$checked2 = "checked";
+						}
+						
+						?>
+						<div class="radio-group">
+							<label for="donation_typeonetime" id="donation_typeonetime-lbl">
+								<input type="radio" name="donation_type" id="donation_typeonetime" value="onetime" <?php echo $checked1; ?> onclick="changeDonationType();"  class="inputbox"/>
+								<?php echo Text::_('JD_ONETIME');?>
+							</label>
+							<label for="donation_typerecurring" id="donation_typerecurring-lbl">
+							<input type="radio" name="donation_type" id="donation_typerecurring" <?php echo $checked2; ?> value="recurring"  onclick="changeDonationType();"  class="inputbox"/>
+								<?php echo Text::_('JD_RECURRING');?>
+							</label>
+						</div>
+
+						<?php
+						if ($this->donationType == 'onetime' || !$this->method->getEnableRecurring())
+						{
+							$style = ' style="display:none" ';
+						}
+						else
+						{
+							$style = '';
+						}
+						?>
+						<div style="display:flex;gap:10px;align-items: flex-start;">
+							<div class="<?php echo $controlGroupClass;?>" id="tr_frequency" <?php echo $style; ?>>
+								<label for="r_frequency">
+									<?php echo Text::_('JD_FREQUENCY') ; ?>
+								</label>
+								<div class="<?php echo $controlsClass;?>" id="recurringFrequency">
+									<?php
+										if (count((array)$this->recurringFrequencies) > 1)
+										{
+											echo $this->lists['r_frequency'];
+										}
+										else
+										{
+											$frequency = $this->recurringFrequencies[0];
+											switch($frequency)
+											{
+												case 'd':
+													echo Text::_('JD_DAILY');
+													break;
+												case 'w':
+													echo Text::_('JD_WEEKLY');
+													break;
+												case 'b':
+													echo Text::_('JD_BI_WEEKLY');
+													break;
+												case 'm':
+													echo Text::_('JD_MONTHLY');
+													break;
+												case 'q':
+													echo Text::_('JD_QUARTERLY');
+													break;
+												case 's':
+													echo Text::_('JD_SEMI_ANNUALLY');
+													break;
+												case 'a':
+													echo Text::_('JD_ANNUALLY');
+													break;
+											}
+											?>
+											<input type="hidden" name="r_frequency" value="<?php echo $frequency; ?>" />
+											<?php
+										}
+									?>
+								</div>
+							</div>
+							<?php
+							if ($this->config->show_r_times)
+							{
+							?>
+								<div class="<?php echo $controlGroupClass;?>" id="tr_number_donations" <?php echo $style; ?>>
+									<label for="r_times">
+										<?php echo Text::_('JD_OCCURRENCES') ; ?>
+									</label>
+									<div class="<?php echo $controlsClass;?>">
+										<input type="number" name="r_times" id="r_times" value="<?php echo $this->input->getInt('r_times', null); ?>" class="form-control w-25"/>
+										<div class="help-text"><?php echo Text::_('JD_NUMBER_OF_TIMES_DONATION_WILL_BE_MADE'); ?></div>
+									</div>
+								</div>
+							<?php
+							}
+							?>
+						</div>
+						<?php
+					}
+					?>
+					</div>
+                </div>
+                
+                <div class="form-row">
+					<div class="donation-default-form-group">
+						<label class="sbjtitle">
+							<?php echo Text::_('JD_DONATION_AMOUNT'); ?>
+						</label>
+						<div class="help-text"><?php echo Text::_('JD_SELECT_THE_AMOUNT_YOU_WISH_TO_DONATE_BY_CHOOSING_ONE_OF_OPTIONS'); ?></div>
+						<div class="" id="amount_container">
+							<?php
+								if ( !$this->config->display_amount_textbox)
+								{
+									$extraClass = "validate[required]";
+								}
+								else
+								{
+									$extraClass = "";
+								}
+								$amountSelected = false;
+								if ($this->config->donation_amounts)
+								{
+									$explanations = explode("\r\n", $this->config->donation_amounts_explanation) ;
+									$amounts = explode("\r\n", $this->config->donation_amounts);
+									if($this->amount == 0){
+										$extraValidateClass = "validate[required]";
+									}else{
+										$extraValidateClass = "";
+									}
+									
+									?>
+									<div class="donation-default-switch-amounts">
+										<?php
+										for ($i = 0 , $n = count($amounts) ; $i < $n ; $i++)
+										{
+											$amount = $amounts[$i] ;
+											if(strpos($amount, "[c]") > 0)
+											{
+												$amount = substr($amount, 0, strpos($amount, "[c]"));
+												if((int)$this->rdAmount == 0)
+												{
+													$this->rdAmount = $amount;
+												}
+											}
+											$amount = (float)$amount ;
+											if ($amount == $this->rdAmount)
+											{
+												$amountSelected = true;
+												$checked = ' checked="checked" ' ;
+											}
+											else
+											{
+												$checked = '' ;
+											}
+										?>
+											<input type="radio" name="rd_amount" id="pre_amount_<?php echo $i; ?>" value="<?php echo $amount; ?>" <?php echo $checked ; ?> onclick="clearTextbox();" class="<?php echo $extraClass; ?>" data-errormessage="<?php echo Text::_('JD_AMOUNT_IS_REQUIRED'); ?>"/>
+											<label for="pre_amount_<?php echo $i; ?>">
+												<?php echo ' '.DonationHelperHtml::formatAmount($this->config, $amount);?>
+												<?php
+												if (isset($explanations[$i]) && $explanations[$i])
+												{
+													if($this->config->show_brackets)
+													{
+														echo '   <span class="amount_explaination">[ '.$explanations[$i].' ]</span>  ' ;
+													}
+													else
+													{
+														echo '   <span class="amount_explaination">'.$explanations[$i].'</span>  ' ;
+													}
+												}
+												?>
+											</label>
+										<?php
+										}
+										if ($this->config->display_amount_textbox)
+										{
+											?>
+											<input type="radio" name="rd_amount" id="pre_amount_<?php echo $i + 1; ?>" value="-1" onclick="deSelectRadio1();document.getElementById('amount').focus();" class="<?php echo $extraClass; ?> " />
+											<label for="pre_amount_<?php echo $i + 1; ?>" class="otheramountlabel">
+												<?php echo Text::_('JD_OTHER_AMOUNT');?>
+											</label>
+											<?php
+										}
+										?>
+									</div>
+									<?php
+									
+								}
+								if ($this->config->display_amount_textbox)
+								{
+									if ($this->config->donation_amounts)
+									{
+										$placeHolder = Text::_('JD_OTHER_AMOUNT');
+									}
+									else
+									{
+										$placeHolder = '';
+									}
+									if ($amountSelected)
+									{
+										$amountCssClass = 'validate[custom[number]'.$amountValidationRules.'] '.$inputSmallClass;
+									}
+									else
+									{
+										$amountCssClass = 'validate[required,custom[number]'.$amountValidationRules.'] '.$inputSmallClass;
+									}
+									if ($this->config->currency_position == 0)
+									{
+										$addons = $this->config->currency_symbol;
+										$input  = '<input type="number" size="10" placeholder="'.$placeHolder.'" class="'.$amountCssClass.'" name="amount" id="amount" value="'.$this->amount.'" onchange="deSelectRadio();" data-errormessage="'.Text::_('JD_AMOUNT_IS_REQUIRED').'" data-errormessage-range-underflow="'.Text::sprintf('JD_MIN_DONATION_AMOUNT_ALLOWED', $minDonationAmount).'" data-errormessage-range-overflow="'.Text::sprintf('JD_MAX_DONATION_AMOUNT_ALLOWED', $maxDonationAmount).'" />';
+										echo $bootstrapHelper->getPrependAddon($input,$addons);
+									}
+									else
+									{
+										$addons = $this->config->currency_symbol;
+										$input  = '<input type="number" size="10" placeholder="'.$placeHolder.'" class="'.$amountCssClass.'" name="amount" id="amount" value="'.$this->amount.'" onchange="deSelectRadio();" data-errormessage="'.Text::_('JD_AMOUNT_IS_REQUIRED').'" data-errormessage-range-underflow="'.Text::sprintf('JD_MIN_DONATION_AMOUNT_ALLOWED', $minDonationAmount).'" data-errormessage-range-overflow="'.Text::sprintf('JD_MAX_DONATION_AMOUNT_ALLOWED', $maxDonationAmount).'" />';
+										echo $bootstrapHelper->getAppendAddon($input,$addons);
+									}
+								}
+							?>
+						</div>
+					</div>
+                </div>
+                <?php
+					if ($this->config->currency_selection)
+					{
+						$show_currency_selection = true;
+						if((int) $this->campaignId == 0)
+						{
+							$show_currency_selection = true;
+						}
+						elseif ((int) $this->campaignId > 0)
+						{
+							if($this->config->activate_campaign_currency)
+							{
+								if($this->campaign->currency != "" && $this->campaign->currency != "0")
+								{
+									$show_currency_selection = false;
+								}
+							}
+							else
+							{
+								if($this->campaign->currency != "" && $this->campaign->currency != "0")
+								{
+									$show_currency_selection = false;
+								}
+							}
+						}
+					}
+					else
+					{
+						$show_currency_selection = false;
+					}
+                    if ($show_currency_selection)
+                    {
+                    ?>
+                        <div class="form-row">
+							<div class="donation-default-form-group">
+								<label>
+									<?php echo Text::_('JD_CHOOSE_CURRENCY'); ?>
+								</label>
+								<div id="currency_selection">
+									<?php echo $this->lists['currency_code']; ?>
+								</div>
+								<div id="campaign_currency" style="display:none;">
+								</div>
+								<div class="help-text"><?php echo Text::_('JD_CHOOSE_THE_CURRENCY_YOU_WANT_TO_DONATE'); ?></div>
+							</div>
+                        </div>
+                    <?php
+                    }
+					
+					$message = [];
+
+                    if (count($this->methods) > 1)
+                    {
+                    ?>
+						<div class="<?php echo $rowFluidClass;?>">
+							<div class="<?php echo $span12Class?>">
+								<div class="<?php echo $controlGroupClass;?>" id="jdpaymentmethods">
+									<label class="sbjtitle">
+										<?php echo Text::_('JD_PAYMENT_OPTION'); ?>
+									</label>
+									<div class="">
+										<?php
+											$method = null ;
+											?>
+											<div class="switch-payment-gateway">
+												<?php
+												for ($i = 0 , $n = count($this->methods); $i < $n; $i++)
+												{
+													$paymentMethod = $this->methods[$i];
+													
+													if ($paymentMethod->getName() == $this->paymentMethod)
+													{
+														$checked = ' checked="checked" ';
+														$method = $paymentMethod ;
+														$display = "block;";
+													}
+													else
+													{
+														$display = "none;";
+														$checked = '';
+													}
+
+													$tmp = '<div class="payment-form" id="'.$paymentMethod->getName().'_message" style="display: '.$display.'">';
+													$tmp .= os_jdpayments::returnPaymentMethodMessage($paymentMethod->getName());
+													$tmp .= '</div>';
+													$message[] = $tmp;
+
+													if (strpos($paymentMethod->getName(), 'os_stripe') !== false)
+													{
+														$stripePaymentMethod = $paymentMethod;
+													}
+													elseif (strpos($paymentMethod->getName(), 'os_squarecard') !== false)
+													{
+														$hasSquareCard = true;
+													}
+													?>
+													<input id="payment_gateway_<?php echo $i;?>" onclick="changePaymentMethod();" type="radio" name="payment_method" value="<?php echo $paymentMethod->getName(); ?>" <?php echo $checked; ?> />
+											
+													<label for="payment_gateway_<?php echo $i;?>" >
+														<?php
+														
+														$payment_name = $paymentMethod->getName();
+														$payment_name = str_replace("os_","",$payment_name);
+														if((int)$this->config->show_payment_method == 0)
+														{
+															if(file_exists(JPATH_ROOT.'/media/com_jdonation/assets/images/payments_override/'.$payment_name.'.png'))
+															{
+																?>
+																<img src="<?php echo Uri::base(true)?>/media/com_jdonation/assets/images/payments_override/<?php echo $payment_name?>.png" style="height:30px;" alt="<?php echo Text::_($paymentMethod->getTitle()); ?>"/>
+																<?php
+															}
+															elseif(file_exists(JPATH_ROOT.'/media/com_jdonation/assets/images/payments/'.$payment_name.'.png'))
+															{
+																?>
+																<img src="<?php echo Uri::base(true)?>/media/com_jdonation/assets/images/payments/<?php echo $payment_name?>.png" style="height:30px;" alt="<?php echo Text::_($paymentMethod->getTitle()); ?>"/>
+																<?php
+															}
+															else
+															{
+																echo Text::_($paymentMethod->getTitle()); 
+															}
+														}
+														elseif($this->config->show_payment_method == 1)
+														{
+															echo Text::_($paymentMethod->getTitle()); 
+														}
+														elseif($this->config->show_payment_method == 2)
+														{
+															if(file_exists(JPATH_ROOT.'/media/com_jdonation/assets/images/payments_override/'.$payment_name.'.png'))
+															{
+																?>
+																<img src="<?php echo Uri::base(true)?>/media/com_jdonation/assets/images/payments_override/<?php echo $payment_name?>.png" style="height:30px;" alt="<?php echo Text::_($paymentMethod->getTitle()); ?>"/>
+																<?php
+															}
+															elseif(file_exists(JPATH_ROOT.'/media/com_jdonation/assets/images/payments/'.$payment_name.'.png'))
+															{
+																?>
+																<img src="<?php echo Uri::base(true)?>/media/com_jdonation/assets/images/payments/<?php echo $payment_name?>.png" style="height:30px;" alt="<?php echo Text::_($paymentMethod->getTitle()); ?>"/>
+																<?php
+															}
+															?>
+															<div class="clearfix"></div>
+															<?php
+															echo Text::_($paymentMethod->getTitle()); 
+
+														}
+														?>
+													</label>
+												<?php
+												}
+											?>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+                    <?php
+                    }
+                    else
+                    {
+                        $method = $this->methods[0] ;
+						$tmp = '<div class="payment-form" id="'.$method->getName().'_message" style="display: block;">';
+						$tmp .= os_jdpayments::returnPaymentMethodMessage($method->getName());
+						$tmp .= '</div>';
+						$message[] = $tmp;
+                        if (strpos($method->getName(), 'os_stripe') !== false)
+                        {
+                            $stripePaymentMethod = $method;
+                        }
+						elseif (strpos($method->getName(), 'os_squarecard') !== false)
+						{
+							$hasSquareCard = true;
+						}
+                        ?>
+						<script type="text/javascript">
+						var selected_payment = "<?php echo $method->getName(); ?>";
+						</script>
+						<div class="<?php echo $rowFluidClass;?>">
+							<div class="<?php echo $span12Class?>">
+								<div class="<?php echo $controlGroupClass;?>">
+									<label class="<?php echo $controlLabelClass;?> sbjtitle">
+										<?php echo Text::_('JD_PAYMENT_OPTION'); ?>
+									</label>
+									<div class="<?php echo $controlsClass;?>">
+										<?php
+										$payment_name = $method->getName();
+										$payment_name = str_replace("os_","",$payment_name);
+										if((int)$this->config->show_payment_method == 0)
+										{
+											if(file_exists(JPATH_ROOT.'/media/com_jdonation/assets/images/payments_override/'.$payment_name.'.png'))
+											{
+												?>
+												<img src="<?php echo Uri::base(true)?>/media/com_jdonation/assets/images/payments_override/<?php echo $payment_name?>.png" style="height:30px;" alt="<?php echo Text::_($method->getTitle()); ?>"/>
+												<?php
+											}
+											elseif(file_exists(JPATH_ROOT.'/media/com_jdonation/assets/images/payments/'.$payment_name.'.png'))
+											{
+												?>
+												<img src="<?php echo Uri::base(true)?>/media/com_jdonation/assets/images/payments/<?php echo $payment_name?>.png" style="height:30px;" alt="<?php echo Text::_($method->getTitle()); ?>"/>
+												<?php
+											}
+											else
+											{
+												echo Text::_($method->getTitle()); 
+											}
+										}
+										elseif($this->config->show_payment_method == 1)
+										{
+											echo Text::_($method->getTitle()); 
+										}
+										elseif($this->config->show_payment_method == 2)
+										{
+											if(file_exists(JPATH_ROOT.'/media/com_jdonation/assets/images/payments/'.$payment_name.'.png'))
+											{
+												?>
+												<img src="<?php echo Uri::base(true)?>/media/com_jdonation/assets/images/payments/<?php echo $payment_name?>.png" style="height:30px;" alt="<?php echo Text::_($method->getTitle()); ?>"/>
+												<?php
+											}
+											?>
+											<div class="clearfix"></div>
+											<?php
+											echo Text::_($method->getTitle()); 
+
+										}
+										?>
+									</div>
+								</div>
+							</div>
+						</div>
+                        <?php
+                    }
+					foreach($message as $msg)
+					{
+						echo $msg;
+					}
+
+                    if ($method->getName() == 'os_squareup')
+                    {
+                        $style = '';
+                    }
+                    else
+                    {
+                        $style = 'style = "display:none"';
+                    }
+                    ?>
+					<div class="<?php echo $rowFluidClass;?>">
+						<div class="<?php echo $span12Class?>">
+							<div class="<?php echo $controlGroupClass;?> payment_information" id="sq_field_zipcode" <?php echo $style; ?>>
+								<label class="<?php echo $controlLabelClass;?>" for="sq_billing_zipcode">
+									<?php echo Text::_('JD_SQUAREUP_ZIPCODE'); ?><span class="required">*</span>
+								</label>
+
+								<div class="<?php echo $controlsClass;?>">
+									<div id="field_zip_input">
+										<input type="text" id="sq_billing_zipcode" name="sq_billing_zipcode" class="<?php echo $inputLargeClass;?>" value="<?php echo $this->escape($this->input->getString('sq_billing_zipcode')); ?>" />
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+                    <?php
+                    if ($method->getCreditCard())
+                    {
+                        $style = '' ;
+                    }
+                    else
+                    {
+                        $style = 'style = "display:none"';
+                    }
+                    ?>
+                    <div id="creditcarddivmain" class="<?php echo $rowFluidClass?> jd_padding_top_10" <?php echo $style; ?>>
+						<div class="<?php echo $span12Class?>">
+							<div class="creditcarddiv">
+								<div class="<?php echo $rowFluidClass?>">
+									<div class="<?php echo $span6Class?>" id="tr_card_number" <?php echo $style; ?>>
+										<label class=""><?php echo  Text::_('JD_CARD_NUMBER'); ?></label>
+										<div id="sq-card-number">
+											<input type="text" name="x_card_num" id="x_card_num" class="form-control validate[required,creditCard] width100" value="<?php echo $this->input->get('x_card_num', '', 'none'); ?>" size="20" data-input-mask="0000 0000 0000 0000" placeholder="<?php echo  Text::_('AUTH_CARD_NUMBER'); ?>"/>
+										</div>
+									</div>
+									<div class="<?php echo $span6Class?>" id="tr_exp_date" <?php echo $style; ?>>
+										<label>
+											<?php echo Text::_('AUTH_CARD_EXPIRY_DATE'); ?>
+										</label>
+										
+										<div id="sq-expiration-date">
+											<input type="text" name="expiry_date" placeholder="MM/YY" class="form-control validate[required] width100" data-input-mask="00/00" placeholder="<?php echo Text::_('AUTH_CARD_EXPIRY_DATE'); ?>"/>
+										</div>
+									</div>
+								</div>
+								<div class="<?php echo $rowFluidClass?>">
+									<div class="<?php echo $span6Class?>" id="tr_cvv_code" <?php echo $style; ?>>
+										<label class="">
+											<?php echo Text::_('JD_CVV'); ?>
+										</label>
+										<div id="sq-cvv">
+											<input type="text" name="x_card_code" id="x_card_code" class="form-control validate[required,custom[number]] width100" value="<?php echo $this->input->get('x_card_code', '', 'none'); ?>" size="20" data-input-mask="0000" placeholder="<?php echo Text::_('AUTH_CVV_CODE'); ?>"/>
+										</div>
+									</div>
+									<?php
+											
+									if ($method->getCardHolderName())
+									{
+									?>
+										<div class="<?php echo $span6Class?>" id="tr_card_holder_name" <?php echo $style; ?>>
+											<label class="">
+												<?php echo Text::_('JD_HOLDER_NAME'); ?>
+											</label>
+											<input type="text" name="card_holder_name" id="card_holder_name" class="form-control validate[required] width100"  value="<?php echo $this->input->get('card_holder_name', '', 'none'); ?>" size="40" placeholder="<?php echo Text::_('JD_CARD_HOLDER_NAME'); ?>"/>
+										</div>
+									<?php
+									}	
+									?>
+								</div>
+								<?php
+								if ($method->getCardType())
+								{
+									$style = '' ;
+								}
+								else
+								{
+									$style = ' style = "display:none;" ' ;
+								}
+								?>
+								<div class="<?php echo $controlGroupClass;?>" id="tr_card_type" <?php echo $style; ?>>
+									<label class="<?php echo $controlLabelClass;?>">
+										<?php echo Text::_('JD_CARD_TYPE'); ?><span class="required">*</span>
+									</label>
+									<div class="<?php echo $controlsClass;?>">
+										<?php echo $this->lists['card_type'] ; ?>
+									</div>
+								</div>
+								<?php
+								if ($method->getCardHolderName())
+								{
+									$style = '' ;
+								}
+								else
+								{
+									$style = ' style = "display:none;" ' ;
+								}
+								?>
+								<div class="<?php echo $controlGroupClass;?>" id="tr_card_holder_name" <?php echo $style; ?>>
+									
+								</div>
+
+								<?php
+								$sisowEnabled = os_jdpayments::sisowEnabled();
+								if ($sisowEnabled) {
+									os_jdpayments::getBankLists();
+								}
+								?>
+								<?php
+								if (DonationHelper::isPaymentMethodEnabled('os_echeck'))
+								{
+									if ($method->getName() == 'os_echeck')
+									{
+										$style = '';
+									}
+									else
+									{
+										$style = ' style = "display:none;" ';
+									}
+									?>
+									<div class="<?php echo $controlGroupClass;?>" id="tr_bank_rounting_number" <?php echo $style; ?>>
+										<label class="<?php echo $controlLabelClass;?>"><?php echo Text::_('JD_BANK_ROUTING_NUMBER'); ?><span class="required">*</span></label>
+
+										<div class="<?php echo $controlsClass;?>"><input type="text" name="x_bank_aba_code" class="<?php echo $inputLargeClass;?> validate[required,custom[number]]" value="<?php echo $this->input->get('x_bank_aba_code', '', 'none'); ?>" size="40"/></div>
+									</div>
+									<div class="<?php echo $controlGroupClass;?>" id="tr_bank_account_number" <?php echo $style; ?>>
+										<label class="<?php echo $controlLabelClass;?>"><?php echo Text::_('JD_BANK_ACCOUNT_NUMBER'); ?><span class="required">*</span></label>
+
+										<div class="<?php echo $controlsClass;?>"><input type="text" name="x_bank_acct_num" class="<?php echo $inputLargeClass;?> validate[required,custom[number]]" value="<?php echo $this->input->get('x_bank_acct_num', '', 'none');; ?>" size="40"/></div>
+									</div>
+									<div class="<?php echo $controlGroupClass;?>" id="tr_bank_account_type" <?php echo $style; ?>>
+										<label class="<?php echo $controlLabelClass;?>"><?php echo Text::_('JD_BANK_ACCOUNT_TYPE'); ?><span class="required">*</span></label>
+
+										<div class="<?php echo $controlsClass;?>"><?php echo $this->lists['x_bank_acct_type']; ?></div>
+									</div>
+									<div class="<?php echo $controlGroupClass;?>" id="tr_bank_name" <?php echo $style; ?>>
+										<label class="<?php echo $controlLabelClass;?>"><?php echo Text::_('JD_BANK_NAME'); ?><span class="required">*</span></label>
+
+										<div class="<?php echo $controlsClass;?>"><input type="text" name="x_bank_name" class="<?php echo $inputLargeClass;?> validate[required]" value="<?php echo $this->input->get('x_bank_name', '', 'none'); ?>" size="40"/></div>
+									</div>
+									<div class="<?php echo $controlGroupClass;?>" id="tr_bank_account_holder" <?php echo $style; ?>>
+										<label class="<?php echo $controlLabelClass;?>"><?php echo Text::_('JD_ACCOUNT_HOLDER_NAME'); ?><span class="required">*</span></label>
+
+										<div class="<?php echo $controlsClass;?>"><input type="text" name="x_bank_acct_name" class="<?php echo $inputLargeClass;?> validate[required]" value="<?php echo $this->input->get('x_bank_acct_name', '', 'none'); ?>" size="40"/></div>
+									</div>
+									<?php
+								}
+								?>
+							</div>
+						</div>
+					</div>
+					<?php
+                    if ($stripePaymentMethod !== null && method_exists($stripePaymentMethod, 'getParams'))
+                    {
+                        /* @var os_stripe $stripePaymentMethod */
+                        $params = $stripePaymentMethod->getParams();
+                        $useStripeCardElement = true;
+
+                        if ($useStripeCardElement)
+                        {
+                            if ($method->getName() === 'os_stripe')
+                            {
+                                $style = '';
+                            }
+                            else
+                            {
+                                $style = ' style = "display:none;" ';
+                            }
+                            ?>
+                            <div class="form-row payment_information" <?php echo $style; ?> id="stripe-card-form">
+                                <label for="stripe-card-element">
+                                    <?php echo Text::_('JD_CREDIT_OR_DEBIT_CARD'); ?><span class="required">*</span>
+                                </label>
+                                <div id="stripe-card-element">
+
+                                </div>
+                            </div>
+                            <?php
+                        }
+                    }
+					if ($hasSquareCard)
+					{
+						if (strpos($method->getName(), 'os_squarecard') !== false)
+						{
+							$style = '';
+						}
+						else
+						{
+							$style = ' style = "display:none;" ';
+						}
+						?>
+						<div class="form-row payment_information" <?php echo $style; ?> id="square-card-form">
+							<div class="">
+								<?php echo Text::_('JD_CREDIT_OR_DEBIT_CARD'); ?><span class="required">*</span>
+							</div>
+							<div class="" id="square-card-element">
+
+							</div>
+						</div>
+						<input type="hidden" name="square_card_token" value="" />
+						<input type="hidden" name="square_card_verification_token" value="" />
+					<?php
+					}
+					?>
+					
+					<div class="donation-default-form-group">
+						<div class="total_donated_amount" id="donatedAmount">
+							<?php
+							if($this->rdAmount > 0)
+							{
+								if((int) $this->donated_amount == 0)
+								{
+									$this->donated_amount = $this->rdAmount;
+								}
+								?>
+								<div class="donated-amount">
+									<div class="donated-amount-label">
+										<?php echo Text::_('JD_INCOME'); ?>
+									</div>
+									<div class="donated-amount-value">
+										<?php
+										echo DonationHelperHtml::formatAmount($config, $this->donated_amount, $this->config->currency_symbol);
+										?>
+									</div>
+								</div>
+								<?php
+							}
+							?>
+							<input type="hidden" name="gross_amount" id="gross_amount" value="<?php echo floatVal($this->donated_amount); ?>" />
+						</div>
+					</div>
+					<?php
+                     
+                    if ($this->config->show_newsletter_subscription == 1 && DonationHelper::isNewsletterPluginEnabled()){
+                        ?>
+                        <div class="form-row">
+							<div class="donation-default-form-group">
+								<label class="sbjtitle">
+									<?php echo Text::_('JD_SUBSCRIBE_TO_NEWSLETTER'); ?>
+								</label>
+                                <input type="checkbox" class="form-check-input" name="newsletter_subscription" value="1" id="newsletter_subscription" />
+                            </div>
+                        </div>
+                        <?php
+                    }
+
+					if($this->config->accept_term == 1 || $this->config->show_privacy)
+					{
+						$term_link = "";
+						$privacy_link = "";
+						if ($this->config->accept_term ==1 && $this->config->article_id > 0)
+						{
+							$articleId = $this->config->article_id;
+
+							if (Multilanguage::isEnabled())
+							{
+								$associations = Associations::getAssociations('com_content', '#__content', 'com_content.item', $articleId);
+								$langCode     = Factory::getApplication()->getLanguage()->getTag();
+
+								if (isset($associations[$langCode]))
+								{
+									$article = $associations[$langCode];
+								}
+							}
+
+							
+							if (!isset($article))
+							{
+								
+								$query = $db->getQuery(true);
+								$query->select('id, catid')
+									->from('#__content')
+									->where('id = ' . (int) $articleId);
+								$db->setQuery($query);
+								$article = $db->loadObject();
+							}
+
+							$term_link = RouteHelper::getArticleRoute($article->id, $article->catid);
+							$term_link .=  '&tmpl=component&format=html';
+						}
+						
+						if ($this->config->show_privacy)
+						{
+							if ($this->config->privacy_policy_article_id > 0)
+							{
+								$privacyArticleId = $this->config->privacy_policy_article_id;
+
+								if (Multilanguage::isEnabled())
+								{
+									$associations = Associations::getAssociations('com_content', '#__content', 'com_content.item', $privacyArticleId);
+									$langCode     = Factory::getApplication()->getLanguage()->getTag();
+									if (isset($associations[$langCode]))
+									{
+										$privacyArticle = $associations[$langCode];
+									}
+								}
+
+								if (!isset($privacyArticle))
+								{
+									$query = $db->getQuery(true);
+									$query->select('id, catid')
+										->from('#__content')
+										->where('id = ' . (int) $privacyArticleId);
+									$db->setQuery($query);
+									$privacyArticle = $db->loadObject();
+								}
+
+								$privacy_link = RouteHelper::getArticleRoute($privacyArticle->id, $privacyArticle->catid);
+								$privacy_link .=  '&tmpl=component&format=html';
+							}
+						}
+						
+						?>
+						
+						<div class="form-footer term-group">
+							<input type="checkbox" name="accept_term" value="1" class="validate[required] form-check-input" data-errormessage="<?php echo Text::_('JD_ACCEPT_TERMS');?>" />
+					        <label class="accept_terms">
+								<?php echo Text::_('JD_I_ACCEPT');?>
+								<?php
+								if($term_link != "")
+								{
+									?>
+									<a href="<?php echo $term_link?>" class="jd-modal" title="<?php echo Text::_('JD_TERM_AND_CONDITION');?>">
+										<?php echo Text::_('JD_TERM');?>
+									</a>
+									<?php
+									if($privacy_link != "")
+									echo " ".Text::_('JD_AND');
+								}
+								if($privacy_link != "")
+								{
+									?>
+									<a href="<?php echo $privacy_link?>" class="jd-modal" title="<?php echo Text::_('JD_PRIVACY_POLICY');?>">
+										<?php echo Text::_('JD_PRIVACY');?>
+									</a>
+									<?php
+								}
+								?>
+								
+							</label>
+						</div>
+						<?php 
+					}
+
+					if($this->showCaptcha)
+					{
+						$showCaptcha = (!$this->userId && $this->config->enable_captcha_with_public_user == 1)
+									|| ($this->config->enable_captcha_with_public_user == 0);
+
+						if ($showCaptcha) : ?>
+							<div class="donation-default-form-group">
+								<label for="captcha" class="sbjtitle">
+									<?php echo Text::_('JD_CAPTCHA'); ?>
+								</label>
+								<div class="captcha-box">
+									<?php echo $this->captcha; ?>
+								</div>
+							</div>
+						<?php endif;      
+					}
+                ?>
+                <div class="form-actions">
+                    <input type="submit" class="donation-submit-btn" name="btnSubmit" id="btn-submit" value="<?php echo  Text::_('JD_PROCESS_DONATION') ;?>" />
+                </div>
+                <?php
+                    if (count($this->methods) == 1)
+                    {
+                    ?>
+                        <input type="hidden" name="payment_method" value="<?php echo $this->methods[0]->getName(); ?>" />
+                    <?php
+                    }
+                    if (!$this->config->enable_recurring)
+                    {
+                    ?>
+                        <input type="hidden" name="donation_type" value="onetime" />
+                    <?php
+                    }
+                    if (!$this->showCampaignSelection)
+                    {
+                    ?>
+                        <input type="hidden" id="campaign_id" name="campaign_id" value="<?php echo $this->campaignId; ?>" />
+                    <?php
+                    }
+                ?>
+                <input type="hidden" name="validate_form_login" value="<?php echo $validateLoginForm; ?>" />
+                <input type="hidden" name="receive_user_id" value="<?php echo $this->input->getInt('receive_user_id'); ?>" />
+                <input type="hidden" name="field_campaign" value="<?php echo $this->config->field_campaign; ?>" />
+                <input type="hidden" name="amount_by_campaign" value="<?php echo $this->config->amount_by_campaign; ?>" />
+                <input type="hidden" name="enable_recurring" value="<?php echo $this->config->enable_recurring; ?>" />
+                <input type="hidden" name="count_method" value="<?php echo count($this->methods); ?>" />
+                <input type="hidden" name="current_campaign" value="<?php echo $this->campaignId; ?>" />
+                <input type="hidden" name="donation_page_url" value="<?php echo $this->donationPageUrl; ?>" />
+                <input type="hidden" id="card-nonce" name="nonce" />
+                <input type="hidden" name="task" value="donation.process" />
+				<input type="hidden" name="smallinput" id="smallinput" value="<?php echo $inputSmallClass; ?>" />
+				<input type="hidden" name="activate_dedicate" id="activate_dedicate" value="<?php echo $this->show_dedicate;?>" />
+				<input type="text"   name="jd_my_own_website_name" value="" autocomplete="off" class="jd_invisible_to_visitors" />
+				<input type="hidden" name="<?php echo DonationHelper::getHashedFieldName(); ?>" value="<?php echo time(); ?>" />
+				<?php
+				if (!$show_currency_selection || $this->campaign->currency != "")
+                {
+					if($this->campaign->currency != "")
+					{
+						$this->config->currency = $this->campaign->currency;
+					}
+					?>
+					<input type="hidden" name="currency_code" id="currency_code" value="<?php echo $this->config->currency; ?>" />
+					<?php
+				}
+				?>
+				<!-- Version 5.6.13 -->
+				<?php
+				if(count($this->rowCampaigns))
+				{
+					foreach($this->rowCampaigns as $campaign)
+					{
+						?>
+						<input type="hidden" name="curr_<?php echo $campaign->id; ?>" id="curr_<?php echo $campaign->id; ?>" value="<?php echo DonationHelper::getCurrencyName($campaign->currency); ?>" />
+						<?php
+					}
+				}
+				?>
+                <?php echo HTMLHelper::_( 'form.token' ); ?>
+                <script type="text/javascript">
+                    var amountInputCssClasses = '<?php echo "validate[required,custom[number] $amountValidationRules ] ".$inputSmallClass; ?>';
+                    <?php echo os_jdpayments::writeJavascriptObjects() ; ?>
+                    JD.jQuery(function($){
+                        $(document).ready(function(){
+                            $("#os_form").validationEngine('attach', {
+                                onValidationComplete: function(form, status){
+                                    if (status == true) {
+                                        form.on('submit', function(e) {
+                                            e.preventDefault();
+                                        });
+
+                                        form.find('#btn-submit').prop('disabled', true);
+
+
+                                        if($('input:radio[name^=payment_method]').length)
+                                        {
+                                            var paymentMethod = $('input:radio[name^=payment_method]:checked').val();
+                                        }
+                                        else
+                                        {
+                                            var paymentMethod = $('input[name^=payment_method]').val();
+                                        }
+
+                                        if (typeof stripePublicKey !== 'undefined' && paymentMethod.indexOf('os_stripe') == 0 && $('#tr_card_number').is(':visible'))
+                                        {
+                                            Stripe.card.createToken({
+                                                number: $('input[name^=x_card_num]').val(),
+                                                cvc: $('input[name^=x_card_code]').val(),
+                                                exp_month: $('select[name^=exp_month]').val(),
+                                                exp_year: $('select[name^=exp_year]').val(),
+                                                name: $('input[name^=card_holder_name]').val()
+                                            }, stripeResponseHandler);
+
+                                            return false;
+                                        }
+
+                                        // Stripe card element
+                                        if (typeof stripe !== 'undefined' && paymentMethod.indexOf('os_stripe') == 0 && $('#stripe-card-form').is(":visible"))
+                                        {
+                                            stripe.createToken(card).then(function(result) {
+                                                if (result.error) {
+                                                    // Inform the customer that there was an error.
+                                                    //var errorElement = document.getElementById('card-errors');
+                                                    //errorElement.textContent = result.error.message;
+                                                    alert(result.error.message);
+													form.find('#btn-submit').prop('disabled', false);
+                                                } else {
+                                                    // Send the token to your server.
+                                                    stripeTokenHandler(result.token);
+                                                }
+                                            });
+
+                                            return false;
+                                        }
+
+                                        if (paymentMethod == 'os_squareup' && $('#tr_card_number').is(':visible'))
+                                        {
+                                            sqPaymentForm.requestCardNonce();
+
+                                            return false;
+                                        }
+
+										if (paymentMethod.indexOf('os_squarecard') === 0 && $('#square-card-form').is(':visible')) {
+											squareCardCallBackHandle();
+
+											return false;
+										}
+
+                                        return true;
+                                    }
+                                    return false;
+                                }
+                            });
+
+							if (Joomla.getOptions('squareAppId')) {
+								createSquareCardElement();
+							}
+
+                            if (typeof stripe !== 'undefined')
+                            {
+                                var style = {
+                                    base: {
+                                        // Add your base input styles here. For example:
+                                        fontSize: '16px',
+                                        color: "#32325d",
+                                    }
+                                };
+
+                                // Create an instance of the card Element.
+								//card = elements.create('card', {hidePostalCode: true, style: style});
+                                var card = elements.create('card', {style: style});
+
+                                // Add an instance of the card Element into the `card-element` <div>.
+                                card.mount('#stripe-card-element');
+                            }
+
+                            if($("[name*='validate_form_login']").val() == 1)
+                            {
+                                JDVALIDATEFORM("#jd-login-form");
+                            }
+                            <?php
+                                if (isset($fields['state']) && StringHelper::strtolower($fields['state']->type) == 'state')
+                                {
+                                ?>
+                                    buildStateField('state', 'country', '<?php echo $selectedState; ?>');
+                                <?php
+                                }
+                            ?>
+                        })
+                    });
+                </script>
+            </form>
+            <?php
+            if($this->campaign->id > 0 && $this->config->show_campaign == 1) {
+                ?>
+                </div>
+                </div>
+                <?php
+            }
+    }
+    else
+    {
+        ?>
+        <div class="<?php echo $rowFluidClass?>">
+            <div class="<?php echo $span12Class;?> campaigndescription" id="donation_form">
+                <h3>
+                    <?php echo Text::_('JD_DISABLE_DONATION');?>
+                </h3>
+                <?php
+                echo Text::_('JD_REASON').": ".$msg;
+                ?>
+            </div>
+        </div>
+        <?php
+    }
+    ?>
+    </div>
+</div>
+<?php
+	$rowCampaigns  = $this->rowCampaigns ;
+	for ($j = 0 , $m = count($rowCampaigns) ; $j < $m ; $j++)
+	{
+		$campaign = $rowCampaigns[$j];
+		?>
+		<div id="campaign_recurring_frequency_<?php echo $campaign->id; ?>" style="display: none;">
+			<?php
+			if($campaign->recurring_frequencies == "")
+			{
+				$campaign->recurring_frequencies = $this->config->recurring_frequencies;
+			}
+			if(($campaign->donation_type == 0 || $campaign->donation_type == 2) && $campaign->recurring_frequencies != "")
+			{
+				$options = array();
+				$options[] = HTMLHelper::_('select.option', '',Text::_('JD_SELECT')) ;
+
+				$recurringFrequencies = explode(',', $campaign->recurring_frequencies);
+				if (in_array('d', $recurringFrequencies))
+				{
+					$options[] = HTMLHelper::_('select.option', 'd',Text::_('JD_DAILY'));
+				}
+				if (in_array('w', $recurringFrequencies))
+				{
+					$options[] = HTMLHelper::_('select.option', 'w',Text::_('JD_WEEKLY'));
+				}
+				if (in_array('b', $recurringFrequencies))
+				{
+					$options[] = HTMLHelper::_('select.option', 'b',Text::_('JD_BI_WEEKLY'));
+				}
+				if (in_array('m', $recurringFrequencies))
+				{
+					$options[] = HTMLHelper::_('select.option', 'm',Text::_('JD_MONTHLY'));
+				}
+				if (in_array('q', $recurringFrequencies))
+				{
+					$options[] = HTMLHelper::_('select.option', 'q',Text::_('JD_QUARTERLY'));
+				}
+				if (in_array('s', $recurringFrequencies))
+				{
+					$options[] = HTMLHelper::_('select.option', 's',Text::_('JD_SEMI_ANNUALLY'));
+				}
+				if (in_array('a', $recurringFrequencies))
+				{
+					$options[] = HTMLHelper::_('select.option', 'a',Text::_('JD_ANNUALLY'));
+				}
+				echo HTMLHelper::_('select.genericlist', $options, 'r_frequency', ' class="form-select validate[required]" ', 'value', 'text', Factory::getApplication()->input->get('r_frequency', '')) ;
+			}
+			?>
+		</div>
+		<?php
+	}
+	for ($j = 0 , $m = count($rowCampaigns) ; $j < $m ; $j++)
+	{
+		$rowCampaign = $rowCampaigns[$j];
+		?>
+		<input type="hidden" name="activate_dedicate_<?php echo $rowCampaign->id;?>" id="activate_dedicate_<?php echo $rowCampaign->id;?>" value="<?php echo (int) $rowCampaign->activate_dedicate; ?>" />
+		<?php
+	}
+
+	if ($this->config->amount_by_campaign)
+	{
+		for ($j = 0 , $m = count($rowCampaigns) ; $j < $m ; $j++)
+		{
+            $rowCampaign = $rowCampaigns[$j] ;
+
+            ?>
+			<div id="campaign_<?php echo $rowCampaign->id; ?>" style="display: none;">
+			<?php
+			$explanations = explode("\r\n", $rowCampaign->amounts_explanation) ;
+			$amounts = explode("\r\n", $rowCampaign->amounts);
+			$amountSelected = false;
+			if (!$this->config->display_amount_textbox)
+			{
+				$extraClass = "validate[required]";
+			}
+			
+			?>
+			<div class="donation-default-switch-amounts">
+			<?php
+			for ($i = 0 , $n = count($amounts) ; $i < $n ; $i++)
+			{
+				$amount = $amounts[$i] ;
+				if(strpos($amount, "[c]") > 0)
+				{
+					$amount = substr($amount, 0, strpos($amount, "[c]"));
+					if((int)$this->rdAmount == 0)
+					{
+						$this->rdAmount = $amount;
+					}
+				}
+				$amount = (float)$amount ;
+				if ($amount == $this->rdAmount)
+				{
+					$amountSelected = true;
+					$checked = ' checked="checked" ' ;
+				}
+				else
+				{
+					$checked = '' ;
+				}
+			?>
+				
+				<input type="radio" name="rd_amount" id="pre_amount_campaign_<?php echo  $rowCampaign->id; ?>_<?php echo $i;?>" value="<?php echo $amount; ?>" class="<?php echo $extraClass; ?>" <?php echo $checked ; ?> onclick="clearTextbox();" />
+				<label for="pre_amount_campaign_<?php echo  $rowCampaign->id; ?>_<?php echo $i;?>">
+					<?php echo ' '.DonationHelperHtml::formatAmount($this->config, $amount) ;?>
+				<?php
+					if (isset($explanations[$i]) && $explanations[$i])
+					{
+						if($this->config->show_brackets)
+						{
+							echo '   <span class="amount_explaination">[ '.$explanations[$i].' ]</span>  ' ;
+						}
+						else
+						{
+							echo '   <span class="amount_explaination">'.$explanations[$i].'</span>  ' ;
+						}
+					}
+				?>
+				</label>
+			<?php
+			}
+			?>
+			</div>
+			<?php
+
+			if($rowCampaign->display_amount_textbox == 1)
+			{
+				$display_amount_textbox = 0;
+			}
+			elseif($rowCampaign->display_amount_textbox == 2)
+			{
+				$display_amount_textbox = 1;
+			}
+			else
+			{
+				$display_amount_textbox = (int)$this->config->display_amount_textbox;
+			}
+
+			if ($display_amount_textbox == 1)
+			{
+				if ($amountSelected)
+				{
+					$amountCssClass = 'validate[custom[number]'.$amountValidationRules.'] '.$inputSmallClass;
+				}
+				else
+				{
+					$amountCssClass = 'validate[required,custom[number]'.$amountValidationRules.'] '.$inputSmallClass;
+				}
+				if ($rowCampaign->amounts)
+				{
+					$placeHolder = Text::_('JD_OTHER_AMOUNT');
+				}
+				else
+				{
+					$placeHolder = '';
+				}
+
+				if ($this->config->currency_position == 0)
+				{
+					$addons = $this->config->currency_symbol;
+					$input  = '<input type="text" placeholder="'.$placeHolder.'" class="'.$amountCssClass.'" size="10" name="amount" id="amount" value="'.$this->amount.'" onchange="deSelectRadio();" data-errormessage="'.Text::_('JD_AMOUNT_IS_REQUIRED').'" data-errormessage-range-underflow="'.Text::sprintf('JD_MIN_DONATION_AMOUNT_ALLOWED', $this->config->minimum_donation_amount).'" data-errormessage-range-overflow="'.Text::sprintf('JD_MAX_DONATION_AMOUNT_ALLOWED', $this->config->maximum_donation_amount).'" />';
+					echo  $bootstrapHelper->getPrependAddon($input,$addons);
+				}
+				else
+				{
+					$addons = $this->config->currency_symbol;
+					$input  = '<input type="text" placeholder="'.$placeHolder.'" class="'.$amountCssClass.'" size="10" name="amount" id="amount" value="'.$this->amount.'" onchange="deSelectRadio();" data-errormessage="'.Text::_('JD_AMOUNT_IS_REQUIRED').'" data-errormessage-range-underflow="'.Text::sprintf('JD_MIN_DONATION_AMOUNT_ALLOWED', $this->config->minimum_donation_amount).'" data-errormessage-range-overflow="'.Text::sprintf('JD_MAX_DONATION_AMOUNT_ALLOWED', $this->config->maximum_donation_amount).'" />';
+					echo $bootstrapHelper->getAppendAddon($input,$addons);
+				}
+			}
+		?>
+		</div>
+		<?php
+		}
+	}
+?>
+
+<div style="display:none;" id="recurringFrequencyBackup">
+<?php
+	if (count((array)$this->recurringFrequencies) > 1)
+	{
+		echo $this->lists['r_frequency'];
+	}
+	else
+	{
+		$frequency = $this->recurringFrequencies[0];
+		switch($frequency)
+		{
+			case 'd':
+				echo Text::_('JD_DAILY');
+				break;
+			case 'w':
+				echo Text::_('JD_WEEKLY');
+				break;
+			case 'b':
+				echo Text::_('JD_BI_WEEKLY');
+				break;
+			case 'm':
+				echo Text::_('JD_MONTHLY');
+				break;
+			case 'q':
+				echo Text::_('JD_QUARTERLY');
+				break;
+			case 's':
+				echo Text::_('JD_SEMI_ANNUALLY');
+				break;
+			case 'a':
+				echo Text::_('JD_ANNUALLY');
+				break;
+		}
+		?>
+		<input type="hidden" name="r_frequency" value="<?php echo $frequency; ?>" />
+		<?php
+	}
+?>
+</div>
+<div style="display:none;" id="amount_container_backup">
+<?php
+	$amountSelected = false;
+	if ($this->config->donation_amounts)
+	{
+		$explanations = explode("\r\n", $this->config->donation_amounts_explanation) ;
+		$amounts = explode("\r\n", $this->config->donation_amounts);
+		if($this->amount == 0){
+			$extraValidateClass = "validate[required]";
+		}else{
+			$extraValidateClass = "";
+		}
+		
+			for ($i = 0 , $n = count($amounts) ; $i < $n ; $i++)
+			{
+				$amount = (float)$amounts[$i] ;
+				if ($amount == $this->rdAmount)
+				{
+					$amountSelected = true;
+					$checked = ' checked="checked" ' ;
+				}
+				else
+				{
+					$checked = '' ;
+				}
+
+				
+			?>
+				
+			<input type="radio" name="rd_amount" id="pre_amount_<?php echo $i; ?>" class="<?php echo $extraValidateClass; ?>" value="<?php echo $amount; ?>" <?php echo $checked ; ?> onclick="clearTextbox();" data-errormessage="<?php echo Text::_('JD_AMOUNT_IS_REQUIRED'); ?>" />
+			<label for="pre_amount_<?php echo $i; ?>">
+					<?php echo ' '.DonationHelperHtml::formatAmount($this->config, $amount);?>
+				<?php
+				if (isset($explanations[$i]) && trim($explanations[$i]) != "")
+				{
+					if($this->config->show_brackets)
+					{
+						echo '   <span class="amount_explaination">[ '.$explanations[$i].' ]</span>  ' ;
+					}
+					else
+					{
+						echo '   <span class="amount_explaination">'.$explanations[$i].'</span>  ' ;
+					}
+				}
+				?>
+			</label>
+		<?php
+		}
+	}
+	if ($this->config->display_amount_textbox)
+	{
+		if ($this->config->donation_amounts)
+		{
+			$placeHolder = Text::_('JD_OTHER_AMOUNT');
+		}
+		else
+		{
+			$placeHolder = '';
+		}
+		if ($amountSelected)
+		{
+			$amountCssClass = 'validate[custom[number]'.$amountValidationRules.'] '.$inputSmallClass;
+		}
+		else
+		{
+			$amountCssClass = 'validate[required,custom[number]'.$amountValidationRules.'] '.$inputSmallClass;
+		}
+		if ($this->config->currency_position == 0)
+		{
+			$addons = $this->config->currency_symbol;
+			$input  = '<input type="number" placeholder="'.$placeHolder.'" class="'.$amountCssClass.'" size="10" name="amount" id="amount" value="'.$this->amount.'" onchange="deSelectRadio();" data-errormessage="'.Text::_('JD_AMOUNT_IS_REQUIRED').'" data-errormessage-range-underflow="'.Text::sprintf('JD_MIN_DONATION_AMOUNT_ALLOWED', $this->config->minimum_donation_amount).'" data-errormessage-range-overflow="'.Text::sprintf('JD_MAX_DONATION_AMOUNT_ALLOWED', $this->config->maximum_donation_amount).'" />';
+			echo $bootstrapHelper->getPrependAddon($input,$addons);
+		}
+		else
+		{
+			$addons = $this->config->currency_symbol;
+			$input  = '<input type="number" placeholder="'.$placeHolder.'" class="'.$amountCssClass.'" size="10" name="amount" id="amount" value="'.$this->amount.'" onchange="deSelectRadio();" data-errormessage="'.Text::_('JD_AMOUNT_IS_REQUIRED').'" data-errormessage-range-underflow="'.Text::sprintf('JD_MIN_DONATION_AMOUNT_ALLOWED', $this->config->minimum_donation_amount).'" data-errormessage-range-overflow="'.Text::sprintf('JD_MAX_DONATION_AMOUNT_ALLOWED', $this->config->maximum_donation_amount).'" />';
+			echo $bootstrapHelper->getAppendAddon($input,$addons);
+		}
+	}
+?>
+</div>
+
+<script type="text/javascript">
+(function (document, $) {
+    $(document).ready(function () {
+        // This is here for backward compatible purpose        
+        JDMaskInputs(document.getElementById('os_form'));
+    });
+})(document, jQuery);
+</script>

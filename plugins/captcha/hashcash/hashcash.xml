@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extension type="plugin" group="captcha" method="upgrade">
+	<name>plg_captcha_hashcash</name>
+	<version>5.2.17</version>
+	<creationDate>2017-11</creationDate>
+	<author>Michael Richey</author>
+	<authorEmail>michael@richeyweb.com</authorEmail>
+	<authorUrl>https://www.richeyweb.com</authorUrl>
+	<copyright>(C) 2017 Michael Richey.</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<description>PLG_CAPTCHA_HASHCASH_XML_DESCRIPTION</description>
+	<namespace path="src">Joomla\Plugin\Captcha\HashCash</namespace>
+    <media folder="media" destination="plg_captcha_hashcash">
+		<folder>js</folder>
+    </media>
+	<files>
+		<folder plugin="hashcash">services</folder>
+		<folder>src</folder>
+	</files>
+	<languages>
+		<language tag="en-GB">language/en-GB/plg_captcha_hashcash.ini</language>
+		<language tag="en-GB">language/en-GB/plg_captcha_hashcash.sys.ini</language>
+	</languages>
+	<config>
+		<fields name="params">
+			<fieldset name="basic">
+                <field name="difficulty" type="number" default="3"
+                    min="1" max="5" step="1"
+                   label="PLG_CAPTCHA_HASHCASH_DIFFICULTY_LABEL"
+                   description="PLG_CAPTCHA_HASHCASH_DIFFICULTY_DESC"
+                   required="true" />
+				<field name="delaystart" type="radio" default="1"
+					label="PLG_CAPTCHA_HASHCASH_DELAYSTART_LABEL"
+					description="PLG_CAPTCHA_HASHCASH_DELAYSTART_DESC"
+					required="true"
+					class="btn-group btn-group-yesno">
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+				<field name="knownforms" type="radio" default="1"
+					label="PLG_CAPTCHA_HASHCASH_KNOWNFORMS_LABEL"
+					description="PLG_CAPTCHA_HASHCASH_KNOWNFORMS_DESC"
+					required="true"
+					class="btn-group btn-group-yesno">
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+				<field name="cdp" type="radio" default="0"
+					label="PLG_CAPTCHA_HASHCASH_CDP_LABEL"
+					description="PLG_CAPTCHA_HASHCASH_CDP_DESC"
+					required="true"
+					class="btn-group btn-group-yesno"
+					showon="delaystart:1"
+				>
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>	
+				<field name="nonce" type="radio" default="0"
+					label="PLG_CAPTCHA_HASHCASH_NONCE_LABEL"
+					description="PLG_CAPTCHA_HASHCASH_NONCE_DESC"
+					required="true"
+					class="btn-group btn-group-yesno"
+					showon="delaystart:1"
+				>
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+				<field name="trigger" type="radio" default="0"
+					label="PLG_CAPTCHA_HASHCASH_TRIGGER_LABEL"
+					description="PLG_CAPTCHA_HASHCASH_TRIGGER_DESC"
+					required="true"
+					class="btn-group btn-group-yesno"
+					showon="delaystart:1"
+				>
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+				<field name="punish" type="radio" default="0"
+					label="PLG_CAPTCHA_HASHCASH_PUNISH_LABEL"
+					description="PLG_CAPTCHA_HASHCASH_PUNISH_DESC"
+					required="true"
+					class="btn-group btn-group-yesno"
+					showon="delaystart:1"
+				>
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+			</fieldset>
+		</fields>
+	</config>
+    <updateservers>
+        <server type="extension" priority="1" name="RicheyWeb Update Site">https://cdn.richeyweb.com/updates/hashcash.xml</server>
+    </updateservers>
+</extension>

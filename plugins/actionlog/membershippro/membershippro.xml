@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.9.0" type="plugin" group="actionlog" method="upgrade">
+    <name>Action Log - Membership Pro</name>
+    <author>Tuan Pham Ngoc</author>
+    <creationDate>Feb 2020</creationDate>
+    <copyright>Ossolution Team</copyright>
+    <license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+    <authorEmail>tuanpn@joomdonation.com</authorEmail>
+    <authorUrl>www.joomdonation.com</authorUrl>
+    <version>4.2.2</version>
+    <description>Automatically log user actions performed on Membershp Pro component inside Joomla! User Actions Log
+    </description>
+    <files>
+        <filename plugin="membershippro">membershippro.php</filename>
+    </files>
+    <languages folder="language">
+        <language tag="en-GB">en-GB/en-GB.plg_actionlog_membershippro.ini</language>
+    </languages>
+</extension>

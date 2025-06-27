@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="2.5.0" type="plugin" group="eshop" method="upgrade">
+    <name>EShop - Also Bought plugin</name>
+    <author>Giang Dinh Truong</author>
+    <creationDate>05-15-2019</creationDate>
+    <copyright>Ossolution Team</copyright>
+    <license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+    <authorEmail>contact@joomdonation.com</authorEmail>
+    <authorUrl>www.joomdonation.com</authorUrl>
+    <version>4.0.2</version>
+    <description>This plugin to show a list of products which are bought by other customers when they bought the current product.</description>
+    <files>
+        <filename plugin="alsobought">alsobought.php</filename>
+    </files>
+</extension>

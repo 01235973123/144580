@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="5.10.0" type="plugin" group="installer" method="upgrade">
+	<name>Joom Donation Update Package</name>
+	<author>Dang Thuc Dam</author>
+	<creationDate>February 2017</creationDate>
+	<copyright>Copyright (C) 20011 - 2023 Open Source Matters. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<authorEmail>damdt@joomservices.com</authorEmail>
+	<authorUrl>www.joomdonation.com</authorUrl>
+	<version>5.10.0</version>
+	<description>Update package to update your site to latest version of Joom Donation</description>
+	<files>
+		<filename plugin="jdonation">jdonation.php</filename>
+	</files>
+</extension>

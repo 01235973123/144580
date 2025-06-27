@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.9.0" type="plugin" group="osmembership" method="upgrade">
+    <name>Membership Pro - Mailchimp</name>
+    <author>Tuan Pham Ngoc</author>
+    <authorEmail>tuanpn@joomdonation.com</authorEmail>
+    <authorUrl>https://joomdonation.com</authorUrl>
+    <copyright>Copyright (C) 2012 - 2025 Ossolution Team</copyright>
+    <license>GNU General Public License version 3, or later</license>
+    <creationDate>Nov 2012</creationDate>
+    <version>4.2.2</version>
+    <description>This plugin is used to add subscribers to Mailchimp when they sign up for a subscription plan in
+        Membership Pro extension
+    </description>
+    <files>
+        <filename plugin="mailchimp">mailchimp.php</filename>
+        <folder>api</folder>
+        <folder>tmpl</folder>
+    </files>
+	<languages folder="language">
+		<language tag="en-GB">en-GB/en-GB.plg_osmembership_mailchimp.ini</language>		
+	</languages>
+    <config>
+        <fields name="params">
+            <fieldset name="basic">
+                <field name="api_key" type="text" size="60" default="" label="API Key"
+                       description="Your Mailchimp API Key"/>
+                <field name="double_optin" type="list" label="Double opt-in"
+                       default="0">
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </field>
+                <field
+                        name="subscribe_group_members"
+                        type="radio"
+                        label="Subscribe Group Members"
+                        description="If set to No, group members won't be subscribed to MailChimp"
+                        class="btn-group btn-group-yesno"
+                        default="1"
+                >
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+                <field
+                        name="show_on_frontend"
+                        type="radio"
+                        label="Show On Frontend"
+                        description="If set to Yes, this plugin will be available on frontend add/edit plan form"
+                        class="btn-group btn-group-yesno"
+                        default="0"
+                >
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+            </fieldset>
+        </fields>
+    </config>
+</extension>

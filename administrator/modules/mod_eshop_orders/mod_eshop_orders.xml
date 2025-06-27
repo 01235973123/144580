@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" client="administrator" method="upgrade" version="3.9.0" position="cpanel">
+<name>EShop - Latest Orders</name>
+<author>Giang Dinh Truong</author>
+<creationDate>January 2025</creationDate>
+<copyright>Copyright 2012 - 2025 Ossolution Team</copyright>
+<authorEmail>giangdt@joomdonation.com</authorEmail>
+<authorUrl>https://joomdonation.com</authorUrl>
+<version>1.0.0</version>
+<description>Display Latest Orders from EShop.</description>
+<files>
+    <filename module="mod_eshop_orders">mod_eshop_orders.php</filename>
+    <folder>tmpl</folder>
+</files>
+<config>
+    <fields name="params">
+			<fieldset name="basic">
+            <field
+                    name="count"
+                    type="number"
+                    label="Number Orders"
+                    description="Number Orders which will be displayed in the module"
+                    default="10"
+                    filter="integer"
+            />
+        </fieldset>
+    </fields>
+</config>
+</extension>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="COM_OSMEMBERSHIP_VIEW_PLAN_DEFAULT_TITLE">
+		<message>
+			<![CDATA[COM_OSMEMBERSHIP_VIEW_PLAN_DEFAULT_DESCRIPTION]]>
+		</message>
+	</layout>	
+	<fields name="request">			
+		<fieldset name="request"
+			addfieldpath="/administrator/components/com_osmembership/model/fields">
+			<field name="id" type="osmplan" size="3" default="" required="true" label="Select Plan" description="Select Subscription Plan which you want to link to" />
+		</fieldset>	
+	</fields>
+	<fields name="params">
+		<fieldset name="basic">
+			<field name="show_plan_information" type="list" label="Show Plan Information" description="Choose to show/hide plan information such as Duration, Price, Setup Fee..." default="1">
+				<option value="0">No</option>
+				<option value="1">Yes</option>
+			</field>
+			<field name="plan_information_position" type="list" default="0" label="Plan Information Position"
+				   description="Choose where to show plan information" showon="show_plan_information:1">
+				<option value="0">Right</option>
+				<option value="1">Top</option>
+				<option value="2">Bottom</option>
+			</field>
+		</fieldset>
+	</fields>
+</metadata>

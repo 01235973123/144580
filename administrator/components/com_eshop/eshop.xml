@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="component" version="1.6.0" method="upgrade">
+	<name>EShop</name>
+	<creationDate>May 2013</creationDate>
+	<author>Giang Dinh Truong</author>
+	<authorEmail>contact@joomdonation.com</authorEmail>
+	<authorUrl>http://www.joomdonation.com</authorUrl>
+	<copyright>Copyright (C) 2012 - 2024 Ossolution Team</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<version>4.0.2</version>
+	<description>Powerful and Responsive Shopping Cart Extension for Joomla!</description>
+	<install>
+		<sql>
+			<file driver="mysql" charset="utf8">sql/install.eshop.sql</file>
+		</sql>
+	</install>
+	<media destination="com_eshop" folder="site/media">
+		<folder>assets</folder>
+		<folder>attachments</folder>
+		<folder>categories</folder>
+		<folder>downloads</folder>
+		<folder>files</folder>
+		<folder>flags</folder>
+		<folder>invoices</folder>
+		<folder>labels</folder>
+		<folder>manufacturers</folder>
+		<folder>options</folder>
+		<folder>payments</folder>
+		<folder>pdf</folder>
+		<folder>products</folder>
+		<filename>index.html</filename>
+		<filename>logo_eshop.png</filename>
+	</media>
+	<languages>
+		<language tag="en-GB">site/languages/en-GB/en-GB.com_eshop.ini</language>
+	</languages>
+	<files folder="site">
+		<folder>assets</folder>
+		<folder>controllers</folder>
+		<folder>helpers</folder>
+		<folder>models</folder>
+		<folder>plugins</folder>
+		<folder>tcpdf</folder>
+		<folder>themes</folder>
+		<folder>views</folder>
+		<filename>controller.php</filename>
+		<filename>eshop.php</filename>
+		<filename>fields.xml</filename>
+		<filename>index.html</filename>
+		<filename>router.php</filename>
+	</files>
+	<administration>
+		<menu>Eshop</menu>
+		<languages>
+			<language tag="en-GB">admin/languages/en-GB/en-GB.com_eshop.sys.ini</language>
+			<language tag="en-GB">admin/languages/en-GB/en-GB.com_eshop.ini</language>
+		</languages>
+		<files folder="admin">
+			<folder>assets</folder>
+			<folder>controllers</folder>
+			<folder>elements</folder>
+			<folder>libraries</folder>
+			<folder>models</folder>
+			<folder>sql</folder>
+			<folder>tables</folder>
+			<folder>views</folder>
+			<filename>controller.php</filename>
+			<filename>eshop.php</filename>
+			<filename>access.xml</filename>
+			<filename>config.xml</filename>
+			<filename>index.html</filename>
+		</files>
+	</administration>
+</extension>

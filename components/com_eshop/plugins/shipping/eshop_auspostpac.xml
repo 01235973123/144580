@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<install version="1.0" type="eshopplugin" group="shipping">
+	<name>eshop_auspostpac</name>
+	<title>AusPost - Postage Assesment Calculator</title>
+	<author>Giang Dinh Truong</author>
+	<creationDate>May 2013</creationDate>
+	<copyright>Copyright 2013 Ossolution Team</copyright>
+	<license>http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU/GPL version 2</license>
+	<authorEmail>contact@joomdonation.com</authorEmail>
+	<authorUrl>www.joomdonation.com</authorUrl>
+	<version>4.0.2</version>
+	<description>This is Australia Post Shipping method for Eshop</description>
+	<config>
+		<fields name="params" addfieldpath="/administrator/components/com_eshop/elements/">
+			<fieldset name="basic">
+				<field name="min_total" type="text" label="Min Total" description="If the total amount reach Min Total, then the AusPost - Postage Assesment Calculator shipping will be disable and the Free Shipping will be available. Leave 0 if you do not want to use it." size="5" default="0"></field>
+				<field name="min_quantity" type="text" label="Min Quantity" description="If the total quantity reach Min Quantity, then the AusPost - Postage Assesment Calculator shipping will be disable and the Free Shipping will be available. Leave 0 if you do not want to use it." size="5" default="0"></field>
+				<field name="min_weight" type="text" label="Min Weight" description="If the total weight reach Min Weight then the AusPost - Postage Assesment Calculator shipping will be disable and the Free Shipping will be available. Leave 0 if you do not want to use it." size="5" default="0"></field>
+				<field name="auspost_pac_api_key" type="text" label="API Key (*)" description="API key from AusPost (https://auspost.com.au/forms/pacpcs-registration.html)" size="100" default=""></field>
+				<field name="auspost_pac_origin_postcode" type="text" label="Origin Postcode (*)" description="The location you are shipping from" size="10" default=""></field>
+				<field name="auspost_pac_services_domestic" type="Checkboxes" label="Services (Domestic)" description="Select the AusPost (PAC) domestic services to be offered">
+					<option value="AUS_PARCEL_REGULAR">Regular Parcel</option>
+					<option value="AUS_PARCEL_REGULAR_SATCHEL_500G">Prepaid Parcel Post Small (500g) Satchel</option>
+					<option value="AUS_PARCEL_REGULAR_SATCHEL_3KG">Prepaid Parcel Post Medium (3Kg) Satchel</option>
+					<option value="AUS_PARCEL_REGULAR_SATCHEL_5KG">Prepaid Parcel Post Large (5Kg) Satchel</option>
+					<option value="AUS_PARCEL_EXPRESS">Express Post Satchel</option>
+					<option value="AUS_PARCEL_EXPRESS_SATCHEL_500G">Express Post Small (500g) Satchel</option>
+					<option value="AUS_PARCEL_EXPRESS_SATCHEL_3KG">Express Post Medium (3Kg) Satchel</option>
+					<option value="AUS_PARCEL_EXPRESS_SATCHEL_5KG">Express Post Large (5Kg) Satchel</option>
+					<option value="AUS_PARCEL_PLATINUM">Express Post Platinum Satchel</option>
+					<option value="AUS_PARCEL_PLATINUM_SATCHEL_500G">Express Post Platinum 500g Satchel</option>
+					<option value="AUS_PARCEL_PLATINUM_SATCHEL_3KG">Express Post Platinum 3kg Satchel</option>
+					<option value="AUS_PARCEL_COURIER">Courier Post</option>
+					<option value="AUS_PARCEL_COURIER_SATCHEL_MEDIUM">Courier Post Assessed Medium Satchel</option>
+				</field>
+				<field name="auspost_pac_show_delivery_time" type="list" default="1" label="Display Delivery Time" description="Show/Hide the display of delivery time of services.">
+					<option value="0">No</option>
+					<option value="1">Yes</option>
+				</field>
+				<field name="auspost_pac_use_http" type="list" default="0" label="Access AusPost Securely" description="Enables connecting to AusPost via HTTPS.">
+					<option value="0">No</option>
+					<option value="1">Yes</option>
+				</field>
+				<field name="auspost_pac_multiple_packages" type="list" default="0" label="Multiple Packages" description="Enables splitting large order over multiple packages.">
+					<option value="0">No</option>
+					<option value="1">Yes</option>
+				</field>
+				<field name="auspost_pac_handling_fee" type="text" default="0" label="Handling Fee" description="Additional handling charge. Leave 0 to disable." size="10"></field>
+				<field name="auspost_pac_min_weight" type="text" default="0" label="Minimum Weight" description="" size="10"></field>
+				<field name="auspost_pac_max_weight" type="text" default="0" label="Maximum Weight" description="" size="10"></field>
+				<field name="show_shipping_cost_with_tax" type="list" label="Show Shipping Cost With Tax" description="If Yes, once you choose a Tax Class below, it will display shipping cost include tax." default="1">
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </field>
+				<field name="payment_methods" type="eshoppayments" label="Payment Methods" description="Choose corresponding available payment methods when AusPost Shipping method is chosen. Select all or Un-select all to choose all payment methods."></field>
+				<field name="taxclass_id" type="eshoptaxclass" label="Tax Class"></field>
+				<field name="geozone_id" type="eshopgeozone" label="Geo Zone"></field>
+			</fieldset>
+		</fields>
+	</config>
+	<files>
+		<filename>eshop_auspostpac.php</filename>
+	</files>
+	<installsql />
+	<installfile />
+</install>

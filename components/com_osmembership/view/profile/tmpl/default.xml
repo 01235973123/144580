@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+    <layout title="COM_OSMEMBERSHIP_VIEW_PROFILE_DEFAULT_TITLE">
+        <message>
+            <![CDATA[COM_OSMEMBERSHIP_VIEW_PROFILE_DEFAULT_DESCRIPTION]]>
+        </message>
+    </layout>
+    <fields name="params">
+        <fieldset name="basic">
+            <field
+                    name="show_my_subscriptions"
+                    type="radio"
+                    label="Show My Subscriptions Tab"
+                    description="If you want to hide my subscriptions tab, set this to No"
+                    class="btn-group btn-group-yesno"
+                    default="1"
+            >
+                <option value="1">JYES</option>
+                <option value="0">JNO</option>
+            </field>
+            <field
+                    name="show_subscriptions_history"
+                    type="radio"
+                    label="Show Subscriptions History"
+                    description="If you want to hide subscription history tab on profile page, set this to No"
+                    class="btn-group btn-group-yesno"
+                    default="1"
+            >
+                <option value="1">JYES</option>
+                <option value="0">JNO</option>
+            </field>
+            <field
+                    name="show_edit_profile"
+                    type="radio"
+                    label="Show Edit Profile"
+                    description="If you want to hide edit profile option on profile page, set this to No"
+                    class="btn-group btn-group-yesno"
+                    default="1"
+            >
+                <option value="1">JYES</option>
+                <option value="0">JNO</option>
+            </field>
+            <field
+                    name="show_renew_options"
+                    type="radio"
+                    label="Show Renew Membership Options"
+                    description="If you want to hide renew membership options on profile page, set this to No"
+                    class="btn-group btn-group-yesno"
+                    default="1"
+            >
+                <option value="1">JYES</option>
+                <option value="0">JNO</option>
+            </field>
+            <field
+                    name="show_upgrade_options"
+                    type="radio"
+                    label="Show Upgrade Membership Options"
+                    description="If you want to hide upgrade membership options on profile page, set this to No"
+                    class="btn-group btn-group-yesno"
+                    default="1"
+            >
+                <option value="1">JYES</option>
+                <option value="0">JNO</option>
+            </field>
+            <field
+                    name="no_subscription_behavior"
+                    type="list"
+                    label="No subscription behavior"
+                    description="Choose the behavior which happens when user without any subscription access to user profile"
+                    default="0"
+            >
+                <option value="0">Redirect to Joomla! core user profile</option>
+                <option value="1">Display no profile message</option>
+            </field>
+            <field name="active_tab" type="list" label="Active Tab" description="Choose the tab which will be loaded by default when subscriber access to profile page">
+                <option value="">Default</option>
+                <option value="profile-page">Edit Profile</option>
+                <option value="my-subscriptions-page">My Subscriptions</option>
+                <option value="subscription-history-page">Subscriptions History</option>
+            </field>
+            <field type="editor" buttons="yes" name="intro_text" filter="raw" label="Intro Text" description="If you enter some text here, it will be displayed at the top of user profile page." />
+        </fieldset>
+        <fieldset name="additional_tabs" label="Additional Tabs" description="If you want to add additional tabs to user profile page, add these tabs here">
+            <field
+                    name="tabs"
+                    type="subform"
+                    layout="joomla.form.field.subform.repeatable-table"
+                    icon="list"
+                    multiple="true"
+            >
+                <form hidden="true" name="list_tabs" repeat="true">
+                    <field
+                            name="title"
+                            type="text"
+                            label="Tab Title"
+                    />
+                    <field
+                            name="content"
+                            type="editor"
+                            label="Tab Content"
+                            buttons="yes"
+                            filter="raw"
+                    />
+                </form>
+            </field>
+        </fieldset>
+    </fields>
+</metadata>

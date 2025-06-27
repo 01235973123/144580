@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="2.5" client="site" method="upgrade">
+	<name>Eshop Product</name>
+	<creationDate>May 2013</creationDate>
+	<author>Giang Dinh Truong</author>
+	<authorEmail>contact@joomdonation.com</authorEmail>
+	<authorUrl>http://www.joomdonation.com</authorUrl>
+	<copyright>Copyright (C) 2012 Ossolution Team</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<version>4.0.2</version>
+	<description>This module show products for Eshop</description>
+	<files>
+		<filename module="mod_eshop_product">mod_eshop_product.php</filename>
+		<folder>css</folder>
+		<folder>tmpl</folder>
+		<filename>helper.php</filename>
+		<filename>index.html</filename>
+		<filename>mod_eshop_product.xml</filename>
+	</files>
+	<languages>
+		<language tag="en-GB">language/en-GB.mod_eshop_product.ini</language>
+	</languages>
+	<config>
+		<fields name="params">
+			<fieldset name="basic" addfieldpath="/administrator/components/com_eshop/elements">
+				<field type="asset" path="modules/mod_eshop_product/admin/" />
+				<field name="moduleclass_sfx" type="text" label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL" description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC" />
+				<field	name="layout" type="filelist" label="ESHOP_LAYOUT" description="" directory="/modules/mod_eshop_product/tmpl" default="default" hide_default="1" hide_none="1" stripext="1" filter="\.php$" exclude="^_" />
+				<field name="display" type="list" default="featured" label="ESHOP_PRODUCT_DISPLAY" description="">
+		    		<option value="featured">ESHOP_PRODUCT_FEATURED_PRODUCTS</option>
+		    		<option value="latest">ESHOP_PRODUCT_LATEST_PRODUCTS</option>
+		    		<option value="random">ESHOP_PRODUCT_RANDOM_PRODUCTS</option>
+		    		<option value="most_viewed">ESHOP_MOST_VIEWED_PRODUCTS</option>
+		    		<option value="recently_viewed">ESHOP_RECENTLY_VIEWED_PRODUCTS</option>
+		    		<option value="most_rated">ESHOP_MOST_RATED_PRODUCTS</option>
+		    		<option value="top_rated">ESHOP_TOP_RATED_PRODUCTS</option>
+		    		<option value="top_sellers">ESHOP_TOP_SELLERS_PRODUCTS</option>
+		    		<option value="related">ESHOP_RELATED_PRODUCTS</option>
+		    		<option value="alpha_az">ESHOP_ALPHABETICALLY_AZ</option>
+		    		<option value="alpha_za">ESHOP_ALPHABETICALLY_ZA</option>
+		    		<option value="price_low_high">ESHOP_PRICE_LOW_HIGH</option>
+		    		<option value="price_high_low">ESHOP_PRICE_HIGH_LOW</option>
+		    		<option value="ordering_low_high">ESHOP_ORDERING_LOW_HIGH</option>
+		    		<option value="ordering_high_low">ESHOP_ORDERING_HIGH_LOW</option>
+				</field>
+				<field name="category_ids" type="eshopcategories" default="" label="ESHOP_CATEGORIES" description="" />
+				<field name="product_ids" type="eshopproducts" default="" label="ESHOP_PRODUCTS" description="ESHOP_PRODUCTS_HELP" />
+				<field name="number_products" type="text" default="6" label="ESHOP_NUMBER_PRODUCT" description="" />
+				<field name="products_per_row" type="text" default="6" label="ESHOP_NUMBER_PRODUCT_PER_ROW" description="" />
+				<field name="show_short_desc" type="radio" class="btn-group btn-group-yesno" default="0" label="ESHOP_SHOW_SHORT_DESC" description="">
+		    		<option value="1">ESHOP_YES</option>
+		    		<option value="0">ESHOP_NO</option>
+				</field>
+				<field name="short_desc_limited" type="text" default="100" label="ESHOP_SHORT_DESC_LIMITED" description="" />
+				<field name="show_price" type="radio" class="btn-group btn-group-yesno" default="1" label="ESHOP_SHOW_PRICE" description="">
+		    		<option value="1">ESHOP_YES</option>
+		    		<option value="0">ESHOP_NO</option>
+				</field>
+				<field name="show_addtocart" type="radio" class="btn-group btn-group-yesno" default="1" label="ESHOP_SHOW_ADDTOCART" description="">
+		    		<option value="1">ESHOP_YES</option>
+		    		<option value="0">ESHOP_NO</option>
+				</field>
+				<field name="show_addtoquote" type="radio" class="btn-group btn-group-yesno" default="1" label="ESHOP_SHOW_ADDTOQUOTE" description="">
+		    		<option value="1">ESHOP_YES</option>
+		    		<option value="0">ESHOP_NO</option>
+				</field>
+				<field name="show_add_to_wishlist" type="radio" class="btn-group btn-group-yesno" default="1" label="ESHOP_SHOW_ADD_TO_WISHLIST" description="">
+		    		<option value="1">ESHOP_YES</option>
+		    		<option value="0">ESHOP_NO</option>
+				</field>
+				<field name="show_add_to_compare" type="radio" class="btn-group btn-group-yesno" default="1" label="ESHOP_SHOW_ADD_TO_COMPARE" description="">
+		    		<option value="1">ESHOP_YES</option>
+		    		<option value="0">ESHOP_NO</option>
+				</field>
+				<field name="show_rating" type="radio" class="btn-group btn-group-yesno" default="1" label="ESHOP_SHOW_RATING" description="">
+		    		<option value="1">ESHOP_YES</option>
+		    		<option value="0">ESHOP_NO</option>
+				</field>
+				<field name="enable_labels" type="radio" class="btn-group btn-group-yesno" default="1" label="ESHOP_ENABLE_LABELS" description="">
+		    		<option value="1">ESHOP_YES</option>
+		    		<option value="0">ESHOP_NO</option>
+				</field>
+				<field name="hide_out_of_stock_products" type="radio" class="btn-group btn-group-yesno" default="0" label="ESHOP_HIDE_OUT_OF_STOCK_PRODUCTS" description="">
+		    		<option value="1">ESHOP_YES</option>
+		    		<option value="0">ESHOP_NO</option>
+				</field>
+				<field name="image_width" type="text" default="100" label="ESHOP_THUMBNAIL_WIDTH" description="" />
+				<field name="image_height" type="text" default="100" label="ESHOP_THUMBNAIL_HEIGHT" description="" />
+				<field name="image_resize_function" type="list" default="resizeImage" label="ESHOP_IMAGE_RESIZE_FUNCTION" description="">
+		    		<option value="resizeImage">ESHOP_RESIZE_IMAGE</option>
+		    		<option value="cropsizeImage">ESHOP_CROPSIZE_IMAGE</option>
+		    		<option value="maxsizeImage">ESHOP_MAXSIZE_IMAGE</option>
+				</field>
+				<field type="editor" name="header_text" filter="raw" label="ESHOP_HEADER_TEXT"
+                       description="If entered, the text will be displayed at the top of the module"/>
+                <field type="editor" name="footer_text" filter="raw" label="ESHOP_FOOTER_TEXT"
+                       description="If entered, the text will be displayed at the bottom of the module"/>
+			</fieldset>
+			<fieldset name="slider_settings" label="Slider Options">
+                <field name="theme" type="list" label="Theme">
+                    <option value="splide-default.min.css">Default</option>
+                    <option value="splide-sea-green.min.css">Sea Green</option>
+                    <option value="splide-skyblue.min.css">Skye Blue</option>
+                </field>
+                <field name="arrows" type="list" label="Arrows" default="true"
+                       description="Determines whether to create arrows or not">
+                    <option value="1">True</option>
+                    <option value="0">False</option>
+                </field>
+                <field name="pagination" type="list" label="Pagination" default="true"
+                       description="Determines whether to create pagination or not">
+                    <option value="1">True</option>
+                    <option value="0">False</option>
+                </field>
+                <field name="number_items" type="text"
+                       label="Number Items" description="Number of slides being displayed in the viewport" default="3"/>
+                <field
+                        name="autoplay"
+                        type="radio"
+                        label="Auto Play"
+                        class="btn-group btn-group-yesno"
+                        default="1"
+                        filter="integer"
+                >
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+                <field name="speed" type="text" label="Speed" default="300"/>
+                <field name="gap" type="text" label="Gap"
+                       description="The gap between slides. The CSS format is acceptable, such as 1em" default="1em"/>
+				<field name="number_items_xs" type="text"
+                       label="Number Items Extra Small Viewport (less than 576px)"
+                       description="Number of slides being displayed In Extra Small viewport (portrait phones, less than 576px)"
+                       default="0"/>
+                <field name="number_items_sm" type="text"
+                       label="Number Items Small Viewport (less than 768px)"
+                       description="Number of slides being displayed In Small viewport (landscape phones, less than 768px)"
+                       default="0"/>
+                <field name="number_items_md" type="text"
+                       label="Number Items Medium Viewport (less than 992px)"
+                       description="Number of slides being displayed In Medium viewport (tablets, less than 992px)"
+                       default="0"/>
+                <field name="number_items_lg" type="text"
+                       label="Number Items Large Viewport (less than 1200px)"
+                       description="Number of slides being displayed In Large viewport (desktops, less than 1200px)"
+                       default="0"/>
+            </fieldset>
+		</fields>
+	</config>
+</extension>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="3.9.0" client="site" method="upgrade">
+	<name>Membership Status</name>
+	<author>Tuan Pham Ngoc</author>
+	<authorEmail>tuanpn@joomdonation.com</authorEmail>
+	<authorUrl>https://joomdonation.com</authorUrl>
+	<copyright>Copyright (C) 2012 - 2025 Ossolution Team</copyright>
+	<license>GNU General Public License version 3, or later</license>
+	<creationDate>Nov 2012</creationDate>
+	<version>4.2.2</version>
+	<description>This module display membership status of a current logged-in users. It will show what plan he signed up, when it will be expired and how many days left</description>
+	<namespace path="src">OSSolution\MembershipPro\Module\MembershipStatus</namespace>
+	<files>
+		<folder module="mod_membershipstatus">services</folder>
+		<folder>src</folder>
+		<folder>tmpl</folder>
+	</files>
+	<config>
+		<fields name="params">
+			<fieldset name="basic">
+				<field name="moduleclass_sfx" type="text"
+							label="Module Class Suffix" description="PARAMMODULECLASSSUFFIX">
+				</field>								
+			</fieldset>
+		</fields>	
+	</config>
+</extension>

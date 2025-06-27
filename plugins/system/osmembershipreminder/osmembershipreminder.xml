@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.9.0" type="plugin" group="system" method="upgrade">
+    <name>System - Membership Pro Reminder</name>
+    <author>Tuan Pham Ngoc</author>
+    <authorEmail>tuanpn@joomdonation.com</authorEmail>
+    <authorUrl>https://joomdonation.com</authorUrl>
+    <copyright>Copyright (C) 2012 - 2025 Ossolution Team</copyright>
+    <license>GNU General Public License version 3, or later</license>
+    <creationDate>Nov 2012</creationDate>
+    <version>4.2.2</version>
+    <description>This plugin check and send reminder emails to subscribers to inform them about membership expire so
+        that they can login to renew their membership
+    </description>
+    <files>
+        <filename plugin="osmembershipreminder">osmembershipreminder.php</filename>
+    </files>
+    <config>
+        <fields name="params">
+            <fieldset name="basic">
+                <field name="cache_time" label="Cache Time (Hours)" type="number" min="0" max="100" step="1"
+                       default="2"/>
+                <field name="last_run" label="Last Run Time" type="hidden" readonly="true" size="30"
+                       description="Store Last Run Time of the plugin"/>
+                <field name="number_subscribers" label="Number Subscribers" type="text" size="30" default="10"
+                       description="Number of subscribers which we will send reminder each time the plugin run"/>
+                <field name="bcc_email" label="BCC Email" type="text" size="30" default=""
+                       description="If you want to receive a copy of reminder email so that you can keep track of reminder, enter the email you want here"/>
+                <field name="trigger_reminder_code" label="Trigger Reminder Code (Leave empty unless you are using cron job to send reminder)" type="text" size="30" default="" description="Enter a secret string here if you want to use cron job to trigger sending reminder. Refer to our documentation for more details" />
+                <field name="time_ranges" label="Time Ranges" type="text" size="30" default="" description="If you want to send reminder emails to registrants within certain time ranges, use this parameter. For example, set it to 5,14 will make the system only send email reminder from 5am to 2pm. Set it to 8,10;14:18 will allow sending reminders between 8 to 10 am and 2pm to 6pm." />
+            </fieldset>
+        </fields>
+    </config>
+</extension>

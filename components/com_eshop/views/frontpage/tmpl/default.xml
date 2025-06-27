@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="COM_ESHOP_FRONTPAGE_VIEW_DEFAULT_TITLE">
+		<message><![CDATA[COM_ESHOP_FRONTPAGE_VIEW_DEFAULT_DESC]]></message>
+	</layout>
+	<state>
+		<name>COM_ESHOP_FRONTPAGE_VIEW_DEFAULT_TITLE</name>
+		<description><![CDATA[COM_ESHOP_FRONTPAGE_VIEW_DEFAULT_DESC]]></description>
+		<fields name="params">
+			<fieldset name="basic" label="COM_ESHOP_FRONTPAGE_OPTIONS">
+				<field name="num_categories" type="text" size="5" default="9" label="COM_ESHOP_FRONTPAGE_NUM_CATEGORIES" description="COM_ESHOP_FRONTPAGE_NUM_CATEGORIES_DESC" />
+				<field name="num_products" type="text" size="5" default="9" label="COM_ESHOP_FRONTPAGE_NUM_PRODUCTS" description="COM_ESHOP_FRONTPAGE_NUM_PRODUCTS_DESC" />
+				<field name="product_type" type="list" default="featured" label="COM_ESHOP_FRONTPAGE_PRODUCT_TYPE" description="">
+		    		<option value="featured">COM_ESHOP_FRONTPAGE_FEATURED_PRODUCTS</option>
+		    		<option value="latest">COM_ESHOP_FRONTPAGE_LATEST_PRODUCTS</option>
+		    		<option value="random">COM_ESHOP_FRONTPAGE_RANDOM_PRODUCTS</option>
+				</field>
+			</fieldset>
+		</fields>
+	</state>
+</metadata>

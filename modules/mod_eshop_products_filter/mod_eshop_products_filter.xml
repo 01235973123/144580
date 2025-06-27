@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="2.5" client="site" method="upgrade">
+	<name>Eshop Products Filter</name>
+	<creationDate>December 2016</creationDate>
+	<author>Giang Dinh Truong</author>
+	<authorEmail>contact@joomdonation.com</authorEmail>
+	<authorUrl>http://www.joomdonation.com</authorUrl>
+	<copyright>Copyright (C) 2012 - 2016 Ossolution Team</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<version>4.0.2</version>
+	<description>Products filter for Eshop</description>
+	<files>
+		<filename module="mod_eshop_products_filter">mod_eshop_products_filter.php</filename>
+		<folder>assets</folder>
+		<folder>tmpl</folder>
+		<filename>index.html</filename>
+		<filename>mod_eshop_products_filter.xml</filename>
+	</files>
+	<languages>
+		<language tag="en-GB">language/en-GB.mod_eshop_products_filter.ini</language>
+	</languages>
+	<config>
+		<fields name="params">
+			<fieldset name="basic" addfieldpath="/administrator/components/com_eshop/elements">
+				<field name="moduleclass_sfx" type="text" label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL" description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC" />
+				<field name="collapse_at_start" 
+					type="radio"
+					class="btn-group btn-group-yesno" 
+					default="0"
+					label="ESHOP_COLLAPSE_AT_START"
+					description="ESHOP_COLLAPSE_AT_START_DESC">
+		    		<option value="1">ESHOP_YES</option>
+		    		<option value="0">ESHOP_NO</option>
+				</field>
+				<field name="show_on_product_page" 
+					type="radio"
+					class="btn-group btn-group-yesno" 
+					default="1"
+					label="ESHOP_SHOW_ON_PRODUCT_PAGE"
+					description="ESHOP_SHOW_ON_PRODUCT_PAGE_DESC">
+		    		<option value="1">ESHOP_YES</option>
+		    		<option value="0">ESHOP_NO</option>
+				</field>
+				<field name="filter_by_price" 
+					type="radio"
+					class="btn-group btn-group-yesno" 
+					default="1"
+					label="ESHOP_FILTER_BY_PRICE"
+					description="ESHOP_FILTER_BY_PRICE_DESC">
+		    		<option value="1">ESHOP_YES</option>
+		    		<option value="0">ESHOP_NO</option>
+				</field>
+				<field name="max_price" type="text" default="1000" label="ESHOP_MAX_PRICE" description="ESHOP_MAX_PRICE_DESC" />
+				<field name="min_price" type="text" default="0" label="ESHOP_MIN_PRICE" description="ESHOP_MIN_PRICE_DESC" />
+				<field name="filter_by_weight" 
+					type="radio"
+					class="btn-group btn-group-yesno" 
+					default="0"
+					label="ESHOP_FILTER_BY_WEIGHT"
+					description="ESHOP_FILTER_BY_WEIGHT_DESC">
+		    		<option value="1">ESHOP_YES</option>
+		    		<option value="0">ESHOP_NO</option>
+				</field>
+				<field name="same_weight_unit" 
+					type="radio"
+					class="btn-group btn-group-yesno" 
+					default="1"
+					label="ESHOP_SAME_WEIGHT_UNIT"
+					description="ESHOP_SAME_WEIGHT_UNIT_DESC">
+		    		<option value="1">ESHOP_YES</option>
+		    		<option value="0">ESHOP_NO</option>
+				</field>
+				<field name="max_weight" type="text" default="100" label="ESHOP_MAX_WEIGHT" description="ESHOP_MAX_WEIGHT_DESC" />
+				<field name="min_weight" type="text" default="0" label="ESHOP_MIN_WEIGHT" description="ESHOP_MIN_WEIGHT_DESC" />
+				<field name="filter_by_length" 
+					type="radio"
+					class="btn-group btn-group-yesno" 
+					default="0"
+					label="ESHOP_FILTER_BY_LENGTH"
+					description="ESHOP_FILTER_BY_LENGTH_DESC">
+		    		<option value="1">ESHOP_YES</option>
+		    		<option value="0">ESHOP_NO</option>
+				</field>
+				<field name="same_length_unit" 
+					type="radio"
+					class="btn-group btn-group-yesno" 
+					default="1"
+					label="ESHOP_SAME_LENGTH_UNIT"
+					description="ESHOP_SAME_LENGTH_UNIT_DESC">
+		    		<option value="1">ESHOP_YES</option>
+		    		<option value="0">ESHOP_NO</option>
+				</field>
+				<field name="max_length" type="text" default="100" label="ESHOP_MAX_LENGTH" description="ESHOP_MAX_LENGTH_DESC" />
+				<field name="min_length" type="text" default="0" label="ESHOP_MIN_LENGTH" description="ESHOP_MIN_LENGTH_DESC" />
+				<field name="filter_by_width" 
+					type="radio"
+					class="btn-group btn-group-yesno" 
+					default="0"
+					label="ESHOP_FILTER_BY_WIDTH"
+					description="ESHOP_FILTER_BY_WIDTH_DESC">
+		    		<option value="1">ESHOP_YES</option>
+		    		<option value="0">ESHOP_NO</option>
+				</field>
+				<field name="max_width" type="text" default="100" label="ESHOP_MAX_WIDTH" description="ESHOP_MAX_WIDTH_DESC" />
+				<field name="min_width" type="text" default="0" label="ESHOP_MIN_WIDTH" description="ESHOP_MIN_WIDTH_DESC" />
+				<field name="filter_by_height" 
+					type="radio"
+					class="btn-group btn-group-yesno" 
+					default="0"
+					label="ESHOP_FILTER_BY_HEIGHT"
+					description="ESHOP_FILTER_BY_HEIGHT_DESC">
+		    		<option value="1">ESHOP_YES</option>
+		    		<option value="0">ESHOP_NO</option>
+				</field>
+				<field name="max_height" type="text" default="100" label="ESHOP_MAX_HEIGHT" description="ESHOP_MAX_HEIGHT_DESC" />
+				<field name="min_height" type="text" default="0" label="ESHOP_MIN_HEIGHT" description="ESHOP_MIN_HEIGHT_DESC" />
+				<field name="filter_by_stock" 
+					type="radio"
+					class="btn-group btn-group-yesno" 
+					default="1"
+					label="ESHOP_FILTER_BY_STOCK"
+					description="ESHOP_FILTER_BY_STOCK_DESC">
+		    		<option value="1">ESHOP_YES</option>
+		    		<option value="0">ESHOP_NO</option>
+				</field>
+				<field name="filter_by_manufacturers" 
+					type="radio"
+					class="btn-group btn-group-yesno" 
+					default="1"
+					label="ESHOP_FILTER_BY_MANUFACTURERS"
+					description="ESHOP_FILTER_BY_MANUFACTURERS_DESC">
+		    		<option value="1">ESHOP_YES</option>
+		    		<option value="0">ESHOP_NO</option>
+				</field>
+				<field name="filter_by_attributes" 
+					type="radio"
+					class="btn-group btn-group-yesno" 
+					default="1"
+					label="ESHOP_FILTER_BY_ATTRIBUTES"
+					description="ESHOP_FILTER_BY_ATTRIBUTES_DESC">
+		    		<option value="1">ESHOP_YES</option>
+		    		<option value="0">ESHOP_NO</option>
+				</field>
+				<field name="filter_attributes"
+					type="eshopattributes"
+					label="ESHOP_FILTER_ATTRIBUTES"
+					description="ESHOP_FILTER_ATTRIBUTES_DESC">
+				</field>
+				<field name="filter_by_options" 
+					type="radio"
+					class="btn-group btn-group-yesno" 
+					default="1"
+					label="ESHOP_FILTER_BY_OPTIONS"
+					description="ESHOP_FILTER_BY_OPTIONS_DESC">
+		    		<option value="1">ESHOP_YES</option>
+		    		<option value="0">ESHOP_NO</option>
+				</field>
+				<field name="filter_options"
+					type="eshopoptions"
+					label="ESHOP_FILTER_OPTIONS"
+					description="ESHOP_FILTER_OPTIONS_DESC">
+				</field>
+				<field name="filter_by_keyword" 
+					type="radio"
+					class="btn-group btn-group-yesno" 
+					default="1"
+					label="ESHOP_FILTER_BY_KEYWORD"
+					description="ESHOP_FILTER_BY_KEYWORD_DESC">
+		    		<option value="1">ESHOP_YES</option>
+		    		<option value="0">ESHOP_NO</option>
+				</field>
+				<field name="item_id" type="text"
+					label="Item ID" description="Menu ItemID" default="">
+				</field>
+			</fieldset>
+		</fields>
+	</config>
+</extension>

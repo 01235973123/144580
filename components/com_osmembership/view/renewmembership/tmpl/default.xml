@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="COM_OSMEMBERSHIP_VIEW_RENEWMEMBERSHIP_DEFAULT_TITLE">
+		<message>
+			<![CDATA[COM_OSMEMBERSHIP_VIEW_RENEWMEMBERSHIP_DEFAULT_DESCRIPTION]]>
+		</message>
+	</layout>
+	<fields name="params">
+		<fieldset name="basic">
+			<field type="editor" buttons="yes" name="intro_text" filter="raw" label="Intro Text" description="If you enter some text here, it will be displayed at the top of page." />
+		</fieldset>
+	</fields>
+</metadata>

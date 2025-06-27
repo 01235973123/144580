@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="4.0" type="template" method="upgrade" group="template" client="site">
+	<name>t4_lavida</name>
+	<version>4.3</version>
+	<creationDate>June 14th, 2022</creationDate>
+	<author>OS Solution Team</author>
+	<authorEmail>services@joomdonation.com</authorEmail>
+	<authorUrl>joomdonation.com</authorUrl>
+	<copyright>Copyright (C) 2015 Ossolution Team</copyright>
+	<license>license GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html</license>
+	<description>TPL_T4_GETTING_STARTED_GUIDE</description>
+
+	<files>
+		<filename>component.php</filename>
+		<filename>error.php</filename>
+		<filename>error-t4.php</filename>
+		<filename>favicon.ico</filename>
+		<filename>index.php</filename>
+		<filename>offline.php</filename>
+		<filename>templateDetails.xml</filename>
+		<filename>template_preview.png</filename>
+		<filename>template_thumbnail.png</filename>
+		<filename>templateInfo.php</filename>
+		<folder>css</folder>
+		<folder>etc</folder>
+		<folder>fonts</folder>
+		<folder>html</folder>
+		<folder>images</folder>
+		<folder>js</folder>
+		<folder>language</folder>
+		<folder>scss</folder>
+	</files>
+	<positions>
+		<position>menu</position>
+		<position>off-canvas</position>
+		<position>search</position>
+		<position>banner</position>
+		<position>topbar</position>
+		<position>topbar-l</position>
+		<position>topbar-r</position>
+		<position>masthead</position>
+		<position>main-top-1</position>
+		<position>main-top-2</position>
+		<position>main-bottom-1</position>
+		<position>mega-1</position>
+		<position>mega-2</position>
+		<position>mega-3</position>
+		<position>mega-4</position>
+		<position>other</position>
+		<position>our-services</position>
+		<position>our-features</position>
+		<position>our-team</position>
+		<position>latest-news</position>
+		<position>slideshow</position>
+		<position>footer-menu</position>
+		<position>position-1</position>
+		<position>position-2</position>
+		<position>position-3</position>
+		<position>position-4</position>
+		<position>position-5</position>
+		<position>position-6</position>
+		<position>map</position>
+		<position>head-top</position>
+		<position>footer-1</position>
+		<position>footer-2</position>
+		<position>footer-3</position>
+		<position>footer-4</position>
+		<position>main-bottom-2</position>
+		<position>breadcrumbs</position>
+		<position>sidebar-l</position>
+		<position>sidebar-r</position>
+		<position>section-1</position>
+		<position>section-2</position>
+		<position>section-3</position>
+		<position>section-4</position>
+		<position>section-5</position>
+		<position>bottom-a</position>
+		<position>bottom-b</position>
+		<position>bottom-c</position>
+		<position>bottom-d</position>
+		<position>footnav-1</position>
+		<position>footnav-2</position>
+		<position>footnav-3</position>
+		<position>footnav-4</position>
+		<position>footnav-5</position>
+		<position>footer</position>
+		<position>footer-logo</position>
+		<position>debug</position>
+	</positions>
+	<languages folder="language">
+		<language tag="en-GB">en-GB/en-GB.tpl_t4_lavida.ini</language>
+		<language tag="en-GB">en-GB/en-GB.tpl_t4_lavida.sys.ini</language>
+	</languages>
+	<t4>
+		<basetheme>base</basetheme>
+		<bootstrap>bs5</bootstrap>
+	</t4>
+
+	<updateservers>
+    <server type="extension" priority="1" name="T4 Blank">http://update.joomlart.com/service/tracking/j31/tpl_t4_bs5_blank.xml</server>
+	</updateservers>
+</extension>

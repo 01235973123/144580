@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form>
+	<fields name="params">
+		<fieldset name="task_params">
+			<field
+					name="delay"
+					type="number"
+					label="PLG_TASK_MEMBERSHIPPRO_TASK_DELETE_INCOMPLETE_PAYMENT_SUBSCRIPTIONS_DELAY_LABEL"
+					default="20"
+					required="true"
+					min="5"
+					step="1"
+					validate="number"
+					filter="int"
+			/>
+		</fieldset>
+	</fields>
+</form>

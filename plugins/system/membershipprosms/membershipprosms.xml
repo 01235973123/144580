@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.9.0" type="plugin" group="system" method="upgrade">
+    <name>System - Membership Pro SMS</name>
+    <author>Tuan Pham Ngoc</author>
+    <creationDate>August 2020</creationDate>
+    <copyright>Copyright (C) 2012 - 2025 Ossolution Team</copyright>
+    <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+    <authorEmail>tuanpn@joomdonation.com</authorEmail>
+    <authorUrl>www.joomdonation.com</authorUrl>
+    <version>4.2.2</version>
+    <description>This plugin is used to send SMS reminder to your subscribers. It also sends SMS notification to admin
+        when someone subscribes for your subscription plans.
+    </description>
+    <files>
+        <filename plugin="membershipprosms">membershipprosms.php</filename>
+    </files>
+    <config>
+        <fields name="params">
+            <fieldset name="basic">
+                <field name="last_run" label="Last Run Time" type="hidden" readonly="true" size="30"
+                       description="Store Last Run Time of the plugin"/>
+                <field name="phones" label="Administrator Phone Numbers" type="text" class="input-xlarge" default=""
+                       description="Enter phone numbers of administrators who want to receive SMS notification when someone subscribe for a subscription plan on the site. Multiple phone numbers are supported, just separate them by comment."/>
+                <field name="number_subscribers" label="Number Subscribers" type="text" size="30" default="15"
+                       description="Number of subscribers which we will send reminder each time the plugin run."/>
+                <field name="time_ranges" label="Time Rages" type="text" size="30" default=""
+                       description="If you want to send SMS to subscribers within certain time ranges, use this parameter. For example, set it to 5,14 will make the system only send SMS reminder from 5am to 2pm. Set it to 8,10;14:18 will allow sending SMS reminders between 8 to 10 am and 2pm to 6pm."/>
+                <field name="trigger_reminder_code"
+                       label="Trigger Reminder Code (Leave empty unless you are using cron job to send reminder)"
+                       type="text" size="30" default=""
+                       description="Enter a secret string here if you want to use cron job to trigger sending reminder. Refer to our documentation for more details"/>
+                <field name="debug" type="list" label="Debug"
+                       description="In case set to Yes, the reminder emails will be checked and sent on every page load, for debug purpose only">
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </field>
+            </fieldset>
+        </fields>
+    </config>
+</extension>

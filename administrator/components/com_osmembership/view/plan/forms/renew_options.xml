@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form addfieldpath="/administrator/components/com_osmembership/model/fields">
+    <field
+            name="renew_options"
+            type="subform"
+            label="OSM_RENEW_OPTIONS"
+            description="OSM_RENEW_OPTIONS"
+            layout="joomla.form.field.subform.repeatable-table"
+            icon="list"
+            multiple="true"
+    >
+        <form hidden="true" name="list_renew_options" repeat="true">
+            <field
+                    name="id"
+                    type="hidden"
+                    value="0"
+            />
+            <field
+                    name="renew_option_length"
+                    type="number"
+                    label="OSM_RENEW_OPTION_LENGTH"
+                    class="input-medium"
+            />
+            <field
+                    name="renew_option_length_unit"
+                    type="list"
+                    label="OSM_RENEW_OPTION_UNIT"
+                    class="input-medium"
+                    default="M">
+                    <option value="m">OSM_MINUTES</option>
+                    <option value="H">OSM_HOURS</option>
+                    <option value="D">OSM_DAYS</option>
+                    <option value="W">OSM_WEEKS</option>
+                    <option value="M">OSM_MONTHS</option>
+                    <option value="Y">OSM_YEARS</option>
+            </field>
+            <field name="price"
+                   type="number"
+                   label="OSM_PRICE"
+                   class="input-medium"
+                   step="0.01"
+            />
+        </form>
+    </field>
+</form>

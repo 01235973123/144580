@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension
+	type="module"
+	version="3.1"
+	client="site" 
+	method="upgrade">
+	<name>Os social</name>
+	<author>Dang Thuc Dam</author>
+	<creationDate>6/05/2014</creationDate>
+	<copyright>Copyright (C)  2013 Open Source Matters. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<authorEmail>damdt@joomservices.com</authorEmail>
+	<authorUrl>www.joomdonation.com</authorUrl>
+	<version>3.0</version>
+	<description></description>
+	<files>
+		<filename module="mod_os_social">mod_os_social.php</filename>
+		<folder>tmpl</folder>
+		<folder>asset</folder>
+		<filename>index.html</filename>
+		<filename>helper.php</filename>
+		<filename>mod_os_social.xml</filename>
+	</files>
+	
+	<config>
+		<fields name="params">
+			<fieldset name="basic">
+				<field
+					name="facebook"
+					type="text"
+					label="facebook"
+					description="facebook" />
+				<field
+					name="twitter"
+					type="text"
+					label="twitter"
+					description="twitter" />
+				
+				<field
+					name="google"
+					type="text"
+					label="google+"
+					description="google+" />
+				<field
+					name="linkedin"
+					type="text"
+					label="linkedin"
+					description="linkedin" />
+				<field
+					name="youtube"
+					type="text"
+					label="youtube"
+					description="youtube" />
+				<field
+					name="pinterest"
+					type="text"
+					label="pinterest"
+					description="pinterest" />
+				<field
+					name="dribbble"
+					type="text"
+					label="dribbble"
+					description="dribbble" />
+				<field
+					name="feedburner"
+					type="text"
+					label="feedburner"
+					description="feedburner" />
+				<field
+					name="instagram"
+					type="text"
+					label="instagram"
+					description="instagram" />
+				
+			</fieldset>
+		</fields>
+	</config>
+</extension>

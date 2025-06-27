@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form>
+    <fields name="params">
+        <fieldset name="task_params">
+            <field name="time_to_send" type="number" default="1" label="Number Of Days/Hours" description="Enter Number Of Hours/Days (before Event Date) registrants list will be generated and send." />
+            <field name="time_to_send_unit" type="list" default="d" label="Days Or Hours">
+                <option value="d">Days</option>
+                <option value="h">Hours</option>
+            </field>
+        </fieldset>
+    </fields>
+</form>

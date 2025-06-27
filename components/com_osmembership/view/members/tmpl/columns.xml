@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="COM_OSMEMBERSHIP_VIEW_MEMBERS_COLUMNS_TITLE">
+		<message>
+            <![CDATA[COM_OSMEMBERSHIP_VIEW_MEMBERS_COLUMNS_DESCRIPTION]]>
+		</message>
+        <fields name="request">
+            <fieldset name="request"
+                      addfieldpath="/administrator/components/com_osmembership/model/fields">
+                <field name="id" type="osmplan" size="3" default="0" label="Select Plan" description="Select plan which you want to display members. If you don't select a plan, members from all plans will be displayed" />
+            </fieldset>
+        </fields>
+        <fields name="params">
+            <fieldset name="basic">
+                <field name="number_columns" type="text" label="Number Columns" default="3" />
+                <field name="plan_ids" type="osmplan" multiple="true" label="Plans" description="Select plans you want to display members, comma separated." default="" />
+                <field name="exclude_plan_ids" type="osmplan" multiple="true" label="Exclude Plans" description="Select the plans you don't want to display members." default="" />
+                <field name="member_type" type="list" label="Member Type" default="0">
+                    <option value="0">Both</option>
+                    <option value="1">Group Admins Only</option>
+                    <option value="2">Group Members Only</option>
+                </field>
+                <field name="show_link_to_detail" type="list" label="Show Link To Member Detail Page" default="0">
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </field>
+                <field name="show_membership_id" type="list" label="Show Membership ID" default="0">
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </field>
+                <field name="show_avatar" type="list" label="Show Profile Avatar" default="0">
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </field>
+                <field name="show_plan" type="list" label="Show Plan" default="1">
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </field>
+                <field name="show_subscription_date" type="list" label="Show Subscription Date" default="1">
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </field>
+                <field name="show_subscription_end_date" type="list" label="Show Subscription End Date" default="0">
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </field>
+                <field name="subscription_status" type="list" label="Subscription Status" default="">
+                    <option value="">All</option>
+                    <option value="0">Pending</option>
+                    <option value="1">Active</option>
+                    <option value="2">Expired</option>
+                </field>
+                <field name="hide_empty_fields" type="list" label="Hide Empty Fields" default="0" description="If set to Yes, fields which has no data entered won't be displayed">
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </field>
+                <field name="sort_by" type="list" label="Sort By" default="tbl.created_date">
+                    <option value="first_name">First Name</option>
+                    <option value="last_name">Last Name</option>
+                    <option value="organization">Organization</option>
+                    <option value="address">Address</option>
+                    <option value="address2">Address2</option>
+                    <option value="city">City</option>
+                    <option value="state">State</option>
+                    <option value="zip">Zip</option>
+                    <option value="country">Country</option>
+                    <option value="phone">Phone</option>
+                    <option value="fax">Fax</option>
+                    <option value="email">Email</option>
+                    <option value="tbl.created_date">Register Date</option>
+                    <option value="tbl.membership_id">Membership ID</option>
+                    <option value="rand">Random</option>
+                </field>
+                <field name="sort_direction" type="list" label="Sort Direction" default="DESC">
+                    <option value="ASC">ASC</option>
+                    <option value="DESC">DESC</option>
+                </field>
+                <field name="list_limit" type="text" default="" label="Number Members" description="Number of members will be shown on each page" />
+                <field name="min_height" label="Min Height" description="Min height of the container use to display each member" default="150" />
+                <field type="editor" buttons="yes" name="intro_text" filter="raw" label="Intro Text" description="If you enter some text here, it will be displayed at the top of page." />
+            </fieldset>
+            <fieldset name="data_filter_options" label="Members Data SQL Filter">
+                <field name="filter_fields" type="osmfilterfields" label="Filter Fields" description="Choose fields which can be used to allow filtering members list" multiple="true" />
+                <field type="textarea" name="members_filter_sql" label="SQL Command" class="input-xxlarge" description="Enter SQL Command To Filter Members Data To Meet Your Need. Example SQL tbl.id IN (SELECT subscriber_id FROM #__osmembership_field_value WHERE field_id=20 AND field_value='ABC'). You can only use it if you know SQL" rows="10" cols="80" />
+            </fieldset>
+        </fields>
+	</layout>		
+</metadata>

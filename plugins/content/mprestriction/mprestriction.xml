@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.9.0" type="plugin" group="content" method="upgrade">
+    <name>Content - Membership Pro Content Restriction</name>
+    <author>Tuan Pham Ngoc</author>
+    <authorEmail>tuanpn@joomdonation.com</authorEmail>
+    <authorUrl>https://joomdonation.com</authorUrl>
+    <copyright>Copyright (C) 2012 - 2025 Ossolution Team</copyright>
+    <license>GNU General Public License version 3, or later</license>
+    <creationDate>Nov 2012</creationDate>
+    <version>4.2.2</version>
+    <description>This plugin allows you to restrict access to part of content in an article using {mprestriction
+        ids="PLAN_IDS"}CONTENT_WANT_TO_RESTRICT{/mprestriction} syntax.
+    </description>
+    <files>
+        <filename plugin="mprestriction">mprestriction.php</filename>
+    </files>
+    <config>
+        <fields name="params">
+            <fieldset name="basic">
+                <field name="redirect_url" label="Redirect URL" type="text" size="70" default=""
+                       description="URL of the page users will be redirected to when they are not allowed to access to the restricted page" />
+            </fieldset>
+        </fields>
+    </config>
+</extension>

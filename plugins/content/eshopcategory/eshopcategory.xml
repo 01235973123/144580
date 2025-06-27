@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="2.5.0" type="plugin" group="content" method="upgrade">
+    <name>Eshop Category content plugin</name>
+    <author>Ossolution Team</author>
+    <creationDate>Feb 2011</creationDate>
+    <copyright>Copyright (C) 2010 Ossolution Team</copyright>
+    <license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+    <authorEmail>contact@joomdonation.com</authorEmail>
+    <authorUrl>www.joomdonation.com</authorUrl>
+    <version>4.0.2</version>
+    <description>This plugin is used to display products list of a specific category in a Joomla article.</description>
+    <files>
+        <filename plugin="eshopcategory">eshopcategory.php</filename>
+        <filename>index.html</filename>
+    </files>
+    <config>
+        <fields name="params">
+            <fieldset name="basic">
+                <field name="number_product" default="15" type="text" label="Number of product"
+         			  description="Please enter number of product">
+                </field>
+            </fieldset>
+        </fields>
+    </config>
+</extension>

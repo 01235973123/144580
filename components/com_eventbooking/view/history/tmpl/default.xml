@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="Registration History">
+		<message>
+			Display List Of events which the current user registered
+		</message>
+	</layout>
+	<fields name="params">
+		<fieldset name="basic">
+			<field
+					name="show_registrations_of_past_events"
+					type="radio"
+					label="Show Registrations Of Past Events"
+					layout="joomla.form.field.radio.switcher"
+					default="1"
+			>
+				<option value="0">JNO</option>
+				<option value="1">JYES</option>
+			</field>
+			<field
+					name="show_cancelled_registrations"
+					type="radio"
+					label="Show Cancelled Registrations"
+					layout="joomla.form.field.radio.switcher"
+					default="1"
+			>
+				<option value="0">JNO</option>
+				<option value="1">JYES</option>
+			</field>
+			<field
+					name="show_invoice_column"
+					type="radio"
+					label="Show Invoice Column"
+					layout="joomla.form.field.radio.switcher"
+					default="1"
+			>
+				<option value="0">JNO</option>
+				<option value="1">JYES</option>
+			</field>
+			<field
+					name="show_ticket_column"
+					type="radio"
+					label="Show Ticket Column"
+					layout="joomla.form.field.radio.switcher"
+					default="1"
+			>
+				<option value="0">JNO</option>
+				<option value="1">JYES</option>
+			</field>
+			<field
+					name="show_certificate_column"
+					type="radio"
+					label="Show Certificate Column"
+					layout="joomla.form.field.radio.switcher"
+					default="1"
+			>
+				<option value="0">JNO</option>
+				<option value="1">JYES</option>
+			</field>
+			<field name="display_num" type="text" default="0" label="Number Records" description="Number of records which will be displayed per page" />
+			<field type="editor" name="intro_text" buttons="yes" filter="raw" label="Intro Text" description="If you enter some text here, it will be displayed at the top of registration history page" />
+		</fieldset>
+	</fields>
+</metadata>

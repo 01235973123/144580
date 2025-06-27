@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.0" type="plugin" group="installer" method="upgrade">
+    <name>Installer - Membership Pro</name>
+    <author>Tuan Pham Ngoc</author>
+    <authorEmail>tuanpn@joomdonation.com</authorEmail>
+    <authorUrl>https://joomdonation.com</authorUrl>
+    <copyright>Copyright (C) 2010 - 2016 Ossolution Team</copyright>
+    <license>GNU General Public License version 3, or later</license>
+    <creationDate>August 2016</creationDate>
+    <version>4.2.2</version>
+    <description>Allows the installation of Membership Pro updates. This plugin MUST be installed for the Membership Pro
+        updates to be installed under your Joomla site. Otherwise you will see the updates but you will not be able to
+        install them.
+    </description>
+    <files>
+        <filename plugin="membershippro">membershippro.php</filename>
+    </files>
+</extension>

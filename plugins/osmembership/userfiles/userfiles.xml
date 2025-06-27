@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.9.0" type="plugin" group="osmembership" method="upgrade">
+    <name>Membership Pro - User Files</name>
+    <author>Tuan Pham Ngoc</author>
+    <authorEmail>tuanpn@joomdonation.com</authorEmail>
+    <authorUrl>https://joomdonation.com</authorUrl>
+    <copyright>Copyright (C) 2012 - 2025 Ossolution Team</copyright>
+    <license>GNU General Public License version 3, or later</license>
+    <creationDate>Nov 2012</creationDate>
+    <version>4.2.2</version>
+    <description>This plugin is used to display files which administrator want to give individual users to download. These files need to be uploaded manually to media/com_osmembership/userfiles/username or media/com_osmembership/userfiles/userid folder (replace username and userid with the username and id of the individual subscriber)</description>
+    <files>
+        <filename plugin="userfiles">userfiles.php</filename>
+        <folder>tmpl</folder>
+    </files>
+    <config>
+        <fields name="params">
+            <fieldset name="basic">
+                <field
+                        name="sort_direction"
+                        type="list"
+                        label="Short Files Direction"
+                        description="Choose to sort files base on filename in ASC or DESC order"
+                        class="btn-group btn-group-yesno"
+                        default="0"
+                >
+                    <option value="0">ASC</option>
+                    <option value="1">DESC</option>
+                </field>
+            </fieldset>
+        </fields>
+    </config>
+</extension>

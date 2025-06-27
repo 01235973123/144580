@@ -1,0 +1,107 @@
+.mod-jd-donors .donor-info{
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 3px;
+	margin-bottom:5px;
+}
+
+.mod-jd-donors .donor-info .campaign-info{
+	background-color: #f0f0f0;
+	padding: 10px 15px 15px;
+}
+
+.mod-jd-donors .donor-info .campaign-info .campaign-title{
+	font-weight: 600;
+	line-height: 1.4;
+	margin-bottom: 10px;
+}
+
+.mod-jd-donors .donor-info .campaign-info .donor-amount{
+	background-color: #fff;
+	border-radius: 3px;
+	padding: 1px;
+	overflow: hidden;
+}
+
+.mod-jd-donors .donor-info .campaign-info .donor-amount span.amount {
+    background-color: #999;
+    border-radius: 2px;
+    color: #fff;
+    float: left;
+    display: block;
+    font-weight: 500;
+    line-height: 1;
+    line-height: 24px;
+    padding: 3px 10px;
+}
+
+.mod-jd-donors .donor-info .campaign-info .donor-amount span.date {
+    color: #666;
+    display: block;
+    float: right;
+    padding: 3px 10px;
+    line-height: 24px;
+
+}
+
+.mod-jd-donors .donorAddress
+{
+	font-size:13px;
+	color:gray;
+}
+
+.mod-jd-donors .donor-comment-container {
+    margin-bottom: 20px;
+	margin-top:10px;
+}
+
+.mod-jd-donors .donor-comment-box {
+    background: #fAfafa;
+    border-radius: 8px;
+    border-left: 5px solid #007bff; /* Màu border bên trái */
+    padding: 15px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.mod-jd-donors .donor-comment-box:hover {
+    transform: translateX(5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.mod-jd-donors .donor-comment-content {
+    font-size: 14px;
+    color: #333;
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+.mod-jd-donors .donor-name {
+    text-align: right;
+    color: #666;
+    font-size: 12px;
+    font-style: italic;
+}
+
+
+.mod-jd-donors .jddonorspagenav a.pagenav-link:link
+{
+	text-decoration:none;
+	padding:3px;
+	border-radius: 2px;
+	text-align:center;
+	margin-left:2px;
+	width:30px;
+}
+
+.mod-jd-donors .jddonorspagenav .active
+{
+	font-weight:bold;
+	color:black;
+}
+
+.mod-jd-donors strong
+{
+	font-weight:600;
+}

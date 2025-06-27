@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="2.5.0" type="plugin" group="osmembership" method="upgrade">
+	<name>Membership Pro - Eshop Plugin</name>
+	<author>Ossolution Team</author>
+	<creationDate>July 2014</creationDate>
+	<copyright>Ossolution Team</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<authorEmail>services@joomdonation.com</authorEmail>
+	<authorUrl>www.joomdonation.com</authorUrl>
+	<version>4.0.2</version>
+	<description>This plugin is used to assign subscribers to Eshop customer groups when they subscribe to a Subscription Plan in Membership Pro</description>
+	<files>
+		<filename plugin="eshop">eshop.php</filename>
+		<folder>tmpl</folder>
+	</files>
+	<languages>
+		<language tag="en-GB">language/en-GB.plg_osmembership_eshop.ini</language>		
+	</languages>
+	<params />			
+	<config />				
+</extension>

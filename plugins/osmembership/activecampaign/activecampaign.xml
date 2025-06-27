@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.9.0" type="plugin" group="osmembership" method="upgrade">
+    <name>Membership Pro - ActiveCampaign</name>
+    <author>Tuan Pham Ngoc</author>
+    <authorEmail>tuanpn@joomdonation.com</authorEmail>
+    <authorUrl>https://joomdonation.com</authorUrl>
+    <copyright>Copyright (C) 2012 - 2025 Ossolution Team</copyright>
+    <license>GNU General Public License version 3, or later</license>
+    <creationDate>November 2021</creationDate>
+    <version>4.2.2</version>
+    <description>This plugin is used to Add Subscribers to Active Campaign when they subscribe for a subscription plan.
+    </description>
+    <install>
+        <sql>
+            <file driver="mysql" charset="utf8">sql/install.sql</file>
+        </sql>
+    </install>
+    <files>
+        <filename plugin="activecampaign">activecampaign.php</filename>
+        <folder>fields</folder>
+        <folder>sql</folder>
+        <folder>tmpl</folder>
+    </files>
+	<languages folder="language">
+		<language tag="en-GB">en-GB/en-GB.plg_osmembership_activecampaign.ini</language>		
+	</languages>
+    <config>
+        <fields name="params">
+            <fieldset name="basic" addfieldpath="/plugins/osmembership/activecampaign/fields">
+                <field name="api_url" type="text" label="API URL" />
+                <field name="api_token" type="text" label="API Key" />
+                <field
+                        name="ac_field_mapping"
+                        type="subform"
+                        label="Fields Mapping"
+                        layout="joomla.form.field.subform.repeatable-table"
+                        icon="list"
+                        multiple="true"
+                >
+                    <form hidden="true" name="list_agenda" repeat="true">
+                        <field name="ac_field" type="Acfields" label="Active Campaign Field"  />
+                        <field name="osm_field" type="Mpfields" label="Membership Pro Field"  />
+                    </form>
+                </field>
+                <field
+                        name="subscribe_group_members"
+                        type="radio"
+                        label="Subscribe Group Members"
+                        description="If set to No, group members won't be subscribed to ActiveCampaign"
+                        class="btn-group btn-group-yesno"
+                        default="1"
+                >
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+            </fieldset>
+        </fields>
+    </config>
+</extension>

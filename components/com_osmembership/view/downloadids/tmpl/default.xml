@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+    <layout title="COM_OSMEMBERSHIP_VIEW_DOWNLOADIDS_DEFAULT_TITLE">
+        <message>
+            <![CDATA[COM_OSMEMBERSHIP_VIEW_DOWNLOADIDS_DEFAULT_DESCRIPTION]]>
+        </message>
+    </layout>
+    <fields name="params">
+        <fieldset name="basic">
+            <field
+                    name="show_domain"
+                    type="radio"
+                    layout="joomla.form.field.radio.switcher"
+                    label="Show Domain"
+                    description="In case you do not collect domain for each Download ID, set this parameter to No will hide Domain column from the list to make it less confusing"
+                    default="1"
+                    filter="integer"
+            >
+                <option value="0">JNO</option>
+                <option value="1">JYES</option>
+            </field>
+        </fieldset>
+    </fields>
+</metadata>

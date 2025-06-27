@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="Donation Form">
+		<message>
+			Display donation form
+		</message>
+	</layout>
+	<state>
+		<name>Donation Form</name>
+		<description>Display Form Which Allows users to make onetime donation to the site</description>		
+		<fields name="request">
+			<fieldset name="request"
+				addfieldpath="/administrator/components/com_jdonation/elements">
+				<field name="campaign_id" type="campaign" size="3" default="0" label="Choose campaign" description="Choose the campaign which users will donate for"></field>
+			</fieldset>
+		</fields>
+		<fields name="params">
+			<fieldset name="basic" label="Other setting" addfieldpath="/administrator/components/com_jdonation/elements">
+				<field name="layout" class="btn-group" type="radio" default="default" label="Select Layout" description="Select Donation layout that you want to show">
+					<option value="default">Default layout</option>
+					<option value="simpleflow_layout">Simple Donation layout</option>
+					<option value="smart">Multi-steps Donation layout</option>
+				</field>
+			</fieldset>
+		</fields>
+	</state>
+</metadata>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="3.9.0" client="site" method="upgrade">
+    <name>Membership Plans</name>
+    <author>Tuan Pham Ngoc</author>
+    <authorEmail>tuanpn@joomdonation.com</authorEmail>
+    <authorUrl>https://joomdonation.com</authorUrl>
+    <copyright>Copyright (C) 2012 - 2025 Ossolution Team</copyright>
+    <license>GNU General Public License version 3, or later</license>
+    <creationDate>Nov 2012</creationDate>
+    <version>4.2.2</version>
+    <description>This module is used to display subscription plans. You can enter 1,3,4,6 or cat-4 or leave the Plan Ids
+        empty to display these plans into article
+    </description>
+    <namespace path="src">OSSolution\MembershipPro\Module\MembershipPlans</namespace>
+    <files>
+        <folder module="mod_membershipplans">services</folder>
+        <folder>src</folder>
+    </files>
+    <config>
+        <fields name="params">
+            <fieldset name="basic">
+                <field name="moduleclass_sfx" type="text"
+                       label="Module Class Suffix" description="PARAMMODULECLASSSUFFIX">
+                </field>
+                <field name="layout_type" type="list" label="Layout"
+                       description="Choose the layout you want to use to display subscription plans">
+                    <option value="default">Default Layout</option>
+                    <option value="columns">Columns Layout</option>
+                    <option value="pricingtable">Pricing Table Layout</option>
+                    <option value="pricingtablecircle">Pricing table circle layout</option>
+                    <option value="pricingtableflat">Pricing table flat layout</option>
+                </field>
+                <field name="plan_ids" type="text" size="50" default="" label="Plan Ids"
+                       description="Enter Ids of the plans you want to display in the module. Leave it empty to display all plans"/>
+                <field name="recommended_plan_id" type="text" size="50" default="" label="Recommended Plan ID"
+                       description="Enter ID of the plan which you want to be recommended. Only works for pricing table layout"/>
+                <field name="number_columns" type="text" size="50" default="" label="Number Columns"
+                       description="Only works for columns and pricing table layouts"/>
+                <field name="item_id" type="text" label="Menu Item ID" description="Menu Item ID" default=""/>
+            </fieldset>
+        </fields>
+    </config>
+</extension>

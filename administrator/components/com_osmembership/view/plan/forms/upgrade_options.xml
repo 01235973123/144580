@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form addfieldpath="/administrator/components/com_osmembership/model/fields">
+    <field
+            name="upgrade_options"
+            type="subform"
+            label="OSM_UPGRADE_OPTIONS"
+            description="OSM_UPGRADE_OPTIONS"
+            layout="joomla.form.field.subform.repeatable-table"
+            icon="list"
+            multiple="true"
+    >
+        <form hidden="true" name="list_upgrade_options" repeat="true">
+            <field
+                    name="id"
+                    type="hidden"
+                    value="0"
+            />
+            <field
+                    name="to_plan_id"
+                    type="osmplan"
+                    label="OSM_TO_PLAN"
+                    class="input-xlarge"
+            />
+            <field name="price"
+                   type="number"
+                   label="OSM_PRICE"
+                   step="0.01"
+                   class="input-small"
+            />
+            <field name="upgrade_prorated"
+                   type="list"
+                   label="OSM_PRORATED"
+                   class="input-medium">
+                <option value="0">JNO</option>
+                <option value="1">OSM_BY_TIME</option>
+                <option value="2">OSM_BY_PRICE</option>
+                <option value="3">OSM_KEEP_DURATION</option>
+                <option value="4">OSM_KEEP_DURATION_PRICE_PRORATED</option>
+                <option value="5">OSM_KEEP_DURATION_PRICE_PRORATED_FROM_UPGRADE_PLAN</option>
+            </field>
+            <field name="published"
+                   type="list"
+                   label="OSM_PUBLISHED"
+                   class="input-small">
+                <option value="0">JNO</option>
+                <option value="1">JYES</option>
+            </field>
+        </form>
+    </field>
+</form>

@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="4.2.0" type="plugin" group="eventbooking" method="upgrade">
+    <name>Events Booking - Ticket Types</name>
+    <author>Tuan Pham Ngoc</author>
+    <creationDate>July 2016</creationDate>
+    <author>Tuan Pham Ngoc</author>
+    <authorEmail>tuanpn@joomdonation.com</authorEmail>
+    <authorUrl>https://joomdonation.com</authorUrl>
+    <copyright>Copyright (C) 2010 - 2025 Ossolution Team</copyright>
+    <license>https://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+    <version>5.0.7</version>
+    <description>This plugin allows you to add different ticket types for your events</description>
+    <files>
+        <filename plugin="tickettypes">tickettypes.php</filename>
+        <folder>form</folder>
+    </files>
+    <config>
+        <fields name="params">
+            <fieldset name="basic">
+                <field
+                        name="show_on_frontend"
+                        type="radio"
+                        label="Show On Frontend"
+                        description="If set to Yes, this plugin will be available on frontend event submission form"
+                        layout="joomla.form.field.radio.switcher"
+                        default="0"
+                >
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                </field>
+                <field
+                        name="ticket_types_collect_members_information"
+                        type="radio"
+                        label="Default Collect Members Information Status"
+                        layout="joomla.form.field.radio.switcher"
+                        default="0"
+                >
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                </field>
+                <field
+                        name="subform_layout"
+                        type="list"
+                        label="Subform Layout"
+                        description="Choose the form layout which will be displayed to allow adding ticket types for event"
+                        default="0"
+                >
+                    <option value="joomla.form.field.subform.repeatable-table">Repeatable Table</option>
+                    <option value="joomla.form.field.subform.repeatable">Repeatable</option>
+                </field>
+                <field
+                        name="enable_weight"
+                        type="radio"
+                        label="Enable Weight"
+                        layout="joomla.form.field.radio.switcher"
+                        default="0"
+                >
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                </field>
+                <field
+                        name="enable_min_tickets_per_booking"
+                        type="radio"
+                        label="Enable Min Tickets Per Booking"
+                        layout="joomla.form.field.radio.switcher"
+                        default="0"
+                >
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                </field>
+                <field
+                        name="enable_discount_rules"
+                        type="radio"
+                        label="Enable Discount Rules"
+                        layout="joomla.form.field.radio.switcher"
+                        default="0"
+                >
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                </field>
+                <field
+                        name="enable_description"
+                        type="radio"
+                        label="Enable Description"
+                        layout="joomla.form.field.radio.switcher"
+                        default="1"
+                >
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                </field>
+                <field
+                        name="enable_publish_up"
+                        type="radio"
+                        label="Enable Publish Up"
+                        layout="joomla.form.field.radio.switcher"
+                        default="1"
+                >
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                </field>
+                <field
+                        name="enable_publish_down"
+                        type="radio"
+                        label="Enable Publish Down"
+                        layout="joomla.form.field.radio.switcher"
+                        default="1"
+                >
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                </field>
+                <field
+                        name="enable_access"
+                        type="radio"
+                        label="Enable Access"
+                        layout="joomla.form.field.radio.switcher"
+                        default="0"
+                >
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                </field>
+            </fieldset>
+        </fields>
+    </config>
+</extension>

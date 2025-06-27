@@ -1,0 +1,13 @@
+#currency a {
+    border: 1px solid #CCCCCC;
+    color: #999999;
+    margin-bottom: 2px;
+    margin-right: 2px;
+    padding: 2px 4px;
+    text-decoration: none;
+	cursor: pointer;
+}
+#currency a b {
+    color: #000000;
+    text-decoration: none;
+}

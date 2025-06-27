@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="2.5" client="site" method="upgrade">
+	<name>Eshop Category</name>
+	<creationDate>May 2013</creationDate>
+	<author>Giang Dinh Truong</author>
+	<authorEmail>contact@joomdonation.com</authorEmail>
+	<authorUrl>http://www.joomdonation.com</authorUrl>
+	<copyright>Copyright (C) 2012 Ossolution Team</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<version>4.0.2</version>
+	<description>This module show category for Eshop</description>
+	<files>
+		<filename module="mod_eshop_category">mod_eshop_category.php</filename>
+		<folder>css</folder>
+		<folder>tmpl</folder>
+		<filename>helper.php</filename>
+		<filename>index.html</filename>
+		<filename>mod_eshop_category.xml</filename>
+	</files>
+	<languages>
+		<language tag="en-GB">language/en-GB.mod_eshop_category.ini</language>
+	</languages>
+	<config>
+		<fields name="params">
+			<fieldset name="basic" addfieldpath="/administrator/components/com_eshop/elements">
+				<field type="asset" path="modules/mod_eshop_category/admin/" />
+				<field name="moduleclass_sfx" type="text" label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL" description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC" />
+				<field
+					name="layout"
+					type="modulelayout"
+					label="JFIELD_ALT_LAYOUT_LABEL"
+					class="form-select"
+					description="JFIELD_ALT_MODULE_LAYOUT_DESC" />
+				<field name="category_ids" type="eshopparentcategories" default="" label="ESHOP_CATEGORIES" description="ESHOP_CATEGORIES_DESC" />
+				<field name="show_children" type="radio" default="0" label="ESHOP_SHOW_SUBCATEGORIES" description="ESHOP_SHOW_SUBCATEGORIES_DESC">
+					<option value="0">No</option>
+					<option value="1">Yes</option>
+				</field>
+				<field name="show_number_products" type="radio" default="0" label="ESHOP_SHOW_NUMBER_PRODUCTS" description="ESHOP_SHOW_NUMBER_PRODUCTS_DESC">
+					<option value="0">No</option>
+					<option value="1">Yes</option>
+				</field>
+				<field name="show_description" type="radio" default="1" label="ESHOP_SHOW_DESCRIPTION" description="ESHOP_SHOW_DESCRIPTION_DESC">
+					<option value="0">No</option>
+					<option value="1">Yes</option>
+				</field>
+				<field name="category_description_limit" default="0" type="text" label="ESHOP_CATEGORY_DESCRIPTION_LIMIT" description="ESHOP_CATEGORY_DESCRIPTION_LIMIT_DESC" />
+				<field name="categories_per_row" type="text" default="3" label="ESHOP_NUMBER_CATEGORY_PER_ROW" description="" />
+				<field name="image_width" type="text" default="100" label="ESHOP_THUMBNAIL_WIDTH" description="" />
+				<field name="image_height" type="text" default="100" label="ESHOP_THUMBNAIL_HEIGHT" description="" />
+				<field name="image_resize_function" type="list" default="resizeImage" label="ESHOP_IMAGE_RESIZE_FUNCTION" description="">
+		    		<option value="resizeImage">ESHOP_RESIZE_IMAGE</option>
+		    		<option value="cropsizeImage">ESHOP_CROPSIZE_IMAGE</option>
+		    		<option value="maxsizeImage">ESHOP_MAXSIZE_IMAGE</option>
+				</field>
+			</fieldset>
+			<fieldset name="slider_settings" label="Slider Options">
+                <field name="theme" type="list" label="Theme">
+                    <option value="splide-default.min.css">Default</option>
+                    <option value="splide-sea-green.min.css">Sea Green</option>
+                    <option value="splide-skyblue.min.css">Skye Blue</option>
+                </field>
+                <field name="arrows" type="list" label="Arrows" default="true"
+                       description="Determines whether to create arrows or not">
+                    <option value="1">True</option>
+                    <option value="0">False</option>
+                </field>
+                <field name="pagination" type="list" label="Pagination" default="true"
+                       description="Determines whether to create pagination or not">
+                    <option value="1">True</option>
+                    <option value="0">False</option>
+                </field>
+                <field name="number_items" type="text"
+                       label="Number Items" description="Number of slides being displayed in the viewport" default="3"/>
+                <field
+                        name="autoplay"
+                        type="radio"
+                        label="Auto Play"
+                        class="btn-group btn-group-yesno"
+                        default="1"
+                        filter="integer"
+                >
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+                <field name="speed" type="text" label="Speed" default="300"/>
+                <field name="gap" type="text" label="Gap"
+                       description="The gap between slides. The CSS format is acceptable, such as 1em" default="1em"/>
+                <field type="editor" name="pre_text" filter="raw" label="Pre Text"
+                       description="If entered, the text will be displayed at the top of the module"/>
+                <field type="editor" name="post_text" filter="raw" label="Post Text"
+                       description="If entered, the text will be displayed at the bottom of the module"/>
+				<field name="number_items_xs" type="text"
+                       label="Number Items Extra Small Viewport (less than 576px)"
+                       description="Number of slides being displayed In Extra Small viewport (portrait phones, less than 576px)"
+                       default="0"/>
+                <field name="number_items_sm" type="text"
+                       label="Number Items Small Viewport (less than 768px)"
+                       description="Number of slides being displayed In Small viewport (landscape phones, less than 768px)"
+                       default="0"/>
+                <field name="number_items_md" type="text"
+                       label="Number Items Medium Viewport (less than 992px)"
+                       description="Number of slides being displayed In Medium viewport (tablets, less than 992px)"
+                       default="0"/>
+                <field name="number_items_lg" type="text"
+                       label="Number Items Large Viewport (less than 1200px)"
+                       description="Number of slides being displayed In Large viewport (desktops, less than 1200px)"
+                       default="0"/>
+            </fieldset>
+		</fields>
+	</config>
+</extension>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.9.0" type="plugin" group="osmembership" method="upgrade">
+    <name>Membership Pro - Documents</name>
+    <author>Tuan Pham Ngoc</author>
+    <authorEmail>tuanpn@joomdonation.com</authorEmail>
+    <authorUrl>https://joomdonation.com</authorUrl>
+    <copyright>Copyright (C) 2012 - 2025 Ossolution Team</copyright>
+    <license>GNU General Public License version 3, or later</license>
+    <creationDate>June 2016</creationDate>
+    <version>4.2.2</version>
+    <description>This plugin allows you to manage and give your subscribers download restricted documents for each
+        subscription plan
+    </description>
+    <files>
+        <filename plugin="documents">documents.php</filename>
+        <folder>tmpl</folder>
+    </files>
+	<languages folder="language">
+		<language tag="en-GB">en-GB/en-GB.plg_osmembership_documents.ini</language>		
+	</languages>
+    <params/>
+    <config>
+        <fields name="params">
+            <fieldset name="basic">
+                <field name="documents_path" type="text" class="input-xxlarge" size="60"
+                       default="media/com_osmembership/documents" label="Document Paths"
+                       description="Path to the folder which documents are stored. Could be an absolute path or relative path from root folder of your site"/>
+                <field
+                        name="send_documents_via_email"
+                        type="radio"
+                        label="Send Documents Via Email"
+                        description="If set to Yes, documents which is added to this plan will be sent to subscribers. You should only set this option to Yes if the size of documents are small and you only have few documents for each plan to make sure these documents can be delivered via email"
+                        class="btn-group btn-group-yesno"
+                        default="0"
+                >
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+                <field
+                        name="show_on_frontend"
+                        type="radio"
+                        label="Show On Frontend"
+                        description="If set to Yes, this plugin will be available on frontend add/edit plan form"
+                        class="btn-group btn-group-yesno"
+                        default="0"
+                >
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+            </fieldset>
+        </fields>
+    </config>
+</extension>

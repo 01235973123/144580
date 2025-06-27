@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" method="upgrade" client="site" version="6.0">
+	<name>Jdonation Donors</name>
+	<author>Tuan Pham Ngoc</author>
+	<creationDate>Jan 2009</creationDate>
+	<copyright>Ossolution Team</copyright>
+    <license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<authorEmail>contact@joomservices.com</authorEmail>
+	<authorUrl>www.joomdonation.com</authorUrl>
+	<version>6.0</version>
+	<description>This module is used to show donors for Joomla Donation Extension</description>
+	<files>
+		<filename module="mod_jd_donors">index.html</filename>
+		<filename module="mod_jd_donors">mod_jd_donors.php</filename>
+		<folder>tmpl</folder>
+		<folder>assets</folder>
+	</files>
+        <config>
+		<fields name="params">
+			<fieldset name="basic">
+				<field name="moduleclass_sfx" type="text"
+					label="Module Class Suffix" description="PARAMMODULECLASSSUFFIX">
+				</field>
+				<field name="campaign_ids" type="text"
+					label="Campaign Ids" description="ID of the campaigns you want to show donors from, comma seperated" default="">
+				</field>
+				<field name="number_donors" class="input-mini" type="text"
+					label="Number Donors" description="Number donors to be showed on the module" default="6">
+				</field>
+				<field name="donor_type" type="list" default="1" label="Display donor type" description="Choose the type of donor for the module">
+					<option value="0">Top donor</option>
+					<option value="1">Lastest donor</option>
+					<option value="2">Random donor</option>
+				</field>
+				<field name="integration" type="list" default="0" label="Integration" description="Integration">
+					<option value="0">No integration</option>
+					<option value="1">Community Builder</option>
+					<option value="2">JomSocial</option>
+				</field>
+				<field name="display_username" type="radio" class="btn-group" default="1" label="Display username for registered user" description="If set to yes, the module will display username instead of fullname of donor in the module">
+					<option value="0">No</option>
+					<option value="1">Yes</option>			
+				</field>
+				<field name="show_honoreename" type="radio" class="btn-group" default="1" label="Show honoree name" description="If set to yes, the module will display honoree name if the donation is dedicated">
+					<option value="0">No</option>
+					<option value="1">Yes</option>			
+				</field>
+				<field name="display_currency" type="radio" class="btn-group" default="1" label="Display currency" description="If set to yes, the module will display currency beside donation amount in the module">
+					<option value="0">No</option>
+					<option value="1">Yes</option>			
+				</field>
+				<field name="show_donation_amount" type="radio" class="btn-group" default="1" label="Display Donation Amount" description="Do you want to show Donation amount">
+					<option value="0">No</option>
+					<option value="1">Yes</option>			
+				</field>
+				<field name="show_campaign" type="radio" class="btn-group" default="1" label="Display Campaign" description="Do you want to show campaign">
+					<option value="0">No</option>
+					<option value="1">Yes</option>			
+				</field>
+				<field name="show_donor_address" type="radio" class="btn-group" default="1" label="Display Donor's address" description="Do you want to show address of donors">
+					<option value="0">No</option>
+					<option value="1">Yes</option>			
+				</field>
+				<field name="show_donor_city" type="radio" class="btn-group" default="1" label="Display Donor's city" description="Do you want to show city of donors">
+					<option value="0">No</option>
+					<option value="1">Yes</option>			
+				</field>
+				<field name="show_donor_state" type="radio" class="btn-group" default="1" label="Display Donor's state" description="Do you want to show state of donors">
+					<option value="0">No</option>
+					<option value="1">Yes</option>			
+				</field>
+				<field name="show_donor_country" type="radio" class="btn-group" default="1" label="Display Donor's country" description="Do you want to show country of donors">
+					<option value="0">No</option>
+					<option value="1">Yes</option>			
+				</field>
+				<field name="show_comment" type="radio" class="btn-group" default="0" label="Show Donor's comment" description="If set to yes, the module will display comment of donors">
+					<option value="0">No</option>
+					<option value="1">Yes</option>			
+				</field>
+				<field name="min_amount" type="text"
+					label="Minimum Donation Amount" description="Please enter Minimum Donation Amount for showing" default="">
+				</field>
+				<field name="max_amount" type="text"
+					label="Max Donation Amount" description="Please enter Max Donation Amount for showing" default="">
+				</field>
+				<field name="show_pagenavigation" type="radio" class="btn-group" default="0" label="Enable Page Navigation" description="Select Yes if you want to enble Page Navigation">
+					<option value="0">No</option>
+					<option value="1">Yes</option>			
+				</field>
+				<field name="donors_per_page" type="text"
+					label="Donors per page" description="If you enable Page Navigation, please enter number of donors showing per page" default="">
+				</field>
+			</fieldset>			
+		</fields>
+        </config> 		
+</extension>

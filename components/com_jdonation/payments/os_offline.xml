@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<install version="1.0" type="plugin" group="payment">
+	<name>os_offline</name>
+	<title>Offline Payment</title>
+	<author>Tuan Pham Ngoc</author>
+	<creationDate>19-01-2009</creationDate>
+	<copyright>Copyright 2009-2016 Ossolution Team</copyright>
+	<license>http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU/GPL version 2</license>
+	<authorEmail>tuanpn@joomdonation.com</authorEmail>
+	<authorUrl>www.joomdonation.com</authorUrl>
+	<version>4.2</version>
+	<description>Offline Payment Plugin For Joom Donation Extension</description>
+	<params/>
+	<config>
+        <fields name="params">
+            <fieldset name="basic">
+                <field name="payment_fee_amount" type="text" label="Payment Processing Fee ($)" description=""></field>
+                <field name="payment_fee_percent" type="text" label="Payment Processing Fee (%)" description=""></field>
+            </fieldset>
+        </fields>
+    </config>
+	<files>
+		<filename>os_offline.php</filename>
+	</files>
+	<installsql/>
+	<installfile/>
+</install>

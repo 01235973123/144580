@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.9.0" type="plugin" group="membershipprosms" method="upgrade">
+    <name>Membership Pro SMS - Clockwork</name>
+    <author>Tuan Pham Ngoc</author>
+    <creationDate>October 2020</creationDate>
+    <copyright>Copyright (C) 2012 - 2025 Ossolution Team</copyright>
+    <license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+    <authorEmail>tuanpn@joomdonation.com</authorEmail>
+    <authorUrl>https://joomdonation.com</authorUrl>
+    <version>4.2.2</version>
+    <description>This plugin is used to send SMS Reminder To Membership Pro subscribers using Clockwork SMS Gateway.
+    </description>
+    <files>
+        <filename plugin="clockwork">clockwork.php</filename>
+        <folder>clockwork</folder>
+    </files>
+    <config>
+        <fields name="params">
+            <fieldset name="basic">
+                <field name="api_key" type="text" size="60" label="API Key"/>
+                <field name="prefix" type="text" size="60" default="" label="Default Prefix" description="Prefix will be added to phone number to make number become international format. For example +44 for England" />
+            </fieldset>
+        </fields>
+    </config>
+</extension>

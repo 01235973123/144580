@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="5.10.4" client="site" method="upgrade">
+	<name>Donation Campaigns</name>
+	<author>Ossolution Team</author>
+	<creationDate>Jan 2009</creationDate>
+	<copyright>Ossolution Team</copyright>
+    <license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<authorEmail>contact@joomservices.com</authorEmail>
+	<authorUrl>www.joomdonation.com</authorUrl>
+	<version>5.10.4</version>
+	<description>This module is used to show list of active campaigns in Joom Donation Extension</description>
+	<files>
+		<filename module="mod_jd_campaigns">index.html</filename>
+		<filename module="mod_jd_campaigns">mod_jd_campaigns.php</filename>		
+		<filename module="mod_jd_campaigns">tmpl/default.php</filename>
+		<filename module="mod_jd_campaigns">tmpl/index.html</filename>		
+	</files>
+	<languages>
+		<language tag="en-GB">languages/en-GB.mod_jd_campaigns.ini</language>
+	</languages>
+	<config>
+		<fields name="params">
+			<fieldset name="basic" addfieldpath="/administrator/components/com_jdonation/elements">
+				<field name="moduleclass_sfx" type="text"
+					label="Module Class Suffix" description="PARAMMODULECLASSSUFFIX">
+				</field>	
+
+				<field name="category_id" type="jdcategory" size="3" default="0" label="Category" description="Choose the category which you want to list its campaigns" />
+				
+				<field name="cids" type="text" label="Campaign Ids" description="Ids of campaigns you want to show in the module , comman separated. Forexample, you can enter 1,3 here . If you leave this textbox empty , all campaigns will be showed"></field>
+				
+				<field name="number_columns" type="list" default="1" label="Number campaigns per row" description="How many campaigns that you want to show per row">
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+				</field>
+
+				<field name="show_title" type="radio" class="btn-group"  default="1" label="Show campaign title" description="Show title of the active campaign">
+					<option value="0">No</option>
+					<option value="1">Yes</option>
+				</field>
+				<field name="show_goal" class="btn-group" type="radio" default="1" label="Show goal" description="Show goal of the active campaign">
+					<option value="0">No</option>
+					<option value="1">Yes</option>
+				</field>
+				<field name="show_donated_amount" class="btn-group" type="radio" default="1" label="Show donated amount" description="Show donated amount of the active campaign">
+					<option value="0">No</option>
+					<option value="1">Yes</option>
+				</field>
+                <field name="show_percent_donated" class="btn-group" type="radio" default="1" label="Show percent donated" description="Show percent donated of the active campaign">
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </field>
+                <field name="show_number_donors" type="radio" class="btn-group" default="1" label="Show number donors" description="Show number donors of the active campaign">
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </field>
+                <field name="show_days_left" type="radio" class="btn-group" default="1" label="Show number days left" description="Show number days left of the active campaign">
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </field>
+                <field name="show_donate_button" type="radio" class="btn-group" default="1" label="Show donate button" description="">
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </field>
+				<field name="show_campaign_date" type="radio" class="btn-group" default="1" label="Show campaign dates" description="">
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </field>
+				<field name="item_id" class="input-mini" type="text"
+					label="Itemid" description="ID of the menu item which you want to redirect to when users process donate button from this module. If you unsure, leave it empty">
+				</field>						
+			</fieldset>
+		</fields>	
+	</config>	
+</extension>

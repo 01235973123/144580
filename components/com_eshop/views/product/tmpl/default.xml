@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="COM_ESHOP_PRODUCT_VIEW_DEFAULT_TITLE">
+		<message><![CDATA[COM_ESHOP_PRODUCT_VIEW_DEFAULT_DESC]]></message>
+	</layout>
+	<state>
+		<name>COM_ESHOP_PRODUCT_VIEW_DEFAULT_TITLE</name>
+		<description><![CDATA[COM_ESHOP_PRODUCT_VIEW_DEFAULT_DESC]]></description>
+		<fields name="request">
+			<fieldset name="request" addfieldpath="/administrator/components/com_eshop/elements">
+				<field name="id" type="eshopproduct" size="3" default="0" label="COM_ESHOP_PRODUCT_FIELD_SELECT_TITLE" description="COM_ESHOP_PRODUCT_FIELD_SELECT_TITLE_DESC" />
+			</fieldset>
+		</fields>
+	</state>
+</metadata>

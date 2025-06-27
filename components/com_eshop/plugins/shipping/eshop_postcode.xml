@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<install version="1.0" type="eshopplugin" group="shipping">
+	<name>eshop_postcode</name>
+	<title>Postcode Shipping</title>
+	<author>Giang Dinh Truong</author>
+	<creationDate>Oct 2016</creationDate>
+	<copyright>Copyright 2013 Ossolution Team</copyright>
+	<license>http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU/GPL version 2</license>
+	<authorEmail>contact@joomdonation.com</authorEmail>
+	<authorUrl>www.joomdonation.com</authorUrl>
+	<version>4.0.2</version>
+	<description>Postcode shipping plugin allows you to set shipping cost based on Postcode range.</description>
+	<config>
+		<fields name="params" addfieldpath="/administrator/components/com_eshop/elements/">
+			<fieldset name="basic">
+				<field name="package_fee" type="text" label="Package fee" description="This is fee for package" size="5" default="0"></field>
+				<field name="min_total" type="text" label="Min Total" description="If the total amount reach Min Total, then the Postcode Shipping will be disable and the Free Shipping will be available. Leave 0 if you do not want to use it." size="5" default="0"></field>
+				<field name="min_quantity" type="text" label="Min Quantity" description="If the quantity amount reach Min Quantity, then the Postcode Shipping will be disable and the Free Shipping will be available. Leave 0 if you do not want to use it." size="5" default="0"></field>
+				<field name="min_weight" type="text" label="Min Weight" description="If the total weight reach Min Weight then the Postcode Shipping will be disable and the Free Shipping will be available. Leave 0 if you do not want to use it." size="5" default="0"></field>
+				<field name="shipping_cost_rule" type="textarea" label="Shipping Cost Rule" description="Enter shipping cost rule for different post code here with format: Zone ID|start_postcode_11-end_post_code_11/start_postcode_12-end_post_code_12:cost_1|start_postcode_21-end_post_code_22:cost_2|start_postcode_3-end_post_code_3:cost_3|... Each Zone Id per a line."></field>
+				<field name="show_shipping_cost_with_tax" type="list" label="Show Shipping Cost With Tax" description="If Yes, once you choose a Tax Class below, it will display shipping cost include tax." default="1">
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </field>
+				<field name="payment_methods" type="eshoppayments" label="Payment Methods" description="Choose corresponding available payment methods when Postcode Shipping method is chosen. Select all or Un-select all to choose all payment methods."></field>
+				<field name="customer_groups" type="eshopcustomergroups" label="Customer Groups" description="Choose the customer groups to apply postcode shipping."></field>
+				<field name="disabled_products" type="eshopproducts" label="Disabled Products" description="Choose disabled products here. If the cart includes at least a disabled product, then the Postcode Shipping will be not available."></field>
+				<field name="taxclass_id" type="eshoptaxclass" label="Tax Class"></field>
+				<field name="geozone_id" type="eshopgeozone" label="Geo Zone"></field>
+			</fieldset>
+		</fields>
+	</config>
+	<files>
+		<filename>eshop_postcode.php</filename>
+	</files>
+	<installsql />
+	<installfile />
+</install>

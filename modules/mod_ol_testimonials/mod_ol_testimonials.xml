@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="2.5" client="site" method="upgrade">
+	<name>Ol Testimonials</name>
+	<author>olwebdesign</author>
+	<creationDate>Feb 20, 2019</creationDate>
+	<copyright>Copyright (C) http://www.olwebdesign.com. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<authorEmail>support@olwebdesign.com</authorEmail>
+	<authorUrl>www.olwebdesign.com</authorUrl>
+	<version>1.1.2</version>
+	<description>	
+	<![CDATA[<link href="../modules/mod_ol_testimonials/assets/css/admin.css" rel="stylesheet" type="text/css" media="all" />
+	<h1>Ol Testimonials</h1>
+	<div style="margin:0 0 0 10px; font-size:15px;">Ol Testimonials Module from <a href="http://www.olwebdesign.com" target="_blank">olwebdesign.com</a>. In the free version is included only one style. Nine more styles and star ratings, are available in the pro version.</div>
+	<h3>Userful links</h3>
+	<ul><li><a target='_blank' href='https://www.olwebdesign.com/joomla-templates.html'>Joomla templates</a></li>
+	<li><a target='_blank' href='https://www.olwebdesign.com/contact-us.html'>Report bug</a></li></ul>	
+		<div class="footer_review">
+				Like this extensions? <a href="https://extensions.joomla.org/extension/ol-testimonials/" target="_blank">Leave a review on JED</a>
+				<a class="stars" href="https://extensions.joomla.org/extension/ol-testimonials/" target="_blank">
+					<span class="icon-star"></span><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star"></span>
+				</a>
+			</div>
+		]]></description>
+
+	<files>
+		<filename module="mod_ol_testimonials">mod_ol_testimonials.php</filename>
+		<filename>index.html</filename>
+		<filename>mod_ol_testimonials.xml</filename>
+		<folder>assets</folder>
+		<folder>field</folder>
+		<folder>tmpl</folder>
+	</files>
+
+   <updateservers>
+      <server type="extension" priority="1" name="Ol Testimonials">https://www.olwebdesign.com/updates/mod_ol_testimonials.xml</server>
+   </updateservers>
+	<config>
+		<fields name="params">
+			<fieldset name="testimonials" label="Ol Testimonials">				
+				<field name="get_stars" type="list" default="1" label="Rating stars (pro)" description="Show/hide rating stars" >
+					<option value="1">Yes</option>
+					<option value="0">No</option>
+				</field>	
+				<field name="jqueryload" type="radio" default="0" label="Load jquery" description="Load jquery" checked="checked" class="btn-group">
+					<option value="0">No</option>
+					<option value="1">Yes</option>
+				</field>	
+				<field name="get_fonto" type="list" default="0" label="Font awesome" description="Use font awesome only in case of icon issues" >
+					<option value="1">Yes</option>
+					<option value="0">No</option>
+				</field>
+				<field name="testimonials_items" type="subform" formsource="modules/mod_ol_testimonials/field/image.xml" class="advancedSelect" min="1" max="50" multiple="true" layout="joomla.form.field.subform.repeatable" groupByFieldset="true" label="Testimonials" description="Add Testimonials to display" />
+			</fieldset>
+			
+			<fieldset name="settings" label="General Settings" >	
+				<field name="get_style" type="list" default="default" label="Style" description="Select a style" >
+					<option value="default">Default</option>
+					<option value="style1" disabled="true">Style 1 (pro)</option>
+					<option value="style2" disabled="true">Style 2 (pro)</option>
+					<option value="style3" disabled="true">Style 3 (pro)</option>
+					<option value="style4" disabled="true">Style 4 (pro)</option>
+					<option value="style5" disabled="true">Style 5 (pro)</option>
+					<option value="style6" disabled="true">Style 6 (pro)</option>
+					<option value="style7" disabled="true">Style 7 (pro)</option>
+					<option value="style8" disabled="true">Style 8 (pro)</option>
+					<option value="style9" disabled="true">Style 9 (pro)</option>
+					<option value="style10" disabled="true">Style 10 (pro)</option>
+					<option value="style11" disabled="true">Style 11 (pro)</option>
+					<option value="style12" disabled="true">Style 12 (pro)</option>
+					<option value="style13" disabled="true">Style 13 (pro)</option>
+					<option value="style14" disabled="true">Style 14 (pro)</option>
+					<option value="style15" disabled="true">Style 15 (pro)</option>
+					<option value="style16" disabled="true">Style 16 (pro)</option>
+					<option value="style17" disabled="true">Style 17 (pro)</option>
+					<option value="style18" disabled="true">Style 18 (pro)</option>
+					<option value="style19" disabled="true">Style 19 (pro)</option>
+					<option value="style20" disabled="true">Style 20 (pro)</option>
+					<option value="style21" disabled="true">Style 21 (pro)</option>
+					<option value="style22" disabled="true">Style 22 (pro)</option>
+					<option value="style23" disabled="true">Style 23 (pro)</option>
+					<option value="style24" disabled="true">Style 24 (pro)</option>
+					<option value="style25" disabled="true">Style 25 (pro)</option>
+					<option value="style26" disabled="true">Style 26 (pro)</option>
+					<option value="style27" disabled="true">Style 27 (pro)</option>
+					<option value="style28" disabled="true">Style 28 (pro)</option>
+					<option value="style29" disabled="true">Style 29 (pro)</option>
+					<option value="style30" disabled="true">Style 30 (pro)</option>
+					<option value="style31" disabled="true">Style 31 (pro)</option>
+				</field>
+				<field name="bg_color" type="color" default="" label="Custom color (pro)"  description="Choose Custom color (pro)"  disabled="true" />	
+			<field name="image_width" type="list" default="4" label="Items" description="Number of items displayed">
+					<option value="1">1 Item</option>
+					<option value="2">2 Items</option>
+					<option value="3">3 Items</option>
+					<option value="4">4 Items</option>
+					<option value="5">5 Items</option>
+					<option value="6">6 Items</option>
+					<option value="7">7 Items</option>
+					<option value="8">8 Items</option>
+					<option value="9">9 Items</option>
+					<option value="10">10 Items</option>
+				</field>
+				<field name="image_width_tabl" type="list" default="3" label="Items (Tab Landscape)" description="Items (Tab Landscape)">
+					<option value="1">1 Item</option>
+					<option value="2">2 Items</option>
+					<option value="3">3 Items</option>
+					<option value="4">4 Items</option>
+					<option value="5">5 Items</option>
+					<option value="6">6 Items</option>
+					<option value="7">7 Items</option>
+					<option value="8">8 Items</option>
+					<option value="9">9 Items</option>
+					<option value="10">10 Items</option>
+				</field>
+				<field name="image_width_tabp" type="list" default="3" label="Items (Tab Portrait)" description="Items (Tab Portrait)">
+					<option value="1">1 Item</option>
+					<option value="2">2 Items</option>
+					<option value="3">3 Items</option>
+					<option value="4">4 Items</option>
+					<option value="5">5 Items</option>
+					<option value="6">6 Items</option>
+					<option value="7">7 Items</option>
+					<option value="8">8 Items</option>
+					<option value="9">9 Items</option>
+					<option value="10">10 Items</option>
+				</field>
+				<field name="image_width_mobl" type="list" default="2" label="Items (Mob Landscape)" description="Items (Mob Landscape)">
+					<option value="1">1 Item</option>
+					<option value="2">2 Items</option>
+					<option value="3">3 Items</option>
+					<option value="4">4 Items</option>
+					<option value="5">5 Items</option>
+					<option value="6">6 Items</option>
+					<option value="7">7 Items</option>
+					<option value="8">8 Items</option>
+					<option value="9">9 Items</option>
+					<option value="10">10 Items</option>
+				</field>
+				<field name="image_width_mobp" type="list" default="1" label="Items (Mob Portrait)" description="Items (Mob Portrait)">
+					<option value="1">1 Item</option>
+					<option value="2">2 Items</option>
+					<option value="3">3 Items</option>
+					<option value="4">4 Items</option>
+					<option value="5">5 Items</option>
+					<option value="6">6 Items</option>
+					<option value="7">7 Items</option>
+					<option value="8">8 Items</option>
+					<option value="9">9 Items</option>
+					<option value="10">10 Items</option>
+				</field>
+				<field name="autoplay" type="list" default="true" label="Auto play" description="Auto play">
+					<option value="true">Yes</option>
+					<option value="false">No</option>
+				</field>
+				<field name="autoplay-timeout" type="list" default="5000" label="Sliding Time" description="Sliding Time">
+					<option value="1000">1 sec</option>
+					<option value="2000">2 sec</option>
+					<option value="3000">3 sec</option>
+					<option value="4000">4 sec</option>
+					<option value="5000">5 sec</option>
+					<option value="6000">6 sec</option>
+					<option value="7000">7 sec</option>
+					<option value="8000">8 sec</option>
+					<option value="9000">9 sec</option>
+					<option value="10000">10 sec</option>
+					<option value="15000">15 sec</option>
+					<option value="20000">20 sec</option>
+				</field>
+				<field name="autoplay-speed" type="list" default="1000" label="Sliding speed" description="Sliding speed">
+					<option value="500">0.5 sec</option>
+					<option value="600">0.6 sec</option>
+					<option value="700">0.7 sec</option>
+					<option value="800">0.8 sec</option>
+					<option value="900">0.9 sec</option>
+					<option value="1000">1 sec</option>
+					<option value="2000">2 sec</option>
+					<option value="3000">3 sec</option>
+				</field>
+				<field name="autoplay-hover-pause" type="list" default="true" label="Auto play hover pause" description="Auto play hover pause">
+					<option value="true">Yes</option>
+					<option value="false">No</option>
+				</field>
+				<field name="dataLoop" type="list" default="true" label="Loop" description="Loop">
+					<option value="true">Yes</option>
+					<option value="false">No</option>
+				</field>
+				<field name="dataNav" type="list" default="true" label="Navigation" description="Show Navigation">
+					<option value="true">Yes</option>
+					<option value="false">No</option>
+				</field>
+				<field name="navPosit" type="list" default="" label="Navigation position" description="Next prev buttom position">
+					<option value="nav-bottom-right">Bottom right</option>
+					<option value="nav-outside-top">Top right</option>
+					<option value="owl-nav">Center</option>
+				</field>
+				<field name="navStyle" type="list" default="" label="Navigation Style" description="Navigation Style">
+					<option value="nav-light">Light</option>
+					<option value="">Dark</option>
+				</field>
+				<field name="navRounded" type="list" default="" label="Nav Buttons Rounded" description="Navigation Buttons Rounded">
+					<option value="nav-rounded">Yes</option>
+					<option value="">No</option>
+				</field>		
+				<field name="jpreload" type="list" default="0" label="Preload" description="Show preload">
+					<option value="1">Yes</option>
+					<option value="0">No</option>
+				</field>			
+				<field name="container_fix" type="text" default="0" label="Item disatance" description="Disatance betwin each team members." />
+			</fieldset>
+			
+			<fieldset name="advanced">
+				<field
+					name="layout"
+					type="modulelayout"
+					label="JFIELD_ALT_LAYOUT_LABEL"
+					description="JFIELD_ALT_MODULE_LAYOUT_DESC" />
+				<field
+					name="moduleclass_sfx"
+					type="text"
+					label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL"
+					description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC" />
+				<field
+					name="cache"
+					type="list"
+					default="1"
+					label="COM_MODULES_FIELD_CACHING_LABEL"
+					description="COM_MODULES_FIELD_CACHING_DESC">
+					<option
+						value="1">JGLOBAL_USE_GLOBAL</option>
+					<option
+						value="0">COM_MODULES_FIELD_VALUE_NOCACHING</option>
+				</field>
+				<field
+					name="cache_time"
+					type="text"
+					default="900"
+					label="COM_MODULES_FIELD_CACHE_TIME_LABEL"
+					description="COM_MODULES_FIELD_CACHE_TIME_DESC" />
+				<field
+					name="cachemode"
+					type="hidden"
+					default="static">
+					<option
+						value="static"></option>
+				</field>
+			</fieldset>
+		</fields>
+	</config>
+</extension>

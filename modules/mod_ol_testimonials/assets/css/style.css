@@ -1,0 +1,148 @@
+
+/*------------------------------------------------------------------------
+# mod_ol_testimonials Extension
+# ------------------------------------------------------------------------
+# author    olwebdesign
+# copyright Copyright (C) 2023 olwebdesign.com. All Rights Reserved.
+# @license - http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+# Websites: http://www.olwebdesign.com
+-------------------------------------------------------------------------*/
+.reviews-block_template_zoom .reviews-block__title {
+font-size: 16px;
+line-height: 1.125;
+text-transform: uppercase;
+font-weight: 600;
+background: #f14201;
+display: inline-block;
+vertical-align: top;
+color: #fff;
+padding: 4px 6px 1px;
+}
+
+.reviews-block_template_zoom .reviews-block__title:empty {
+opacity: 0;
+}
+
+.reviews-block__title {
+font-size: 16px;
+text-transform: uppercase;
+font-weight: 500;
+letter-spacing: 0.02em;
+}
+
+.reviews-block__slider {
+margin-top: 76px;
+}
+
+.reviews-block__main:not(:last-child) {
+margin-bottom: 126px;
+}
+
+.reviews-block__slide {
+background: #fff;
+padding: 44px 50px;
+}
+
+.reviews-block__text {
+color: #666;
+font-size: 100%;
+line-height: 1.666666666666667;
+margin-bottom: 32px;
+}
+.reviews-block__text::after {
+color: #ddd;
+content: "\f10e";
+font-family: FontAwesome;
+font-size: 32px;
+margin: auto;
+position: absolute;
+right: 50px;
+bottom: 50px;
+z-index: 2;
+}
+.reviews-block__person {
+display: -ms-flexbox;
+display: flex;
+padding-right: 40px;
+position: relative;
+-ms-flex-align: start;
+align-items: flex-start;
+}
+
+.reviews-block__person-data {
+margin-top: 5px;
+}
+
+.reviews-block__person-name {
+font-family: 'Teko', Helvetica, sans-serif;
+font-size: 24px;
+line-height: 1;
+margin-bottom: 2px;
+}
+
+.reviews-block__person-role {
+color: #999;
+}
+
+.reviews-block__person-image {
+width: 60px;
+min-width: 60px;
+height: 60px;
+border-radius: 100%;
+overflow: hidden;
+margin-right: 23px;
+}
+
+.reviews-block__person-image img {
+width: 100%;
+}
+
+.reviews-block__quote {
+width: auto !important;
+position: absolute;
+right: 0;
+top: 12px;
+}
+
+.reviews-block__controls {
+display: -ms-flexbox;
+display: flex;
+font-size: 22px;
+-ms-flex-pack: justify;
+justify-content: space-between;
+margin-left: -5px;
+margin-right: -5px;
+margin-top: -2px;
+}
+
+.reviews-block__control {
+background: none;
+border: 0;
+color: currentColor;
+margin-bottom: -2px;
+transition: 0.3s ease;
+transform: translateZ(0);
+}
+
+.reviews-block__control:hover {
+color: #999;
+}
+.read-rmore{
+position:relative;
+color:#222222;
+font-weight:500;
+padding:5px 15px;
+border:1px solid #cccccc;
+background-color:#f2f2f2;
+-webkit-transition:all 300ms ease;
+-ms-transition:all 300ms ease;
+-o-transition:all 300ms ease;
+-moz-transition:all 300ms ease;
+transition:all 300ms ease;
+}
+
+.read-rmore:hover{
+color:#ffffff;
+border-color:#150b00;
+background-color:#150b00;
+}

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.9.0" type="plugin" group="osmembership" method="upgrade">
+    <name>Membership Pro - Fields Assignment</name>
+    <author>Tuan Pham Ngoc</author>
+    <creationDate>October 2019</creationDate>
+    <copyright>Copyright (C) 2012 - 2025 Ossolution Team</copyright>
+    <license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+    <authorEmail>services@joomdonation.com</authorEmail>
+    <authorUrl>www.joomdonation.com</authorUrl>
+    <version>4.2.2</version>
+    <description>This plugin allows assigning custom fields to plans.</description>
+    <files>
+        <filename plugin="fields">fields.php</filename>
+    </files>
+	<languages folder="language">
+		<language tag="en-GB">en-GB/en-GB.plg_osmembership_fields.ini</language>		
+	</languages>
+    <config>
+        <fields name="params">
+            <fieldset name="basic">
+                <field
+                        name="show_on_frontend"
+                        type="radio"
+                        label="Show On Frontend"
+                        description="If set to Yes, this plugin will be available on frontend add/edit plan form"
+                        class="btn-group btn-group-yesno"
+                        default="0"
+                >
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+            </fieldset>
+        </fields>
+    </config>
+</extension>

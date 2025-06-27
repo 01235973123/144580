@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="1.6.0" type="plugin" group="system" method="upgrade">
+	<name>Eshop Reminder</name>
+	<creationDate>February 2016</creationDate>
+	<author>Giang Dinh Truong</author>
+	<authorEmail>contact@joomdonation.com</authorEmail>
+	<authorUrl>http://www.joomdonation.com</authorUrl>
+	<copyright>Copyright (C) 2012 Ossolution Team</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<version>4.0.2</version>
+	<description>This plugin sends the email automatically to store's admin to reminder when products in store are nearly out of stock.</description>
+	<files>
+		<filename plugin="eshopreminder">eshopreminder.php</filename>
+	</files>	
+	<config>
+		<fields name="params">
+			<fieldset name="basic">
+				<field name="last_run" label="Last Run Time" type="text" readonly="true" size="30" description="Store Last Run Time of the plugin."></field>
+				<field name="time_period" label="Time Period (Minutes)" type="text" size="10" default="30" description="Please enter a period of time in minutes to send reminder. Default is 30."></field>
+				<field name="number_products" label="Number Products" type="text" size="10" default="10" description="Number of products which you would like to send the reminder each time the plugin run."></field>
+				<field name="received_emails" label="Received Emails" type="text" size="30" default="" description="Please enter the received emails here (divided by comma). If it is empty, then store's email from configuration of EShop will be used."></field>
+			</fieldset>
+		</fields>
+	</config>
+</extension>

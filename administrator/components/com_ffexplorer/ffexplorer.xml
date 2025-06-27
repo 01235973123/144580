@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="component" version="3.1" method="upgrade">
+	<name>COM_FFEXPLORER</name>
+    <author>Mr Meo</author>
+    <creationDate>December 2019</creationDate>
+    <copyright>https://github.com/trananhmanh89/ffexplorer</copyright>
+    <license>GPL v2</license>
+    <authorUrl>https://github.com/trananhmanh89/ffexplorer</authorUrl>
+    <version>1.0.6</version>
+	<description>FF Explorer</description>
+
+	<updateservers>
+        <server type="extension" name="FF Explorer">https://raw.githubusercontent.com/trananhmanh89/ff-update-server/master/com_ffexplorer.xml</server>
+    </updateservers>
+
+	<administration>
+		<files folder="admin">
+			<filename>ffexplorer.php</filename>
+			<filename>controller.php</filename>
+			<filename>access.xml</filename>
+			<filename>config.xml</filename>
+			<folder>assets</folder>
+			<folder>controllers</folder>
+			<folder>views</folder>
+		</files>
+		<menu link="index.php?option=com_ffexplorer">COM_FFEXPLORER_MENU</menu>
+
+		<languages folder="admin/language">
+			<language tag="en-GB">en-GB.com_ffexplorer.ini</language>
+			<language tag="en-GB">en-GB.com_ffexplorer.sys.ini</language>
+		</languages>
+	</administration>
+</extension>

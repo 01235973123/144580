@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="COM_OSMEMBERSHIP_VIEW_PLANS_DEFAULT_TITLE">
+		<message>
+			<![CDATA[COM_OSMEMBERSHIP_VIEW_PLANS_DEFAULT_DESCRIPTION]]>
+		</message>
+	</layout>			
+	<fields name="request">			
+		<fieldset name="request"
+			addfieldpath="/administrator/components/com_osmembership/model/fields">
+			<field name="id" type="osmcategory" size="3" default="0" label="Select Category" description="Select category which you want to display subscription plans" />
+		</fieldset>	
+	</fields>
+	<fields name="params">
+		<fieldset name="basic">
+			<field name="plan_ids" type="osmplan" multiple="true" label="Plans" description="Select the plans which you want to be displayed. If you don't select any plans here, all plans will be displayed" />
+			<field name="exclude_plan_ids" type="text" label="Exclude Plan Ids" description="Enter IDs of the plans which you don't want to be displayed on this page, comma separated" />
+			<field name="show_plan_information" type="list" label="Show Plan Information" description="Choose to show/hide plan information such as Duration, Price, Setup Fee..." default="1">
+				<option value="0">No</option>
+				<option value="1">Yes</option>
+			</field>
+			<field name="plan_information_position" type="list" default="0" label="Plan Information Position"
+				   description="Choose where to show plan information" showon="show_plan_information:1">
+				<option value="0">Right</option>
+				<option value="1">Top</option>
+				<option value="2">Bottom</option>
+			</field>
+			<field name="list_limit" type="text" default="" label="Number Plans Per Page" />
+			<field type="editor" buttons="yes" name="intro_text" filter="raw" label="Intro Text" description="If you enter some text here, it will be displayed at the top of plans list." />
+		</fieldset>
+	</fields>
+</metadata>

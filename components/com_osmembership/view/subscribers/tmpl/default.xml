@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+    <layout title="COM_OSMEMBERSHIP_VIEW_SUBSCRIBERS_DEFAULT_TITLE">
+        <message>
+            <![CDATA[COM_OSMEMBERSHIP_VIEW_SUBSCRIBERS_DEFAULT_DESCRIPTION]]>
+        </message>
+    </layout>
+    <stale>
+        <fields name="params">
+            <fieldset name="basic" addfieldpath="/administrator/components/com_osmembership/model/fields">
+                <field name="hide_buttons" type="list" multiple="true" label="Hide Buttons"
+                       description="Select the buttons which you want to hide on Subscriptions Management screen">
+                    <option value="add">New</option>
+                    <option value="edit">Edit</option>
+                    <option value="delete">Delete</option>
+                    <option value="publish">Publish/Unpublish</option>
+                    <option value="renew">Renew Subscription</option>
+                    <option value="export">Export</option>
+                    <option value="export_pdf">Export PDF</option>
+                    <option value="disable_reminders">Disable Reminders</option>
+                    <option value="batch_mail">Mass Mail</option>
+                    <option value="request_payment">Request Payment</option>
+                </field>
+                <field name="plan_ids" type="osmplan" multiple="true" label="Plans" description="Select plans which you want to manage subscriptions. If no plans are selected, subscriptions from all plans will be displayed" />
+                <field name="exclude_plan_ids" type="osmplan" multiple="true" label="Exclude Plans" description="Select plans which you want to exclude subscriptions from" />
+                <field type="editor" buttons="yes" name="intro_text" filter="raw" label="Intro Text" description="If you enter some text here, it will be displayed at the top subscriptions management page." />
+                <field name="default_subscription_status" type="list" label="Default Subscription Status" default="">
+                    <option value="">All</option>
+                    <option value="0">Pending</option>
+                    <option value="1">Active</option>
+                    <option value="2">Expired</option>
+                </field>
+            </fieldset>
+            <fieldset name="display_settings" label="Display Options">
+                <field
+                        name="show_last_name"
+                        type="radio"
+                        label="Show Last Name"
+                        class="btn-group btn-group-yesno"
+                        default="1"
+                >
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+                <field
+                        name="show_created_date"
+                        type="radio"
+                        label="Show Created Date"
+                        class="btn-group btn-group-yesno"
+                        default="1"
+                >
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+                <field
+                        name="show_gross_amount"
+                        type="radio"
+                        label="Show Amount"
+                        class="btn-group btn-group-yesno"
+                        default="1"
+                >
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+                <field
+                        name="show_coupon"
+                        type="radio"
+                        label="Show Coupon"
+                        class="btn-group btn-group-yesno"
+                        default="1"
+                >
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+                <field
+                        name="show_membership_id"
+                        type="radio"
+                        label="Show Membership ID"
+                        class="btn-group btn-group-yesno"
+                        default="1"
+                >
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+                <field
+                        name="show_id"
+                        type="radio"
+                        label="Show ID"
+                        class="btn-group btn-group-yesno"
+                        default="1"
+                >
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+                <field name="list_limit" type="text" default="" label="Number Records" description="Number of records will be shown on each page" />
+            </fieldset>
+        </fields>
+    </stale>
+</metadata>

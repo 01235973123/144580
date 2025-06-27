@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="1.6.0" type="plugin" group="system" method="upgrade">
+	<name>Eshop Currency</name>
+	<creationDate>May 2013</creationDate>
+	<author>Giang Dinh Truong</author>
+	<authorEmail>contact@joomdonation.com</authorEmail>
+	<authorUrl>http://www.joomdonation.com</authorUrl>
+	<copyright>Copyright (C) 2012 Ossolution Team</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<version>4.0.2</version>
+	<description>This plugin to update currencies for your shop</description>
+	<files>
+		<filename plugin="eshopcurrency">eshopcurrency.php</filename>
+		<filename>index.html</filename>
+	</files>	
+	<config>
+		<fields name="params">
+			<fieldset name="basic">
+				<field name="last_run" label="Last Run Time" type="text" readonly="true" size="30" description="Store Last Run Time of the plugin."></field>
+				<field name="time_period" label="Time Period" type="text" size="10" default="1" description="Please enter a number of time to update currencies."></field>
+				<field name="time_unit" type="list" default="day" label="Time Unit" description="Please choose Time Unit to update currencies.">
+		    		<option value="min">Minutes</option>
+					<option value="hour">Hours</option>
+					<option value="day">Days</option>
+					<option value="week">Weeks</option>
+				</field>
+			</fieldset>
+		</fields>
+	</config>
+</extension>

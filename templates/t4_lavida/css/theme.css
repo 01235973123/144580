@@ -1,0 +1,34 @@
+/**
+ *------------------------------------------------------------------------------
+ * @package       T4_Blank_BS5 - Free Template for Joomla!
+ *------------------------------------------------------------------------------
+ * @copyright     Copyright (C) 2004-2021 JoomlArt.com. All Rights Reserved.
+ * @license       GNU General Public License version 2 or later; see LICENSE.txt
+ * @authors       JoomlArt
+ *------------------------------------------------------------------------------
+**/
+:root {
+  --t4-blue: #0d6efd;
+  --t4-indigo: #6610f2;
+  --t4-purple: #6f42c1;
+  --t4-pink: #d63384;
+  --t4-red: #dc3545;
+  --t4-orange: #fd7e14;
+  --t4-yellow: #ffc107;
+  --t4-green: #198754;
+  --t4-teal: #20c997;
+  --t4-cyan: #0dcaf0;
+  --t4-white: #fff;
+  --t4-gray: #6c757d;
+  --t4-gray-dark: #343a40;
+  --t4-primary: #0d6efd;
+  --t4-secondary: #6c757d;
+  --t4-success: #198754;
+  --t4-info: #0dcaf0;
+  --t4-warning: #ffc107;
+  --t4-danger: #dc3545;
+  --t4-light: #f8f9fa;
+  --t4-dark: #212529;
+  --t4-font-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --t4-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --t4-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0)); }

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.9.2" type="plugin" group="finder" method="upgrade">
+	<name>Smart Search - EShop</name>
+	<author>Giang Dinh Truong</author>
+	<creationDate>April 2022</creationDate>
+	<copyright>Copyright 2010 - 2022 Ossolution Team</copyright>
+	<license>https://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<authorEmail>giangdt@joomdonation.com</authorEmail>
+	<authorUrl>https://joomdonation.com</authorUrl>
+	<description>This plugin indexes products in EShop Shopping Cart extension.</description>
+	<files>
+		<file plugin="eshop">eshop.php</file>    	
+		<file>eshop.j4.php</file>
+		<file>eshop.j3.php</file>
+	</files>
+</extension>

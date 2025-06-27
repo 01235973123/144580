@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<install version="1.0" type="plugin" group="payment">
+	<name>os_moneybooker</name>
+	<title>Moneybooker</title>
+	<author>Tuan Pham Ngoc</author>
+	<creationDate>19-01-2009</creationDate>
+	<copyright>Copyright 2009-2016 Ossolution Team</copyright>
+	<license>http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU/GPL version 2</license>
+	<authorEmail>tuanpn@joomdonation.com</authorEmail>
+	<authorUrl>www.joomdonation.com</authorUrl>
+	<version>4.2</version>
+	<description>Moneybooker Payment Plugin For Joom Donation Extension</description>
+	<config>
+		<fields name="params">
+			<fieldset name="basic">
+				<field name="mb_merchant_email" type="text" size="40" label="Merchant Email"
+					   description="Enter your Moneybooker Merchant Email" default=""></field>
+				<field name="mb_merchant_id" type="text" label="Merchant ID"
+					   description="Enter your moneybooker merchant ID"></field>
+				<field name="mb_secret_word" type="text" label="Secret word" description=""></field>
+			</fieldset>
+		</fields>
+	</config>
+	<files>
+		<filename>os_moneybooker.php</filename>
+	</files>
+	<installsql/>
+	<installfile/>
+</install>

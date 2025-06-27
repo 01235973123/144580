@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="component" version="2.5.0" method="upgrade">
+    <name>com_osmembership</name>
+    <creationDate>May 2012</creationDate>
+    <author>Tuan Pham Ngoc</author>
+    <authorEmail>tuanpn@joomdonation.com</authorEmail>
+    <authorUrl>https://joomdonation.com</authorUrl>
+    <copyright>Copyright (C) 2012 - 2025 Ossolution Team</copyright>
+    <license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+    <version>4.2.2</version>
+    <description>Membership Pro gives you a quick and easy way to sell memberships and give subscribers access to resources on your site
+    </description>
+    <scriptfile>install.osmembership.php</scriptfile>
+    <install>
+        <sql>
+            <file driver="mysql" charset="utf8">sql/install.osmembership.sql</file>
+        </sql>
+    </install>
+    <media destination="com_osmembership" folder="media">
+        <filename>invoice_logo.png</filename>
+        <filename>ajax-loadding-animation.gif</filename>
+        <folder>invoices</folder>
+		<folder>avatars</folder>
+		<folder>assets</folder>
+		<folder>documents</folder>
+		<folder>scheduledocuments</folder>
+		<folder>membercards</folder>
+        <folder>qrcodes</folder>
+		<folder>js</folder>
+        <folder>userfiles</folder>
+    </media>
+    <languages>
+        <language tag="en-GB">site/languages/en-GB/en-GB.com_osmembership.ini</language>
+    </languages>
+    <files folder="site">
+        <filename>router.php</filename>
+        <filename>osmembership.php</filename>
+		<filename>fields.xml.txt</filename>
+        <folder>controller</folder>
+        <folder>model</folder>
+        <folder>view</folder>
+        <folder>helper</folder>
+        <folder>layouts</folder>
+        <folder>plugins</folder>
+        <folder>tcpdf</folder>
+    </files>
+    <administration>
+        <menu>OSM_MEMBERSHIP</menu>
+        <submenu>
+            <menu link="option=com_osmembership&amp;view=dashboard">OSM_DASHBOARD</menu>
+            <menu link="option=com_osmembership&amp;view=configuration">OSM_CONFIGURATION</menu>
+            <menu link="option=com_osmembership&amp;view=categories">OSM_PLAN_CATEGORIES</menu>
+            <menu link="option=com_osmembership&amp;view=plans">OSM_SUBSCRIPTION_PLANS</menu>
+            <menu link="option=com_osmembership&amp;view=subscriptions">OSM_SUBSCRIPTIONS</menu>
+            <menu link="option=com_osmembership&amp;view=groupmembers">OSM_GROUP_MEMBERS</menu>
+            <menu link="option=com_osmembership&amp;view=fields">OSM_CUSTOM_FIELDS</menu>
+            <menu link="option=com_osmembership&amp;view=taxes">OSM_TAX_RULES</menu>
+            <menu link="option=com_osmembership&amp;view=coupons">OSM_COUPONS</menu>
+            <menu link="option=com_osmembership&amp;view=import">OSM_IMPORT_SUBSCRIBERS</menu>
+            <menu link="option=com_osmembership&amp;view=plugins">OSM_PAYMENT_PLUGINS</menu>
+            <menu link="option=com_osmembership&amp;view=mitems">OSM_EMAIL_MESSAGES</menu>
+            <menu link="option=com_osmembership&amp;view=language">OSM_TRANSLATION</menu>
+            <menu link="option=com_osmembership&amp;view=countries">OSM_COUNTRIES</menu>
+            <menu link="option=com_osmembership&amp;view=states">OSM_STATES</menu>
+        </submenu>
+        <languages>
+            <language tag="en-GB">admin/languages/en-GB/en-GB.com_osmembership.sys.ini</language>
+            <language tag="en-GB">admin/languages/en-GB/en-GB.com_osmembership.ini</language>
+			<language tag="en-GB">admin/languages/en-GB/en-GB.com_osmembershipcommon.ini</language>
+        </languages>
+        <files folder="admin">
+            <filename>config.xml</filename>
+            <filename>access.xml</filename>
+            <filename>osmembership.php</filename>
+            <filename>config.php</filename>
+            <filename>loader.php</filename>
+            <folder>assets</folder>
+            <folder>model</folder>
+            <folder>view</folder>
+            <folder>controller</folder>
+            <folder>libraries</folder>
+            <folder>elements</folder>
+            <folder>Event</folder>
+            <folder>table</folder>
+            <folder>sql</folder>
+			<folder>updates</folder>
+        </files>
+    </administration>
+</extension>

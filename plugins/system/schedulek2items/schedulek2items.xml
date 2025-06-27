@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.9.0" type="plugin" group="system" method="upgrade">
+    <name>System - Membership Schedule K2 Items</name>
+    <author>Tuan Pham Ngoc</author>
+    <authorEmail>tuanpn@joomdonation.com</authorEmail>
+    <authorUrl>https://joomdonation.com</authorUrl>
+    <copyright>Copyright (C) 2012 - 2025 Ossolution Team</copyright>
+    <license>GNU General Public License version 3, or later</license>
+    <creationDate>Mar 2018</creationDate>
+    <version>4.2.2</version>
+    <description>This plugin allows you to manage and release k2 items for your subscribers in the schedule you want
+    </description>
+    <files>
+        <filename plugin="schedulek2items">schedulek2items.php</filename>
+        <folder>form</folder>
+    </files>
+	<languages folder="language">
+		<language tag="en-GB">en-GB/en-GB.plg_system_schedulek2items.ini</language>		
+	</languages>
+    <config>
+        <fields name="params">
+            <fieldset name="basic">
+                <field name="number_new_k2_items_each_time" type="text" size="60" default="10"
+                       label="Number New K2 Items Each Time" description="Number new k2 items you can setup each time"/>
+                <field name="release_item_older_than_x_days" type="text" size="60" default="0"
+                       label="Release K2 Items Older Than X Days"
+                       description="If enter a number here, K2 items older than this entered number days will be free to access to everyone"/>
+                <field
+                        name="show_on_frontend"
+                        type="radio"
+                        label="Show On Frontend"
+                        description="If set to Yes, this plugin will be available on frontend add/edit plan form"
+                        class="btn-group btn-group-yesno"
+                        default="0"
+                >
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+            </fieldset>
+        </fields>
+    </config>
+</extension>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="5.10.0" client="site" method="upgrade">
+	<name>Donation Thermometer</name>
+	<author>Ossolution Team</author>
+	<creationDate>Jan 2009</creationDate>
+	<copyright>Ossolution Team</copyright>
+    <license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<authorEmail>contact@joomservices.com</authorEmail>
+	<authorUrl>www.joomdonation.com</authorUrl>
+	<version>5.10.0</version>
+	<description>This module is used to show Thermometer for campaigns in Joom Donation Extension</description>
+	<files>
+		<filename module="mod_jd_thermometer">index.html</filename>
+		<filename module="mod_jd_thermometer">mod_jd_thermometer.php</filename>
+		<filename module="mod_jd_thermometer">tmpl/default.php</filename>
+		<filename module="mod_jd_thermometer">tmpl/index.html</filename>		
+	</files>
+	<config>
+		<fields name="params">
+			<fieldset name="basic">
+				<field name="moduleclass_sfx" type="text"
+					label="Module Class Suffix" description="PARAMMODULECLASSSUFFIX">
+				</field>								
+				<field name="cids" type="text" label="Campaign Ids" description="Ids of campaigns you want to show in the module , comman separated. Forexample, you can enter 1,3 here . If you leave this textbox empty , all campaigns will be showed"></field>				
+				<field name="show_title" class="btn-group" type="radio" default="1" label="Show campaign title" description="Show title of the active campaign">
+					<option value="0">No</option>
+					<option value="1">Yes</option>
+				</field>
+                <field name="show_donate_button" class="btn-group" type="radio" default="1" label="Show donate button" description="">
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </field>
+				<field name="currency" class="input-mini" type="text" label="Currency" default="$" description=""></field>									
+				<field name="item_id" type="text" class="input-mini" 
+					label="Itemid" description="ID of the menu item which you want to redirect to when users process donate button from this module. If you unsure, leave it empty">
+				</field>
+			</fieldset>
+		</fields>
+	</config>		
+</extension>

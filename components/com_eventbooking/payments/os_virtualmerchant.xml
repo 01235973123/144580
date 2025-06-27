@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<install version="1.0" type="plugin" group="payment">
+	<name>os_virtualmerchant</name>
+	<title>Evalon CONVERGE</title>	
+	<author>Tuan Pham Ngoc</author>
+	<creationDate>12-07-2016</creationDate>
+	<copyright>Copyright 2010 - 2023 Ossolution Team</copyright>
+	<license>http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU/GPL version 2</license>
+	<authorEmail>tuanpn@joomdonation.com</authorEmail>
+	<authorUrl>joomdonation.com</authorUrl>
+	<version>4.5.0</version>
+	<description>Evalon CONVERGE Payment Plugin For Events Booking Extension</description>	
+	<config>	
+		<fields name="params">
+			<fieldset name="basic">
+				<field name="virtual_mode" type="list" label="Virtual Merchant Mode" description="Set to Test Mode Or Live Mode">
+					<option value="0">Test Mode</option>
+					<option value="1">Live Mode</option>
+				</field>
+				<field name="ssl_merchant_ID" type="text" size="40" label="Merchant ID" description="Enter Your Virtual Merchant ID" default="xxxxxxx" />
+				<field name="ssl_user_id" type="text" size="40" label="User ID" description="Enter Your Virtual User ID" default="" />
+				<field name="ssl_pin" type="text" label="Merchant Pin" description="Enter Merchant Pin" />
+				<field name="icon" type="imagelist" directory="media/com_eventbooking/assets/images/paymentmethods"
+					   label="Icon"
+					   description="If you want to show icon instead of payment method title on registration form, upload it to media/com_eventbooking/assets/images/paymentmethods folder and select the icon here, for example os_creditcard.png."/>
+				<field name="payment_fee_amount" type="text" label="Payment Processing Fee ($)"/>
+				<field name="payment_fee_percent" type="text" label="Payment Processing Fee (%)"/>
+			</fieldset>			
+		</fields>
+	</config>
+	<files>
+		<filename>os_virtualmerchant.php</filename>
+		<folder>virtualmerchant</folder>	
+	</files>	
+	<installsql />
+	<installfile />	
+</install>

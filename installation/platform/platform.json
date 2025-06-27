@@ -1,0 +1,16 @@
+{
+	"name": "BRS_PLATFORM_TITLE_JOOMLA",
+	"type": "joomla",
+	"steps" : [
+		"main",
+		"database",
+		"publicfolder",
+		"offsitedirs",
+		"setup",
+		"finalise"
+	],
+	"limitDrivers": [
+		"Mysqli",
+		"Pdomysql"
+	]
+}

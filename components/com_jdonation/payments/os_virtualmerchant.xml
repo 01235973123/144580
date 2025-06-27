@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<install version="1.0" type="plugin" group="payment">
+	<name>os_virtualmerchant</name>
+	<title>Elavon CONVERGE</title>	
+	<author>Pham Ngoc Tuan</author>
+	<creationDate>26-07-2016</creationDate>
+	<copyright>Copyright 2010-2016 Ossolution Team</copyright>
+	<license>http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU/GPL version 2</license>
+	<authorEmail>giangdt@joomdonation.com</authorEmail>
+	<authorUrl>joomdonation.com</authorUrl>
+	<version>1.0.0</version>
+	<description>Elavon CONVERGE Payment Plugin For Joom Donation Extension</description>	
+	<config>	
+		<fields name="params" addfieldpath="/administrator/components/com_jdonation/elements/">
+			<fieldset name="basic" addfieldpath="/administrator/components/com_jdonation/elements">
+				<field name="virtual_mode" type="list" label="Virtual Merchant Mode" description="Set to Test Mode Or Live Mode">
+					<option value="0">Test Mode</option>
+					<option value="1">Live Mode</option>
+				</field>
+				<field name="ssl_merchant_ID" type="text" size="40" label="Merchant ID" description="Enter Your Virtual Merchant ID" default="xxxxxxx"></field>
+				<field name="ssl_user_id" type="text" size="40" label="User ID" description="Enter Your Virtual User ID" default=" "></field>	
+				<field name="ssl_pin" type="text" label="Merchant Pin" description="Enter Merchant Pin"></field>
+				<field name="payment_fee" type="text" default="0" size="10" label="Payment Fee (Fixed amount)" description="Enter a fixed amount of payment fee."></field>
+				<field name="payment_fee_percentage" type="text" default="0" size="10" label="Payment Fee (Percentage)" description="Enter a number of percentage of Sub Total as payment fee."></field>
+				<field name="min_sub_total" type="text" default="0" size="10" label="Minimum Sub Total" description="Enter minimum of Sub Total before Payment Fee is removed."></field>
+				<field name="customer_groups" type="eshopcustomergroups" label="Customer Groups" description="Choose the customer groups to apply Virtual Merchant Payment method."></field>
+				<field name="ipn_log" type="list" label="Log IPN Messages" description="This is only used for debug purpose when requested. Please set it to No unless requested by our support team." default="0">
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </field>
+			</fieldset>			
+		</fields>
+	</config>
+	<files>
+		<filename>os_virtualmerchant.php</filename>
+		<folder>virtualmerchant</folder>	
+	</files>	
+	<installsql />
+	<installfile />	
+</install>

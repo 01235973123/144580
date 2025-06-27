@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<install version="1.0" type="eshopplugin" group="shipping">
+	<name>eshop_free</name>
+	<title>Free Shipping</title>
+	<author>Giang Dinh Truong</author>
+	<creationDate>May 2013</creationDate>
+	<copyright>Copyright 2013 Ossolution Team</copyright>
+	<license>http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU/GPL version 2</license>
+	<authorEmail>contact@joomdonation.com</authorEmail>
+	<authorUrl>www.joomdonation.com</authorUrl>
+	<version>4.0.2</version>
+	<description>This is Free Shipping method for Eshop</description>
+	<config>
+		<fields name="params" addfieldpath="/administrator/components/com_eshop/elements/">
+			<fieldset name="basic">
+				<field name="min_total" type="text" label="Min Total" description="Total amount needed before the Free Shipping option becomes available. Leave 0 if you don't want to use it." size="5" default="0"></field>
+				<field name="min_quantity" type="text" label="Min Quantity" description="Total quantity needed before the Free Shipping option becomes available. Leave 0 if don't want to use it." size="5" default="0"></field>
+				<field name="min_weight" type="text" label="Min Weight" description="Total weight needed before the Free Shipping option becomes available. Leave 0 if don't want to use it." size="5" default="0"></field>
+				<field name="show_free_cost" type="list" label="Show Free Cost" description="If Yes, then the title will be shown as Free Shipping ($0.00), otherwise, it will only show Free Shipping." default="0">
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </field>
+				<field name="payment_methods" type="eshoppayments" label="Payment Methods" description="Choose corresponding available payment methods when Free Shipping method is chosen. Select all or Un-select all to choose all payment methods."></field>
+				<field name="customer_groups" type="eshopcustomergroups" label="Customer Groups" description="Choose the customer groups to apply free shipping."></field>
+				<field name="disabled_products" type="eshopproducts" label="Disabled Products" description="Choose disabled products here. If the cart includes at least a disabled product, then the Free Shipping will be not available."></field>
+				<field name="geozone_id" type="eshopgeozone" label="Geo Zone"></field>
+			</fieldset>
+		</fields>
+	</config>
+	<files>
+		<filename>eshop_free.php</filename>
+	</files>
+	<installsql />
+	<installfile />
+</install>

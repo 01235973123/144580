@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<access component="com_eshop">
+	<section name="component">
+		<action name="core.admin" title="JACTION_ADMIN" description="JACTION_ADMIN_COMPONENT_DESC" />
+		<action name="core.manage" title="JACTION_MANAGE" description="JACTION_MANAGE_COMPONENT_DESC" />
+		<action name="eshop.orders" title="ESHOP_ACCESS_ORDERS" description="ESHOP_ACCESS_ORDERS_DESC" />
+		<action name="eshop.reviews" title="ESHOP_ACCESS_REVIEWS" description="ESHOP_ACCESS_REVIEWS_DESC" />
+		<action name="eshop.payments" title="ESHOP_ACCESS_PAYMENTS" description="ESHOP_ACCESS_PAYMENTS_DESC" />
+		<action name="eshop.shippings" title="ESHOP_ACCESS_SHIPPINGS" description="ESHOP_ACCESS_SHIPPINGS_DESC" />
+		<action name="eshop.themes" title="ESHOP_ACCESS_THEMES" description="ESHOP_ACCESS_THEMES_DESC" />
+		<action name="eshop.customers" title="ESHOP_ACCESS_CUSTOMERS" description="ESHOP_ACCESS_CUSTOMERS_DESC" />
+		<action name="eshop.customergroups" title="ESHOP_ACCESS_CUSTOMERGROUPS" description="ESHOP_ACCESS_CUSTOMERGROUPS_DESC" />
+		<action name="eshop.coupons" title="ESHOP_ACCESS_COUPONS" description="ESHOP_ACCESS_COUPONS_DESC" />
+		<action name="eshop.vouchers" title="ESHOP_ACCESS_VOUCHERS" description="ESHOP_ACCESS_VOUCHERS_DESC" />
+		<action name="eshop.configuration" title="ESHOP_ACCESS_CONFIGURATION" description="ESHOP_ACCESS_CONFIGURATION_DESC" />
+		<action name="eshop.taxclasses" title="ESHOP_ACCESS_TAXCLASSES" description="ESHOP_ACCESS_TAXCLASSES_DESC" />
+		<action name="eshop.taxrates" title="ESHOP_ACCESS_TAXRATES" description="ESHOP_ACCESS_TAXRATES_DESC" />
+		<action name="eshop.reports" title="ESHOP_ACCESS_REPORTS" description="ESHOP_ACCESS_REPORTS_DESC" />
+		<action name="eshop.tools" title="ESHOP_ACCESS_TOOLS" description="ESHOP_ACCESS_TOOLS_DESC" />
+	</section>
+</access>

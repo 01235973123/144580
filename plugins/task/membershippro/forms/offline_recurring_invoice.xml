@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form>
+	<fields name="params">
+		<fieldset name="task_params">
+			<field
+					name="number_days"
+					type="number"
+					label="Number Days"
+					description="Set to 10 for example and the system will renew and send invoice to subscribers 10 days before their subscription expired"
+					default="10"
+					required="true"
+					min="3"
+					step="1"
+					validate="number"
+					filter="int"
+			/>
+			<field
+					name="number_subscribers"
+					type="number"
+					label="Number Subscribers"
+					description="Number of offline payment recurring subscriptions the system will renew send invoice each time the task is executed"
+					default="10"
+					required="true"
+					min="5"
+					step="1"
+					validate="number"
+					filter="int"
+			/>
+			<field name="published" type="list" label="Renewal Subscription Status" default="0" description="Control the status of the renewal subscription record created by the system. You should set it to Pending and change status of the renewal record to Active when you actually received payment for the renewal from subscriber.">
+				<option value="0">Pending</option>
+				<option value="1">Active</option>
+			</field>
+		</fieldset>
+	</fields>
+</form>

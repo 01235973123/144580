@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="1.6.0" type="plugin" group="system" method="upgrade">
+	<name>Eshop Export</name>
+	<creationDate>August 2022</creationDate>
+	<author>Giang Dinh Truong</author>
+	<authorEmail>contact@joomdonation.com</authorEmail>
+	<authorUrl>http://www.joomdonation.com</authorUrl>
+	<copyright>Copyright (C) 2012 Ossolution Team</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<version>3.5.7</version>
+	<description>This plugin export the data from EShop to a specific folder automatically.</description>
+	<files>
+		<filename plugin="eshopexport">eshopexport.php</filename>
+	</files>	
+	<config>
+		<fields name="params" addfieldpath="/administrator/components/com_eshop/elements/">
+			<fieldset name="basic">
+				<field name="last_run" label="Last Run Time" type="text" readonly="true" size="30" description="Store Last Run Time of the plugin."></field>
+				<field name="time_period" label="Time Period (Minutes)" type="text" size="10" default="30" description="Please enter a period of time in minutes to send export. Default is 30."></field>
+				<field name="folder_path" label="Folder Path" type="text" size="10" default="" description="Please enter path to folder that you want to export files to. If it is empty, then root folder will be used."></field>
+				<field name="file_name" label="File Name" type="text" size="10" default="eshop_google_feed" description=""></field>
+				<field name="language" type="eshoplanguage" label="Language" description=""></field>
+				<field name="export_data_format" type="list" label="Export Data Format" description="" default="csv">
+                    <option value="csv">CSV</option>
+                    <option value="xlsx">XLSX</option>
+                    <option value="xml">XML</option>
+                </field>
+                <field name="product_status" type="list" label="Product Status" description="" default="2">
+                    <option value="2">All Products</option>
+                    <option value="1">Published</option>
+                    <option value="0">Unpublished</option>
+                </field>
+                <field name="start_record" label="Start Record" type="text" default="0" size="30" description=""></field>
+                <field name="total_record" label="Total Record" type="text" default="0" size="30" description=""></field>
+                <field name="remove_zero_price_products" type="list" label="Remove zero price products" description="" default="0">
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </field>
+                <field name="remove_out_of_stock_products" type="list" label="Remove out of stock products" description="" default="0">
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </field>
+                <field name="google_id" type="list" label="id" description="" default="1">
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </field>
+                <field name="google_title" type="list" label="title" description="" default="1">
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </field>
+                <field name="google_description" type="list" label="description" description="" default="1">
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </field>
+                <field name="google_product_type" type="list" label="product_type" description="" default="1">
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </field>
+                <field name="google_link" type="list" label="link" description="" default="1">
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </field>
+                <field name="google_mobile_link" type="list" label="mobile_link" description="" default="1">
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </field>
+                <field name="google_image_link" type="list" label="image_link" description="" default="1">
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </field>
+                <field name="google_additional_image_link" type="list" label="additional_image_link" description="" default="1">
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </field>
+                <field name="google_availability" type="list" label="availability" description="" default="1">
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </field>
+				<field name="google_condition" type="list" label="condition" description="" default="">
+                    <option value="new">New</option>
+                    <option value="refurbished">Refurbished</option>
+					<option value="used">Used</option>
+                </field>
+                <field name="google_price" type="list" label="price" description="" default="1">
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </field>
+                <field name="google_sale_price" type="list" label="sale_price" description="" default="1">
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </field>
+                <field name="google_mpn" type="list" label="mpn" description="" default="1">
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </field>
+                <field name="google_brand" type="list" label="brand" description="" default="1">
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </field>
+                <field name="google_shipping_weight" type="list" label="shipping_weight" description="" default="1">
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </field>
+                <field name="google_alias" type="list" label="alias" description="" default="1">
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </field>
+			</fieldset>
+		</fields>
+	</config>
+</extension>

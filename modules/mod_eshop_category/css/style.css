@@ -1,0 +1,37 @@
+.eshop-category {
+    margin-top: -5px;
+}
+.eshop-category ul {
+    list-style: none outside none;
+    margin: 0;
+    padding: 0;
+}
+.eshop-category > ul > li {
+    padding: 8px 8px 8px 0;
+}
+.eshop-category > ul > li + li {
+    border-top: 1px solid #EEEEEE;
+}
+.eshop-category > ul > li > a {
+    color: #333333;
+    text-decoration: none;
+}
+.eshop-category > ul > li ul {
+    display: none;
+}
+.eshop-category > ul > li a.active {
+    font-weight: bold;
+}
+.eshop-category > ul > li a.active + ul {
+    display: block;
+}
+.eshop-category > ul > li ul > li {
+    padding: 5px 5px 0 10px;
+}
+.eshop-category > ul > li ul > li > a {
+    display: block;
+    text-decoration: none;
+}
+.eshop-category > ul > li ul > li > a.active {
+    font-weight: bold;
+}

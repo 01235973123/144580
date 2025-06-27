@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.9.0" type="plugin" group="osmembership" method="upgrade">
+    <name>Membership Pro - User's Coupons</name>
+    <author>Tuan Pham Ngoc</author>
+    <authorEmail>tuanpn@joomdonation.com</authorEmail>
+    <authorUrl>https://joomdonation.com</authorUrl>
+    <copyright>Copyright (C) 2012 - 2025 Ossolution Team</copyright>
+    <license>GNU General Public License version 3, or later</license>
+    <creationDate>Feb 2019</creationDate>
+    <version>4.2.2</version>
+    <description>This plugin displays coupon available for the current user in his profile</description>
+    <files>
+        <filename plugin="usercoupons">usercoupons.php</filename>
+        <folder>tmpl</folder>
+    </files>
+    <config>
+        <fields name="params">
+            <fieldset name="basic">
+                <field
+                        name="show_times"
+                        type="radio"
+                        label="Show Times Column"
+                        class="btn-group btn-group-yesno"
+                        default="1"
+                >
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+                <field
+                        name="show_used"
+                        type="radio"
+                        label="Show Used Column"
+                        class="btn-group btn-group-yesno"
+                        default="1"
+                >
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+                <field
+                        name="show_valid_from"
+                        type="radio"
+                        label="Show Valid From Column"
+                        class="btn-group btn-group-yesno"
+                        default="1"
+                >
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+                <field
+                        name="show_valid_to"
+                        type="radio"
+                        label="Show Valid To Column"
+                        class="btn-group btn-group-yesno"
+                        default="1"
+                >
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+            </fieldset>
+        </fields>
+    </config>
+</extension>

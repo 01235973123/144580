@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<install version="1.0" type="plugin" group="payment">
+	<name>os_paypal</name>
+	<title>Paypal</title>
+	<author>Tuan Pham Ngoc</author>
+	<creationDate>19-01-2009</creationDate>
+	<copyright>Copyright 2009-2016 Ossolution Team</copyright>
+	<license>http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU/GPL version 2</license>
+	<authorEmail>tuanpn@joomdonation.com</authorEmail>
+	<authorUrl>www.joomdonation.com</authorUrl>
+	<version>4.2</version>
+	<description>Paypal Payment Plugin For Joom Donation Extension</description>
+	<config>
+		<fields name="params" addfieldpath="/administrator/components/com_jdonation/elements">
+			<fieldset name="basic" label="Basic">
+				<field name="paypal_mode" type="list" label="Paypal Mode" description="Set to Test Mode Or Live Mode">
+					<option value="0">Test Mode</option>
+					<option value="1">Live Mode</option>
+				</field>
+				<field name="paypal_id" type="text" size="40" label="Paypal Email"
+					   description="Enter your Paypal ID or Paypal Email" default=""></field>
+				<field name="ipn_log" type="list" label="Log IPN messages"
+					   description="This is only used for debug purpose when requested. Please set it to No unless requested by our support team"
+					   default="0">
+					<option value="0">No</option>
+					<option value="1">Yes</option>
+				</field>
+				<field name="payment_fee_amount" type="text" label="Payment Processing Fee (Fixed amount)" description="" />
+                <field name="payment_fee_percent" type="text" label="Payment Processing Fee (%)" description="" />
+			</fieldset>
+			<fieldset name="advanced" label="Advanced">
+                <field type="note" label="If you have recurring donation and want to allow donor to cancel recurring donation from Donation history layout, get API Credentials from your PayPal account and enter it into the below parameters" />
+                <field name="paypal_api" type="api" label="Get PayPal API" showon="paypal_mode:1" description="Click on the button to get your API Access"/>
+                <field name="paypal_api_user" type="text" label="API User" showon="paypal_mode:1"/>
+                <field name="paypal_api_password" type="text" label="API Password" showon="paypal_mode:1" />
+                <field name="paypal_api_signature" type="text" label="API Signature" showon="paypal_mode:1" />
+
+                <field name="paypal_api_sandbox" type="apisandbox" label="Get Sandbox PayPal API" showon="paypal_mode:0" description="Click on the button to get your API Sandbox Access" />
+                <field name="paypal_api_user_sandbox" type="text" label="Sandbox API User" showon="paypal_mode:0" />
+                <field name="paypal_api_password_sandbox" type="text" label="Sandbox API Password" showon="paypal_mode:0" />
+                <field name="paypal_api_signature_sandbox" type="text" label="Sanbox API Signature" showon="paypal_mode:0" />
+            </fieldset>
+		</fields>
+	</config>
+	<files>
+		<filename>os_paypal.php</filename>
+		<folder>paypal</folder>
+	</files>
+	<installsql/>
+	<installfile/>
+</install>

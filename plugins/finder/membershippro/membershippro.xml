@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.9.0" type="plugin" group="finder" method="upgrade">
+	<name>Smart Search - Membership Pro</name>
+	<author>Tuan Pham Ngoc</author>
+	<creationDate>July 2022</creationDate>
+	<copyright>Copyright 2012 - 2025 Ossolution Team</copyright>
+	<license>https://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<authorEmail>tuanpn@joomdonation.com</authorEmail>
+	<authorUrl>https://joomdonation.com</authorUrl>
+	<description>This plugin indexes subscription plans in Membership Pro extension.</description>
+	<files>
+		<file plugin="membershippro">membershippro.php</file>
+		<file>membershippro.php</file>
+	</files>
+</extension>

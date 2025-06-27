@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.9.0" type="plugin" group="system" method="upgrade">
+    <name>System - Membership Pro URLs Restriction</name>
+    <author>Tuan Pham Ngoc</author>
+    <authorEmail>tuanpn@joomdonation.com</authorEmail>
+    <authorUrl>https://joomdonation.com</authorUrl>
+    <copyright>Copyright (C) 2012 - 2025 Ossolution Team</copyright>
+    <license>GNU General Public License version 3, or later</license>
+    <creationDate>Nov 2012</creationDate>
+    <version>4.2.2</version>
+    <description>This plugin check to see whether users can access to an URL. Only publish it if you use Membership Pro
+        URLS plugin to restrict access for members
+    </description>
+    <files>
+        <filename plugin="osmembershipurls">osmembershipurls.php</filename>
+        <folder>tmpl</folder>
+    </files>
+	<languages folder="language">
+		<language tag="en-GB">en-GB/en-GB.plg_system_osmembershipurls.ini</language>		
+	</languages>
+    <config>
+        <fields name="params">
+            <fieldset name="basic">
+                <field name="redirect_url" label="Redirect URL" type="text" size="70" default=""
+                       description="URL of the page users will be redirected to when they are not allowed to access to the restricted page"/>
+                <field name="compare_method" type="list" label="Compare method" default="0"
+                       description="Choose method which will be used to compare the request URL with the URL which will be protected">
+                    <option value="0">Default - Exact URL (Recommended)</option>
+                    <option value="1">Match Part Of URL
+                    </option>
+                    <option value="2">Use Regular Expression (for advanced users who understand regular
+                        expression only)
+                    </option>
+                </field>
+                <field name="display_urls_in_profile" type="radio" label="Display Urls In Profile" default="0"
+                       description="If set to Yes, the list of urls which subscriber can access to will be displayed in his profile">
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </field>
+                <field
+                        name="show_on_frontend"
+                        type="radio"
+                        label="Show On Frontend"
+                        description="If set to Yes, this plugin will be available on frontend add/edit plan form"
+                        class="btn-group btn-group-yesno"
+                        default="0"
+                >
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+            </fieldset>
+        </fields>
+    </config>
+</extension>

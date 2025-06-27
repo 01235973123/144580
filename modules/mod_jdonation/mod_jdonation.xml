@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="6.0" client="site" method="upgrade">
+	<name>Donation module</name>
+	<author>Ossolution Team</author>
+	<creationDate>Jan 2009</creationDate>
+	<copyright>Ossolution Team</copyright>
+	<license>Commercial</license>
+	<authorEmail>contact@joomservices.com</authorEmail>
+	<authorUrl>www.joomservices.com</authorUrl>
+	<version>6.0</version>
+	<description>This module works together with Joomla Donation Extension</description>
+	<files>
+		<filename module="mod_jdonation">index.html</filename>
+		<filename module="mod_jdonation">mod_jdonation.php</filename>		
+		<folder>tmpl</folder>
+		<folder>assets</folder>
+	</files>	
+	<config>
+		<fields name="params">
+			<fieldset name="basic">
+				<field name="moduleclass_sfx" type="text"
+					label="Module Class Suffix" description="PARAMMODULECLASSSUFFIX">
+				</field>
+				<field name="show_campaign" type="radio" class="btn-group" default="0" label="Show Campaign select list" description="Do you want to show dropdown select list Campaign at frontend of module">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field name="donation_type" type="list" default="1" label="Donation Type" description="Choose the type of donation for the module">
+					<option value="0">Enter donation Amount into textbox</option>
+					<option value="1">Choose from pre-defined amount</option>
+					<option value="2">Both</option>
+				</field>
+				<field name="campaign_id" type="text"
+					label="Enter Campaign ID" description="If you want to show pre-defined amounts of specific campaign, you can enter Campaign ID here. If the campaign doesn't have pre-defined amounts, module will use value from Global Configuration">
+				</field>
+				<field name="item_id" type="text"
+					label="Itemid" description="ID of the menu item which you want to redirect to when users process donate button from this module. If you unsure, leave it empty">
+				</field>
+				<field name="background_color" type="text" label="Background color" description="Please enter the Module Background color code" default="#4b3381" class="input-small" />
+				<field name="text_color" type="text" label="Text color" description="Please enter the Text color code" default="#FFFFFF" class="input-small" />
+				<field name="highlight_text" type="text" label="Highlight text" description="Please enter the Highlight text color code" default="#3283b6" class="input-small" />
+				<field name="highlight_bgcolor" type="text" label="Highlight background color" description="Please enter the Highlight background color code" default="#e9f3f9" class="input-small" />
+				<field name="show_raised" type="radio" class="btn-group" default="1" label="Show Raised Amount" description="Do you want to show Donation raised amount at frontend of module">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+			</fieldset>
+			<fieldset name="advanced">
+				<field
+				name="layout"
+				type="modulelayout"
+				label="JFIELD_ALT_LAYOUT_LABEL"
+				description="JFIELD_ALT_MODULE_LAYOUT_DESC"
+				/>
+			</fieldset>
+		</fields>
+	</config>	
+</extension>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+    <layout title="COM_OSMEMBERSHIP_VIEW_PLANS_PRICING_TABLE_FLAT_TITLE">
+        <message>
+            <![CDATA[COM_OSMEMBERSHIP_VIEW_PLANS_PRICING_TABLE_FLAT_DESCRIPTION]]>
+        </message>
+    </layout>
+    <fields name="request">
+        <fieldset name="request"
+                  addfieldpath="/administrator/components/com_osmembership/model/fields">
+            <field name="id" type="osmcategory" default="0" label="Select Category"
+                   description="Select category which you want to display subscription plans"/>
+        </fieldset>
+    </fields>
+    <fields name="params">
+        <fieldset name="basic">
+            <field name="recommended_campaign_id" type="text" size="3" default="" label="Recommended Plan ID"
+                   description="ID of the subscription plan which will be marked as recommended" />
+            <field name="standard_plan_color" type="color" default="#00B69C" label="Standard Plan Background Color"
+                   description="Choose background color of the standard plans" />
+            <field name="recommended_plan_color" type="color" default="#F75500" label="Recommended Plan Background Color"
+                   description="Choose background color of the recommended plan" />
+            <field name="show_details_button" type="list" label="Show Details Button" default="0">
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+            </field>
+            <field name="plan_ids" type="osmplan" multiple="true" label="Plans" description="Select the plans which you want to be displayed. If you don't select any plans here, all plans will be displayed" />
+            <field name="exclude_plan_ids" type="text" label="Exclude Plan Ids" description="Enter IDs of the plans which you don't want to be displayed on this page, comma separated" />
+            <field name="list_limit" type="text" default="" label="Number Plans Per Page" />
+            <field type="editor" buttons="yes" name="intro_text" filter="raw" label="Intro Text" description="If you enter some text here, it will be displayed at the top of plans list." />
+        </fieldset>
+    </fields>
+</metadata>

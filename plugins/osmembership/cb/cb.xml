@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.9.0" type="plugin" group="osmembership" method="upgrade">
+    <name>Membership Pro - CB</name>
+    <author>Tuan Pham Ngoc</author>
+    <authorEmail>tuanpn@joomdonation.com</authorEmail>
+    <authorUrl>https://joomdonation.com</authorUrl>
+    <copyright>Copyright (C) 2012 - 2025 Ossolution Team</copyright>
+    <license>GNU General Public License version 3, or later</license>
+    <creationDate>Nov 2012</creationDate>
+    <version>4.2.2</version>
+    <description>This plugin is used to create a CB account for user when they subscribe to a Subscription Plan in
+        Membership Pro
+    </description>
+    <files>
+        <filename plugin="cb">cb.php</filename>
+    </files>
+    <config>
+        <fields name="params">
+            <fieldset name="basic">
+                <field name="block_user_on_membership_expire" type="radio" default="0"
+                       label="Block User When Membership Expired" description="Block User when Membership Expired">
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </field>
+                <field name="synchronize_data_for_pending_subscription" type="radio" default="0"
+                       label="Synchronize Data For Pending Subscriptions" description="If set to Yes, when users use offline payment and their subscription status is Pending, the data is also synchronized">
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </field>
+            </fieldset>
+        </fields>
+    </config>
+</extension>

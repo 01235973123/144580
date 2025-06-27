@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.5.0" type="plugin" group="system" method="upgrade">
+    <name>System - Membership Pro SP Page Builder Restriction</name>
+    <author>Tuan Pham Ngoc</author>
+    <authorEmail>tuanpn@joomdonation.com</authorEmail>
+    <authorUrl>https://www.joomdonation.com</authorUrl>
+    <copyright>Copyright (C) 2012 - 2025 Ossolution Team</copyright>
+    <license>GNU General Public License version 3, or later</license>
+    <creationDate>December 2019</creationDate>
+    <version>4.2.2</version>
+    <description>This plugin allow admin to restrict access to pages created by SP Page Builder extension for
+        subscribers only.
+    </description>
+    <files>
+        <filename plugin="mpsppagebuilder">mpsppagebuilder.php</filename>
+        <folder>tmpl</folder>
+    </files>
+	<languages folder="language">
+		<language tag="en-GB">en-GB/en-GB.plg_system_mpsppagebuilder.ini</language>		
+	</languages>
+    <config>
+        <fields name="params">
+            <fieldset name="basic">
+                <field name="redirect_url" label="Redirect URL" type="text" size="70" default=""
+                       description="URL of the page users will be redirected to when they are not allowed to access to the pages. You should put the url of the subscription plans page on your site into this param"/>
+                <field name="display_pages_in_profile" type="radio" class="btn-group" label="Display Pages in Profile"
+                       default="0"
+                       description="If set to Yes, the list of articles which subscriber can access to will be displayed in his profile">
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </field>
+                <field name="release_pages_older_than_x_days" type="text" size="60" default="0"
+                       label="Release pages older than X days"
+                       description="If enter a number here, pages older than this entered number days will be free to access to everyone"/>
+                <field
+                        name="show_on_frontend"
+                        type="radio"
+                        label="Show On Frontend"
+                        description="If set to Yes, this plugin will be available on frontend add/edit plan form"
+                        class="btn-group btn-group-yesno"
+                        default="0"
+                >
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+            </fieldset>
+        </fields>
+    </config>
+</extension>

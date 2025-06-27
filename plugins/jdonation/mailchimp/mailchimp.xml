@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="5.10.2" type="plugin" group="jdonation" method="upgrade">
+	<name>Jdonation - Mailchimp newsletter Plugin</name>
+	<author>Dang Thuc Dam</author>
+	<creationDate>September 2018</creationDate>
+	<copyright>Ossolution Team</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<authorEmail>contact@joomservices.org</authorEmail>
+	<authorUrl>www.joomservices.org</authorUrl>
+	<version>5.10.2</version>
+	<description>This plugin is user to subscriber donors to Mailchimp newsletter.</description>
+	<files>
+		<filename plugin="mailchimp">mailchimp.php</filename>
+		<folder>api</folder>
+	</files>
+	<config>
+		<fields name="params">
+			<fieldset name="basic" addfieldpath="/administrator/components/com_jdonation/elements">
+                <field name="api_key" type="text" size="60" default="" label="API Key"
+                       description="Your Mailchimp API Key"/>
+                <field name="default_list_ids" type="text" size="60" default="" label="Default Lists" description="Enter IDs of Mailchimp lists which you want donors to subscribe to automatically (comma seperated). Leave it blank to subscribe donors to all the current available lists" />
+            </fieldset>
+		</fields>		
+	</config>
+</extension>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<fields name="fields">
+		<fieldset name="basic">
+			<field name="field_text" type="text" label="Text" size="50"></field>
+			<field name="field_textarea" type="text" label="Textarea" size="50"></field>
+			<field name="field_number" type="number" label="Number" size="50"></field>
+			<field name="field_url" type="url" label="Url" size="50"></field>
+			<field name="field_email" type="email" label="Email" size="50"></field>
+		</fieldset>
+	</fields>
+</config>

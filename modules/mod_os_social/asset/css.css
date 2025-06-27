@@ -1,0 +1,82 @@
+.os-social ul{
+	list-style: none;
+	margin: 0;
+	float: left;
+	padding:0;
+}
+.os-social ul li{
+	text-decoration: none;
+	float: left;
+	position: relative;
+}
+.os-social img{
+	height:50px;
+}
+
+.os-social li a{
+	display: block;
+    font-size: 19px;
+    height: 45px;
+    padding: 10px;
+    width: 45px;
+	text-align:center;
+}
+.os-social ul li:first-child {
+    border-left: 1px solid #E1E1E1;
+}
+.os-social ul li {
+    border-right: 1px solid #E1E1E1;
+
+}
+.os-social li a:hover{
+	text-decoration: none;
+}
+.os-social li a [class^="icon-"]{
+	font-size: 22px;
+	position: relative;
+	top: 12px;
+	left: 12px;
+}
+.os-social ul li .above{
+	position: absolute;
+	top: -54px;
+	left:0px;
+	background: #fff;
+	opacity: 0;
+	filter: alpha(opacity = 0);
+	text-align: center;
+	font-size: 14px;
+	padding: 10px;
+} 
+.os-social ul li .above:before{
+	position: absolute;
+	top: 40px;
+	left: 21px;
+	//opacity: 0;
+	border-left: 5px solid #fff;
+	border-top:5px solid #fff;
+	border-right: 5px solid #333333;
+	border-bottom:5px solid #333333;
+	content: "";
+} 
+.os-social ul li:hover a{
+	width: 45px;
+	height: 45px;
+	transition:All 0.3s ease;
+	-webkit-transition:All 0.4s ease;
+	-moz-transition:All 0.4s ease;
+	-o-transition:All 0.4s ease;
+	-webkit-transform: rotateY(360deg);
+	-moz-transform: rotateY(360deg);
+	-ms-transform: rotateY(360deg);
+	transform: rotateY(360deg);
+	perspective: 300px;
+    -moz-perspective: 300px;
+    -webkit-perspective: 300px;
+    -o-perspective: 300px;
+    -ms-perspective: 300px;
+}
+.os-social ul li:hover .above{
+	opacity: 1;
+	filter: alpha(opacity = 100);
+}  

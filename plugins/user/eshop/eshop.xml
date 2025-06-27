@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.1" type="plugin" group="user" method="upgrade">
+	<name>User - Eshop plugin</name>
+	<author>Ossolution Team</author>
+	<creationDate>July 2014</creationDate>
+	<copyright>Ossolution Team</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<authorEmail>services@joomdonation.com</authorEmail>
+	<authorUrl>www.joomdonation.com</authorUrl>
+	<version>4.0.2</version>
+	<description>This plugin is used to create Eshop customer when they sign up for an account via Joomla Registration Form</description>
+	<files>
+		<filename plugin="eshop">eshop.php</filename>
+		<filename>index.html</filename>
+	</files>	
+</extension>

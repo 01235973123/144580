@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<install version="1.0" type="eshopplugin" group="payment">
+	<name>os_creditcard</name>
+	<title>Offline Credit Card Processing</title>
+	<author>Giang Dinh Truong</author>
+	<creationDate>20-04-2014</creationDate>
+	<copyright>Copyright 2012 Ossolution Team</copyright>
+	<license>http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU/GPL version 2</license>
+	<authorEmail>contact@joomdonation.com</authorEmail>
+	<authorUrl>www.joomdonation.com</authorUrl>
+	<version>4.0.2</version>
+	<description>This payment plugin collects the Credit Card information from customers and send it to administrator for offline processing.</description>
+	<config>
+		<fields name="params" addfieldpath="/administrator/components/com_eshop/elements/">
+			<fieldset name="basic">
+				<field name="icon" type="text" size="40" label="Icon" description="If you want to show icon instead of payment method title on checkout, upload it to media/com_eshop/payments folder and enter the name of the file here. For example os_creditcard.png" default=""></field>
+				<field name="payment_fee" type="text" default="0" size="10" label="Payment Fee (Fixed amount)" description="Enter a fixed amount of payment fee."></field>
+				<field name="payment_fee_percentage" type="text" default="0" size="10" label="Payment Fee (Percentage)" description="Enter a number of percentage of Sub Total as payment fee."></field>
+				<field name="payment_fee_min_total" type="text" default="0" size="10" label="Payment Fee Minimum Total" description="Enter minimum of Total before Payment Fee is removed."></field>
+				<field name="min_total" type="text" default="0" size="10" label="Minimum Total" description="If you enter a Minimum Total value, then Offline Credit Card Payment plugin is only available if Order Total greater than Minimum Total."></field>
+				<field name="max_total" type="text" default="0" size="10" label="Maximum Total" description="If you enter a Maximum Total value, then Offline Credit Card Payment plugin is only available if Order Total less than Maximum Total."></field>
+				<field name="customer_groups" type="eshopcustomergroups" label="Customer Groups" description="Choose the customer groups to apply Offline Credit Card Payment method."></field>
+				<field name="disabled_products" type="eshopproducts" label="Disabled Products" description="Choose disabled products here. If the cart includes at least a disabled product, then the Offline Credit Card Payment method option will be not available."></field>
+				<field name="taxclass_id" type="eshoptaxclass" label="Tax Class"></field>
+				<field name="geozone_id" type="eshopgeozone" label="Geo Zone"></field>
+			</fieldset>
+		</fields>
+	</config>
+	<files>
+		<filename>os_creditcard.php</filename>				
+	</files>	
+</install>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<access component="com_osmembership">
+    <section name="component">
+        <action name="core.admin" title="JACTION_ADMIN" description="JACTION_ADMIN_COMPONENT_DESC"/>
+        <action name="core.manage" title="JACTION_MANAGE" description="JACTION_MANAGE_COMPONENT_DESC"/>
+        <action name="core.create" title="JACTION_CREATE" description="JACTION_CREATE_COMPONENT_DESC"/>
+        <action name="core.delete" title="JACTION_DELETE" description="JACTION_DELETE_COMPONENT_DESC"/>
+        <action name="core.edit" title="JACTION_EDIT" description="JACTION_EDIT_COMPONENT_DESC"/>
+        <action name="core.edit.state" title="JACTION_EDITSTATE" description="JACTION_EDITSTATE_COMPONENT_DESC"/>
+        <action name="core.edit.own" title="JACTION_EDITOWN" description="JACTION_EDITOWN_COMPONENT_DESC"/>
+        <action name="core.delete.own" title="Delete Own" description="Allows users in the group to delete any item they submitted in this extension."/>
+        <action name="core.edit.state.own" title="Edit State Own" description="Allows users in the group to change the state of any item they submitted in this extension."/>
+        <action name="membershippro.categories" title="Manage Categories"
+                description="Set to Yes to allow users of this group managing Categories"/>
+        <action name="membershippro.plans" title="Manage Plans"
+                description="Set to Yes to allow users of this group managing Subscription Plans"/>
+        <action name="membershippro.subscriptions" title="Manage Subscriptions"
+                description="Set to Yes to allow users of this group managing Subscription records"/>
+        <action name="membershippro.coupons" title="Manage Coupons"
+                description="Set to Yes to allow users of this group managing Coupons"/>
+        <action name="membershippro.fields" title="Manage Custom Fields"
+                description="Set to Yes to allow users of this group managing Custom Fields"/>
+        <action name="core.viewmembers" title="View Members"
+                description="Set to Yes to allow users of this group view members list in the front-end"/>
+    </section>
+</access>

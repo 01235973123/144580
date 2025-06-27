@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="COM_OSMEMBERSHIP_VIEW_CATEGORIES_DEFAULT_TITLE">
+		<message>
+            <![CDATA[COM_OSMEMBERSHIP_VIEW_CATEGORIES_DEFAULT_DESCRIPTION]]>
+		</message>
+	</layout>
+    <fields name="request">
+        <fieldset name="request"
+                  addfieldpath="/administrator/components/com_osmembership/model/fields">
+            <field name="id" type="osmcategory" size="3" default="0" label="Select Category" description="Choose the category which you want to list it's sub categories" />
+        </fieldset>
+    </fields>
+    <fields name="params">
+        <fieldset name="basic">
+            <field type="editor" buttons="yes" name="intro_text" filter="raw" label="Intro Text" description="If you enter some text here, it will be displayed at the top of page." />
+        </fieldset>
+        <fieldset name="data_filtering" label="Data Filtering">
+            <field name="categories_id" type="osmcategory" multiple="true" label="Categories" description="If you only want to display certain categories, select the categories here" />
+            <field name="exclude_categories_id" type="osmcategory" multiple="true" label="Exclude Categories" description="If you want to exclude certain categories from being displayed, select it here" />
+        </fieldset>
+    </fields>
+</metadata>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="Add Campaign">
+		<message>
+			Display Add campaign layout for logged user
+		</message>
+	</layout>
+	<state>
+		<name>User campaigns</name>
+		<description>Display Add campaign layout for logged user</description>				
+	</state>
+</metadata>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="Receiving donation">
+		<message>
+			Display all receiving donation of campaigns of current logged user
+		</message>
+	</layout>
+	<state>
+		<name>Receiving donation</name>
+		<description>Display all receiving donation of campaigns of current logged user</description>				
+	</state>
+</metadata>

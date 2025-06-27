@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" method="upgrade" client="site" version="5.10.0">
+	<name>Donation Form Module</name>
+	<author>Tuan Pham Ngoc</author>
+	<creationDate>October 2014</creationDate>
+	<copyright>Ossolution Team</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<authorEmail>contact@joomservices.com</authorEmail>
+	<authorUrl>www.joomdonation.com</authorUrl>
+	<version>5.10.0</version>
+	<description>This module is used to Display Donation Form in a module position on your site</description>
+	<files>
+		<filename module="mod_jd_form">index.html</filename>
+		<filename module="mod_jd_form">mod_jd_form.php</filename>		
+	</files>
+        <config>
+		<fields name="params">
+			<fieldset name="basic" addfieldpath="/administrator/components/com_jdonation/elements">
+				<field name="moduleclass_sfx" type="text"
+					label="Module Class Suffix" description="PARAMMODULECLASSSUFFIX">
+				</field>	
+				<field name="campaign_id" type="Campaign"
+					label="Select Campain" description="" default="">
+				</field>
+			</fieldset>			
+		</fields>
+        </config> 		
+</extension>

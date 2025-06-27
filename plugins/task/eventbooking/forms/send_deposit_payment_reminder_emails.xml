@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form>
+    <fields name="params">
+        <fieldset name="task_params">
+            <field name="number_days" label="Number Days" type="text" default="7" description="Number of days (before event date) registrants will receive deposit payment reminder" />
+            <field name="number_registrants" label="Number Registrants" type="text" default="15" description="Number of registrants which we will send reminder each time the task run" />
+            <field name="bcc_email" label="BCC Email" type="text" default="" description="If you want to receive a copy of reminder email so that you can keep track of reminder, enter the email you want here" />
+        </fieldset>
+    </fields>
+</form>
